@@ -17,3 +17,7 @@ Ademas, clone el proyecto y agregue los archivos base en main:
 
 Por ultimo deje seteado el tablero de trello con la primera gran iteracion: crear el Token.
 El link de acceso public en Trello se encuentra en el README.
+
+#### Gaston Landeira
+El dia de hoy instale lo necesario para el inicio del proyecto mencionadas arriba. Ademas se definieron las condiciones de trabajo con el profesor.
+
