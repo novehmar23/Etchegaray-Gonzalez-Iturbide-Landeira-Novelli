@@ -21,3 +21,5 @@ El link de acceso public en Trello se encuentra en el README.
 #### Gaston Landeira
 El dia de hoy instale lo necesario para el inicio del proyecto mencionadas arriba. Ademas se definieron las condiciones de trabajo con el profesor.
 
+### Martín Iturbide
+Hoy instale las herramientas y tecnologias mencionadas, necesarias para inicar el proyecto. Pude conectarlo con la wallet de metamask de la red local y hacer algunas pequeñas primeras pruebas.
