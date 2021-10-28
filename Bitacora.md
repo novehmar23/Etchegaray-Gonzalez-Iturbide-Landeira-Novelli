@@ -25,7 +25,7 @@ El dia de hoy instale lo necesario para el inicio del proyecto mencionadas arrib
 Hoy instale las herramientas y tecnologias mencionadas, necesarias para inicar el proyecto. Pude conectarlo con la wallet de metamask de la red local y hacer algunas pequeñas primeras pruebas.
 
 #### Marcos Novelli
-Punteo de cosas realizadas en el día:
+Punteo de cosas que realicé en el día:
 - Instalación correcta de truffle (globalmente)
 - Creación de init correcta
 - Verificación de funcionamiento de lo generado con el init
