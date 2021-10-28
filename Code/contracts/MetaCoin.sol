@@ -1,20 +1,21 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.21 <0.7.0;
+pragma solidity 0.8.0;
 
 import "./ConvertLib.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 // This is a simple example of a coin-like contract.
 // It is not standards compatible and cannot be expected to talk to other
 // coin/token contracts. If you want to create a standards-compliant
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
-contract MetaCoin {
+contract MetaCoin is ERC20{
     mapping (address => uint) balances;
 
-    event Transfer(address indexed _from, address indexed _to, uint256 _value);
+    //event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
-    constructor() public {
-        balances[msg.sender] = 10000;
+    constructor(uint256 initialSupply) ERC20("MetaCoin", "META") {
+        _mint(msg.sender, initialSupply);
     }
 
     function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
