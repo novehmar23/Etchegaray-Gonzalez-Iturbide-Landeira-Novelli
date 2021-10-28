@@ -51,6 +51,17 @@ El día de hoy, en base al archivo obtenido en la clase pasada:
 - Instalé el zeppelin (se utilizó el ERC20 para nuestra moneda)
 - Modifiqué la versión del solidity a 0.8.0
 - Implementé el constructor y la función "getBalance"
-- Verifiqué en el localhsot:8080 ingresando con la cuenta de metamask y todo ok
+- Verifiqué en el localhost:8080 ingresando con la cuenta de metamask y todo ok
 - Agregué el address de este nuevo contrato (importando el token en metamask)
 - Verifiqué que ya se dispone de esta nueva moneda creada
+
+#### Iñaki
+Hoy hice el unbox del webpack en el proyecto nuestro en GitHub, admitiendo asi su versionado.
+
+Instale la dependencia de openzeppelin para poder hacer uso de su interfaz IERC20 y sus funciones para un token ERC20 de acuerdo a las especificaciones del obligatorio.
+
+Luego logramos hacer funcionar la aplicacion ejemplo obteniendo el balance de una cuenta pero con la implementacion de openzeppelin (ERC20) con todos los integrantes del grupo.
+
+Verifique poder agregar la moneda META de prueba en la wallet de Metamask.
+
+Finalmente cree un issue en github que describe un problema con la funcion sendCoin del contrato que se debe solucionar la proxima vez que nos juntemos a trabajar.
