@@ -44,7 +44,7 @@ Ademas de instalar truffle yo personalmente al utilizar las IDEs de JetBrains tu
 
 Por ultimo hicimos un slack para el grupo que nos puede facilitar a la hora de comunicarnos con los profesores.
 
-### DIA 1 - 28/10/2021
+### DIA 2 - 28/10/2021
 
 #### Marcos Novelli
 El día de hoy, en base al archivo obtenido en la clase pasada:
@@ -65,3 +65,7 @@ Luego logramos hacer funcionar la aplicacion ejemplo obteniendo el balance de un
 Verifique poder agregar la moneda META de prueba en la wallet de Metamask.
 
 Finalmente cree un issue en github que describe un problema con la funcion sendCoin del contrato que se debe solucionar la proxima vez que nos juntemos a trabajar.
+
+#### Gaston Landeira
+Hoy dimos comienzo real al proyecto ya que instalando openzepeling se creo nuestra criptomoneda con standard ERC-20. Esto se dio en una instancia grupal en la computadora de un companero y despues lo replique en la mia sin ningun problema. Durante esta instalacion individual continuamos en llamada para brindarnos ayuda mutuamente con problemas que podian surgir, como por ejemplo que se utilice el comando networks y no network o, que se debia escribir en la consola npm install tanto en el paquete del codigo como de la app para instalar todas las dependencias. 
+Por ahora el programa solo puede obtener acceso a la cantidad de monedas que poseo en la cuenta de metamask. 
