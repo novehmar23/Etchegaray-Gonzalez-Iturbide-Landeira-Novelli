@@ -16,8 +16,10 @@ contract MetaCoin is ERC20{
     }
 
     function getBalance(address addr) public view returns(uint256){
-        
         return balanceOf(addr);
     }
     
+    function sendCoin(address recipient, uint256 amount) public returns (bool) {
+        return transfer(recipient, amount);
+    }
 }
