@@ -10,27 +10,16 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
 contract MetaCoin is ERC20{
-    mapping (address => uint) balances;
 
-    //event Transfer(address indexed _from, address indexed _to, uint256 _value);
-
-    constructor(uint256 initialSupply) ERC20("MetaCoin", "META") {
-        _mint(msg.sender, initialSupply);
+    constructor() ERC20("MetaCoin", "META") {
+        _mint(msg.sender, 100000000000000000);
     }
 
-    function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
-        if (balances[msg.sender] < amount) return false;
-        balances[msg.sender] -= amount;
-        balances[receiver] += amount;
-        emit Transfer(msg.sender, receiver, amount);
-        return true;
+    function getBalance(address addr) public view returns(uint256){
+        return balanceOf(addr);
     }
-
-    function getBalanceInEth(address addr) public view returns(uint) {
-        return ConvertLib.convert(getBalance(addr),2);
-    }
-
-    function getBalance(address addr) public view returns(uint) {
-        return balances[addr];
+    
+    function sendCoin(address recipient, uint256 amount) public returns (bool) {
+        return transfer(recipient, amount);
     }
 }
