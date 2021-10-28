@@ -35,3 +35,11 @@ Punteo de cosas que realicé en el día:
 - Desinstalo y vuelvo a instalar el node.js pero la versión v.16.13.0
 - Instale el truflle, webpack (le hago el develop, compilo, migrate, ejecuto el dev de la app, le hago el test en el develop y ejecuto el build de la app). Funciona todo ok
 - Por ultimo, veo el correcto funcionamiento del contrato a través de localhost:8080 e ingreso con mi cuenta de metamask. Todo ok.
+
+#### Matias Gonzalez
+
+Al ser el primer dia lo principal fue instalar todas las dependencias necesarias para trabajar en el obligatorio.
+
+Ademas de instalar truffle yo personalmente al utilizar las IDEs de JetBrains tuve que buscar como utilizar solidity en ellos, que IDE usar, que plugins instalar para tener todo funcionando correctamente.
+
+Por ultimo hicimos un slack para el grupo que nos puede facilitar a la hora de comunicarnos con los profesores.
