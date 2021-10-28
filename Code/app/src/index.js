@@ -30,7 +30,9 @@ const App = {
 
   refreshBalance: async function() {
     const { getBalance } = this.meta.methods;
+    console.log("papasfirtas");
     const balance = await getBalance(this.account).call();
+    console.log(balance);
 
     const balanceElement = document.getElementsByClassName("balance")[0];
     balanceElement.innerHTML = balance;
