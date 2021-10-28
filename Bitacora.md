@@ -43,3 +43,14 @@ Al ser el primer dia lo principal fue instalar todas las dependencias necesarias
 Ademas de instalar truffle yo personalmente al utilizar las IDEs de JetBrains tuve que buscar como utilizar solidity en ellos, que IDE usar, que plugins instalar para tener todo funcionando correctamente.
 
 Por ultimo hicimos un slack para el grupo que nos puede facilitar a la hora de comunicarnos con los profesores.
+
+### DIA 1 - 28/10/2021
+
+#### Marcos Novelli
+El día de hoy, en base al archivo obtenido en la clase pasada, relicé lo siguiente:
+- Instalación del zeppelin (se utilizó el ERC20 para nuestra moneda)
+- Modificación de la versión del solidity a 0.8.0
+- Implementación del constructor y la función "getBalance"
+- Verificación en el localhsot:8080 ingresando con la cuenta de metamask y todo ok
+- Agregué el address de este nuevo contrato (importando el token en metamask)
+- Verificación de que ya se dispone de esta nueva moneda creada
