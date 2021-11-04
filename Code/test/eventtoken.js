@@ -1,30 +1,30 @@
-const MetaCoin = artifacts.require("MetaCoin");
+const EventToken = artifacts.require("EventToken");
 
-contract("MetaCoin", accounts => {
-  it("should put 10000 MetaCoin in the first account", async () => {
-    const instance = await MetaCoin.deployed();
+contract("EventToken", accounts => {
+  it("should put 10000 EventToken in the first account", async () => {
+    const instance = await EventToken.deployed();
     const balance = await instance.getBalance.call(accounts[0]);
     assert.equal(balance.valueOf(), 10000, "10000 wasn't in the first account");
   });
 
   it("should call a function that depends on a linked library", async () => {
-    const instance = await MetaCoin.deployed();
-    const metaCoinBalance = await instance.getBalance.call(accounts[0]);
-    const metaCoinBalanceInEth = await instance.getBalanceInEth.call(
+    const instance = await EventToken.deployed();
+    const EventTokenBalance = await instance.getBalance.call(accounts[0]);
+    const EventTokenBalanceInEth = await instance.getBalanceInEth.call(
       accounts[0],
     );
 
-    const expected = 2 * metaCoinBalance.toNumber();
+    const expected = 2 * EventTokenBalance.toNumber();
 
     assert.equal(
-      metaCoinBalanceInEth.toNumber(),
+      EventTokenBalanceInEth.toNumber(),
       expected,
       "Library function returned unexpeced function, linkage may be broken",
     );
   });
 
   it("should send coin correctly", async () => {
-    const instance = await MetaCoin.deployed();
+    const instance = await EventToken.deployed();
 
     const account1 = accounts[0];
     const account2 = accounts[1];
