@@ -76,3 +76,15 @@ Hoy estuvimos trabajando sobre el código del webpack box de Truffle, estuve ana
 #### Matias Gonzalez
 
 El objetivo del dia de hoy fue comenzar con el codigo del verdadero proyecto. Instalamos la libreria de node de openzepellin de la cual luego utilizamos la interfaz ERC20 para comenzar la implementación de nuestro token. Esto nos dio algunos errores pero en el transcurso del dia se pudo solucionar logrando que le funcionase a todos los integrantes la conexion del nuevo token a la plataforma de MetaCoin implementada en el ejemplo de unbox.
+
+### DIA 3 - 04/11/2021
+
+#### Todos
+Realizamos la division de responsabilidades entre los integrantes del grupo, luego de asegurarnos que todos estabamos en el mismo punto.
+- Frontend
+    - Marcos
+    - Gaston (Trello)
+    - Iñaki
+- Backend
+    - Mati
+    - Martin (Trello)
