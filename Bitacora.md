@@ -43,3 +43,48 @@ Al ser el primer dia lo principal fue instalar todas las dependencias necesarias
 Ademas de instalar truffle yo personalmente al utilizar las IDEs de JetBrains tuve que buscar como utilizar solidity en ellos, que IDE usar, que plugins instalar para tener todo funcionando correctamente.
 
 Por ultimo hicimos un slack para el grupo que nos puede facilitar a la hora de comunicarnos con los profesores.
+
+### DIA 2 - 28/10/2021
+
+#### Marcos Novelli
+El día de hoy, en base al archivo obtenido en la clase pasada:
+- Instalé el zeppelin (se utilizó el ERC20 para nuestra moneda)
+- Modifiqué la versión del solidity a 0.8.0
+- Implementé el constructor y la función "getBalance"
+- Verifiqué en el localhost:8080 ingresando con la cuenta de metamask y todo ok
+- Agregué el address de este nuevo contrato (importando el token en metamask)
+- Verifiqué que ya se dispone de esta nueva moneda creada
+
+#### Iñaki
+Hoy hice el unbox del webpack en el proyecto nuestro en GitHub, admitiendo asi su versionado.
+
+Instale la dependencia de openzeppelin para poder hacer uso de su interfaz IERC20 y sus funciones para un token ERC20 de acuerdo a las especificaciones del obligatorio.
+
+Luego logramos hacer funcionar la aplicacion ejemplo obteniendo el balance de una cuenta pero con la implementacion de openzeppelin (ERC20) con todos los integrantes del grupo.
+
+Verifique poder agregar la moneda META de prueba en la wallet de Metamask.
+
+Finalmente cree un issue en github que describe un problema con la funcion sendCoin del contrato que se debe solucionar la proxima vez que nos juntemos a trabajar.
+
+#### Gaston Landeira
+Hoy dimos comienzo real al proyecto ya que instalando openzepeling se creo nuestra criptomoneda con standard ERC-20. Esto se dio en una instancia grupal en la computadora de un companero y despues lo replique en la mia sin ningun problema. Durante esta instalacion individual continuamos en llamada para brindarnos ayuda mutuamente con problemas que podian surgir, como por ejemplo que se utilice el comando networks y no network o, que se debia escribir en la consola npm install tanto en el paquete del codigo como de la app para instalar todas las dependencias. 
+Por ahora el programa solo puede obtener acceso a la cantidad de monedas que poseo en la cuenta de metamask. 
+
+#### Martín Iturbide
+Hoy estuvimos trabajando sobre el código del webpack box de Truffle, estuve analizando todos los archivos para comprender las funcionalidades basicas que vienen incluidas. Logramos crear nuestro token ERC20 utilizando las librerias de OpenZeppelin para crear un contrato. Logre ejecutar la aplicacion y ver mi balance del token que creamos. Tambien comence a trabajar en la funcionalidad de enviar tokens sin exito, trabajaremos sobre eso en la proxima sesion de trabajo.
+
+#### Matias Gonzalez
+
+El objetivo del dia de hoy fue comenzar con el codigo del verdadero proyecto. Instalamos la libreria de node de openzepellin de la cual luego utilizamos la interfaz ERC20 para comenzar la implementación de nuestro token. Esto nos dio algunos errores pero en el transcurso del dia se pudo solucionar logrando que le funcionase a todos los integrantes la conexion del nuevo token a la plataforma de MetaCoin implementada en el ejemplo de unbox.
+
+### DIA 3 - 04/11/2021
+
+#### Todos
+Realizamos la division de responsabilidades entre los integrantes del grupo, luego de asegurarnos que todos estabamos en el mismo punto.
+- Frontend
+    - Marcos
+    - Gaston (Trello)
+    - Iñaki
+- Backend
+    - Mati
+    - Martin (Trello)
