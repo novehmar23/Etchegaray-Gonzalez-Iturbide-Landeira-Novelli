@@ -72,3 +72,7 @@ Por ahora el programa solo puede obtener acceso a la cantidad de monedas que pos
 
 #### Martín Iturbide
 Hoy estuvimos trabajando sobre el código del webpack box de Truffle, estuve analizando todos los archivos para comprender las funcionalidades basicas que vienen incluidas. Logramos crear nuestro token ERC20 utilizando las librerias de OpenZeppelin para crear un contrato. Logre ejecutar la aplicacion y ver mi balance del token que creamos. Tambien comence a trabajar en la funcionalidad de enviar tokens sin exito, trabajaremos sobre eso en la proxima sesion de trabajo.
+
+#### Matias Gonzalez
+
+El objetivo del dia de hoy fue comenzar con el codigo del verdadero proyecto. Instalamos la libreria de node de openzepellin de la cual luego utilizamos la interfaz ERC20 para comenzar la implementación de nuestro token. Esto nos dio algunos errores pero en el transcurso del dia se pudo solucionar logrando que le funcionase a todos los integrantes la conexion del nuevo token a la plataforma de MetaCoin implementada en el ejemplo de unbox.
