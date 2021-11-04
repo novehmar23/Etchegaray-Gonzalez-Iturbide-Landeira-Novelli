@@ -1,5 +1,5 @@
 import Web3 from "web3";
-import metaCoinArtifact from "../../build/contracts/MetaCoin.json";
+import eventTokenArtifact from "../../build/contracts/EventToken.json";
 
 const App = {
   web3: null,
@@ -12,9 +12,9 @@ const App = {
     try {
       // get contract instance
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = metaCoinArtifact.networks[networkId];
+      const deployedNetwork = eventTokenArtifact.networks[networkId];
       this.meta = new web3.eth.Contract(
-        metaCoinArtifact.abi,
+        eventTokenArtifact.abi,
         deployedNetwork.address,
       );
 
@@ -30,7 +30,6 @@ const App = {
 
   refreshBalance: async function() {
     const { getBalance } = this.meta.methods;
-    console.log("papasfirtas");
     const balance = await getBalance(this.account).call();
     console.log(balance);
 

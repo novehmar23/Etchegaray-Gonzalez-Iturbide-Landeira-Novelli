@@ -9,10 +9,10 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 // coin/token contracts. If you want to create a standards-compliant
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
-contract MetaCoin is ERC20{
+contract EventToken is ERC20{
 
-    constructor() ERC20("MetaCoin", "META") {
-        _mint(msg.sender, 100000000000000000);
+    constructor() ERC20("EventToken", "EV") {
+        _mint(msg.sender, 1000000000);
     }
 
     function getBalance(address addr) public view returns(uint256){
