@@ -88,3 +88,6 @@ Realizamos la division de responsabilidades entre los integrantes del grupo, lue
 - Backend
     - Mati
     - Martin (Trello)
+
+#### Martin Iturbide
+Trabajamos en equipo para solucionar los errores que teniamos y comezamos a dividirnos tareas. Estuve investigando más en profundidad la interfaz de OpenZepelling de ERC20 para poder continuar trabajando en el Backend.
