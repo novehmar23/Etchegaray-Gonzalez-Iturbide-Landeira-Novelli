@@ -97,3 +97,7 @@ Primero solucionamos algunos errores que estaba teniendo en grupo a la hora de c
 Asisti con el resto de los companeros para que todos puedieramos alcanzar al mismo punto. Logre arreglar el envio de monedas e hice el cambio del nombre al nombre provisorio "EventCoin".
 
 ### DIA 4 - 11/11/2021]
+#### Iñaki Etchegaray
+Ayude a definir las tareas en el Trello del Frontend. Intentamos hacer funcionar un template para la aplicacion de puro html-css pero no pudimos. Retrocedi a intentar hacer funcionar CSS en webpack comun, pero no se logro realizarlo. Se intentara nuevamente y, de ultima, nos enfocaremos en hacer algo funcional y luego en la apariencia.
+
+Por ultimo, documente el cambio en Avance_Front y el cambio de estados del tablero en Trello.
