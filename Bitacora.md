@@ -116,3 +116,9 @@ El día de hoy, con el equipo de frontend:
 - Después de pasado el horario de clase, nos juntamos con el equipo de back a poder solucionar ese mismo error y no lo pudimos 
 - 
 Por ultimo, documente el cambio en Avance_Front y el cambio de estados del tablero en Trello.
+
+
+#### Martin Iturbide
+El día de hoy estuve trabajando en el Backend de la aplicacion, trabajamos sobre el tablero de trello de Backend organizando las tareas a realizar y funcionalidades necesarias.
+Una vez hecho esto estuvimos intentando crear un pequeño faucet para generar tokens, con el objetivo a futuro de poder utilizarlo cuando se vendan los tokens a los usuarios, sin embargo no logramos hacer que funcionara y tras una discusion con los profesores decidimos descartar la idea y para el futuro trabajar con una cantidad de tokens fija.
+De todas formas, investigando para hacer la funcionalidad mencionada pude profundizar mas en la implementacion de ERC20 de OpenZeppelin y comprenderla mejor, asi que si bien no tuvimos mucho progreso en el backend considero que fue muy beneficioso.
