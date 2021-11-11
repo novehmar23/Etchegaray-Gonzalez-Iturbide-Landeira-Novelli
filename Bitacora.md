@@ -91,3 +91,6 @@ Realizamos la division de responsabilidades entre los integrantes del grupo, lue
 
 #### Martin Iturbide
 Trabajamos en equipo para solucionar los errores que teniamos y comezamos a dividirnos tareas. Estuve investigando más en profundidad la interfaz de OpenZepelling de ERC20 para poder continuar trabajando en el Backend.
+
+#### Matías González
+Primero solucionamos algunos errores que estaba teniendo en grupo a la hora de correr el proyecto y ver su balance. Luego dividimos responsabilidades dentro del grupo separandonos en front y backend. Como backend decidimos centraros primero en completar las funcionalidades basicas del token antes de enfocarnos en el conjunto.
