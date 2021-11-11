@@ -93,11 +93,26 @@ Trabajamos en equipo para solucionar los errores que teniamos y comezamos a divi
 
 #### Matías González
 Primero solucionamos algunos errores que estaba teniendo en grupo a la hora de correr el proyecto y ver su balance. Luego dividimos responsabilidades dentro del grupo separandonos en front y backend. Como backend decidimos centraros primero en completar las funcionalidades basicas del token antes de enfocarnos en el conjunto.
+
 #### Iñaki Etchegaray
 Asisti con el resto de los companeros para que todos puedieramos alcanzar al mismo punto. Logre arreglar el envio de monedas e hice el cambio del nombre al nombre provisorio "EventCoin".
 
-### DIA 4 - 11/11/2021]
+#### Marcos Novelli
+El día de hoy, en base al archivo obtenido en la clase pasada:
+- Solucionamos errores en conjunto
+- Nos dividinos en dos grupos: fronten y backend
+- Con el grupo de frontend comenzamos a discutir futuros lineamientos en términos generales
+
+### DIA 4 - 11/11/2021
+
 #### Iñaki Etchegaray
 Ayude a definir las tareas en el Trello del Frontend. Intentamos hacer funcionar un template para la aplicacion de puro html-css pero no pudimos. Retrocedi a intentar hacer funcionar CSS en webpack comun, pero no se logro realizarlo. Se intentara nuevamente y, de ultima, nos enfocaremos en hacer algo funcional y luego en la apariencia.
 
+#### Marcos Novelli
+El día de hoy, con el equipo de frontend:
+- Discutimos sobre las interfaces gráficas planteadas con mirada del fututro desarrollo de front
+- Agregamos tarjetas al trello para organizar las futuros pasos a seguir
+- Estuvimos tratando de solicionar un un error al intentar utilizar una template. No nos reconoce el css. 
+- Después de pasado el horario de clase, nos juntamos con el equipo de back a poder solucionar ese mismo error y no lo pudimos 
+- 
 Por ultimo, documente el cambio en Avance_Front y el cambio de estados del tablero en Trello.
