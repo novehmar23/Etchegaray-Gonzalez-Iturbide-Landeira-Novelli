@@ -88,9 +88,12 @@ Realizamos la division de responsabilidades entre los integrantes del grupo, lue
 - Backend
     - Mati
     - Martin (Trello)
-
 #### Martin Iturbide
 Trabajamos en equipo para solucionar los errores que teniamos y comezamos a dividirnos tareas. Estuve investigando más en profundidad la interfaz de OpenZepelling de ERC20 para poder continuar trabajando en el Backend.
 
 #### Matías González
 Primero solucionamos algunos errores que estaba teniendo en grupo a la hora de correr el proyecto y ver su balance. Luego dividimos responsabilidades dentro del grupo separandonos en front y backend. Como backend decidimos centraros primero en completar las funcionalidades basicas del token antes de enfocarnos en el conjunto.
+#### Iñaki Etchegaray
+Asisti con el resto de los companeros para que todos puedieramos alcanzar al mismo punto. Logre arreglar el envio de monedas e hice el cambio del nombre al nombre provisorio "EventCoin".
+
+### DIA 4 - 11/11/2021]

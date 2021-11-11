@@ -2,30 +2,30 @@ pragma solidity 0.8.0;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/MetaCoin.sol";
+import "../contracts/EventToken.sol";
 
-contract TestMetacoin {
+contract TestEventToken {
     function testInitialBalanceUsingDeployedContract() public {
-        MetaCoin meta = MetaCoin(DeployedAddresses.MetaCoin());
+        EventToken meta = EventToken(DeployedAddresses.EventToken());
 
         uint expected = 10000;
 
         Assert.equal(
             meta.getBalance(msg.sender),
             expected,
-            "Owner should have 10000 MetaCoin initially"
+            "Owner should have 10000 EventToken initially"
         );
     }
 
-    function testInitialBalanceWithNewMetaCoin() public {
-        MetaCoin meta = new MetaCoin();
+    function testInitialBalanceWithNewEventToken() public {
+        EventToken meta = new EventToken();
 
         uint expected = 10000;
 
         Assert.equal(
             meta.getBalance(address(this)),
             expected,
-            "Owner should have 10000 MetaCoin initially"
+            "Owner should have 10000 EventToken initially"
         );
     }
 }
