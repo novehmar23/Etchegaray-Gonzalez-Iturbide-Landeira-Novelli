@@ -88,3 +88,8 @@ Realizamos la division de responsabilidades entre los integrantes del grupo, lue
 - Backend
     - Mati
     - Martin (Trello)
+
+#### Iñaki Etchegaray
+Asisti con el resto de los companeros para que todos puedieramos alcanzar al mismo punto. Logre arreglar el envio de monedas e hice el cambio del nombre al nombre provisorio "EventCoin".
+
+### DIA 4 - 11/11/2021
