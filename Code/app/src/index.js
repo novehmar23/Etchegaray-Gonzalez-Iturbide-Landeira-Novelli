@@ -1,6 +1,5 @@
 import Web3 from "web3";
 import eventTokenArtifact from "../../build/contracts/EventToken.json";
-import "./styles.css";
 
 const App = {
   web3: null,
