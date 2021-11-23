@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([{ from: "./src/index.html", to: "index.html" },
-                           { from: "./src/exchange.html", to: "exchange.html" },
+                           { from: "./src/exchange/exchange.html", to: "exchange.html" },
                            {from: "./src/assets", to :"assets"},
                            {from: "./src/vendor", to :"vendor"}]),
   ],
