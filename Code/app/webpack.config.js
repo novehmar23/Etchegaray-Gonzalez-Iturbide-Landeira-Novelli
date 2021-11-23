@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
-    new CopyWebpackPlugin([{ from: "./src/index.html", to: "index.html" }]),
+    new CopyWebpackPlugin([{ from: "./src/index.html", to: "index.html" }])
   ],
   devServer: { contentBase: path.join(__dirname, "dist"), compress: true },
   module: {
@@ -17,8 +17,10 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          { loader: 'style-loader' },
-          {
+          { 
+            loader: 'style-loader'
+          },
+          { 
             loader: 'css-loader',
             options: {
               modules: true
