@@ -103,6 +103,9 @@ El día de hoy, en base al archivo obtenido en la clase pasada:
 - Nos dividinos en dos grupos: fronten y backend
 - Con el grupo de frontend comenzamos a discutir futuros lineamientos en términos generales
 
+#### Gaston Landeira
+El dia de me surgieron problemas de inicio del proyecto que ya habian sido solucionados, fui asistido por mis companeros y en poco tiempo ya todos alcanzamos el mismo punto. Posteriormente nos dividimos las tareas y se comenzo con la discusion del frontend.
+
 ### DIA 4 - 11/11/2021
 
 #### Iñaki Etchegaray
@@ -122,3 +125,6 @@ Por ultimo, documente el cambio en Avance_Front y el cambio de estados del table
 El día de hoy estuve trabajando en el Backend de la aplicacion, trabajamos sobre el tablero de trello de Backend organizando las tareas a realizar y funcionalidades necesarias.
 Una vez hecho esto estuvimos intentando crear un pequeño faucet para generar tokens, con el objetivo a futuro de poder utilizarlo cuando se vendan los tokens a los usuarios, sin embargo no logramos hacer que funcionara y tras una discusion con los profesores decidimos descartar la idea y para el futuro trabajar con una cantidad de tokens fija.
 De todas formas, investigando para hacer la funcionalidad mencionada pude profundizar mas en la implementacion de ERC20 de OpenZeppelin y comprenderla mejor, asi que si bien no tuvimos mucho progreso en el backend considero que fue muy beneficioso.
+
+#### Gaston Landeira
+Dia frustrante para el equipo de frontend que no pudo aplicar ningun template a el. Decidimos enfocarnos en las funcionalidades antes que lo bonito pero, no se quiere dejar tan de lado el aspecto estetico de esta. Por otro lado al backend parece irle bien.
