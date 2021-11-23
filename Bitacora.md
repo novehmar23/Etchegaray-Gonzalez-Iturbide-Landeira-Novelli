@@ -128,3 +128,6 @@ De todas formas, investigando para hacer la funcionalidad mencionada pude profun
 
 #### Gaston Landeira
 Dia frustrante para el equipo de frontend que no pudo aplicar ningun template a el. Decidimos enfocarnos en las funcionalidades antes que lo bonito pero, no se quiere dejar tan de lado el aspecto estetico de esta. Por otro lado al backend parece irle bien.
+
+#### Matías González
+    El equipo de backend se enfocó principalmente en la funcionalidad de emisión, intentando la creación de un faucet e investigando sobre las funciones ya existentes dentro de openZepellin. Se perdió un poco de tiempo ya que en un comienzo se creia que por "emisión" se referia a un faucet que se encargue de la creación de nuevos tokens pero luego de hablarlo más en detalle nos dimos cuenta que esto no era correcto y que con una cuenta a la que se le asignen las monedas al comienzo era suficiente.
