@@ -9,7 +9,10 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
-    new CopyWebpackPlugin([{ from: "./src/index.html", to: "index.html" }]),
+    new CopyWebpackPlugin([{ from: "./src/index.html", to: "index.html" },
+                           { from: "./src/exchange.html", to: "exchange.html" },
+                           {from: "./src/assets", to :"assets"},
+                           {from: "./src/vendor", to :"vendor"}]),
   ],
   devServer: { contentBase: path.join(__dirname, "dist"), compress: true },
   module: {
