@@ -48,11 +48,16 @@ const App = {
   },
 
   refreshBalance: async function() {
+    const balanceElement = document.getElementsByClassName("balance")[0];
+    console.log(balanceElement);
+    if(balanceElement === undefined){
+      return;
+    }
+
     const { getBalance } = this.meta.methods;
     const balance = await getBalance(this.account).call();
     console.log(balance);
 
-    const balanceElement = document.getElementsByClassName("balance")[0];
     balanceElement.innerHTML = balance;
   },
 
@@ -106,3 +111,9 @@ const Events =
 }
 
 window.Events = Events;
+
+window.addEventListener("load", async function() {
+  await App.connect();
+  await App.getAccountsAndNetwork();
+  App.refreshBalance();
+});
