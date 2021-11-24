@@ -33,6 +33,7 @@ font & reset css
 reset
 --------------------------------------------- 
 */
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -96,7 +97,14 @@ ul, li {
 header, nav, section, article, aside, footer, hgroup {
   display: block;
 }
-
+.navMetasAmount nav{
+  margin-top: 40px;
+}
+.vlFromNavSeparation{
+  border-left: 1px solid rgba(163, 163, 163, 0.76);
+  height: 40px;
+  margin-left: 20px;
+}
 * {
   box-sizing: border-box;
 }
@@ -117,6 +125,14 @@ a {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.sectionTitle{
+  color: #2e7df5;
+}
+
+.boxTitle{
+  margin-bottom: 10px;
 }
 
 ul {
@@ -1002,7 +1018,7 @@ Services Style
 
 .services .section-heading {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
 }
 
 .services .section-heading .line-dec {
