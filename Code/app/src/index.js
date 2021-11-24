@@ -69,10 +69,17 @@ const App = {
   },
 
   sendCoin: async function(from, to, amount) {
-    const { sendCoin } = this.meta.methods;
-    await sendCoin(to, amount).send({ from: from });
+    try{
+      const { sendCoin } = this.meta.methods;
+      await sendCoin(to, amount).send({ from: from });
 
-    this.refreshBalance();
+      this.refreshBalance();
+      return true;
+    }catch(error)
+    {
+      console.error(error);
+      return false;
+    }
   },
 
   setStatus: function(message) {
@@ -121,7 +128,16 @@ const Events =
       return;
     }
 
-    await App.sendCoin(App.account, receiver.value, Number.parseInt(amount.value));
+    await App.sendCoin(App.account, receiver.value, Number.parseInt(amount.value)).then(
+      result => 
+      {
+        if(result)
+        {
+          receiver.value = "";
+          amount.value = "";
+        }
+      }
+    );
   },
 
   goToTradingPage: function() {
