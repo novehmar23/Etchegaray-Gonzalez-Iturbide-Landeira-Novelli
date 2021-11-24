@@ -10,9 +10,9 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([{ from: "./src/index.html", to: "index.html" },
-                           { from: "./src/exchange/exchange.html", to: "exchange.html" },
-                           { from: "./src/seeTokens/seeTokens.html", to: "seeTokens.html" },
                            { from: "./src/htmls/mainPage.html", to: "mainPage.html" },
+                           { from: "./src/htmls/checkOtherUsersBalance.html", to: "checkOtherUsersBalance.html" },
+                           { from: "./src/htmls/trading.html", to: "trading.html" },
                            {from: "./src/assets", to :"assets"},
                            {from: "./src/vendor", to :"vendor"}]),
   ],

@@ -92,8 +92,12 @@ const Events =
     console.log(App.account);
   },
 
-  goToExchangesPage: function() {
-    document.location.href = "./exchange.html";
+  goToTradingPage: function() {
+    document.location.href = "./trading.html";
+  },
+
+  goToBalancePage: function() {
+    document.location.href = "./checkOtherUsersBalance.html";
   },
 
   goToMainPage: function() {

@@ -52,31 +52,42 @@ https://templatemo.com/tm-570-chain-app-dev
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <div class="container-fluid">
-                            <a href="index.html" class="logo">
-                                <img src="assets/images/EventChain.png" alt="Chain App Dev">
-                            </a>
-                        </div>
-                        <ul class="nav">
-                            <li>
-                                <div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="nav">
-                            <div class="vlFromNavSeparation"></div>
-                        </ul>
-                        <p1 class="nav navMetasAmount" style="margin-top: 40px;">You have <strong
-                                class="balance">loading...</strong> META</p1>
-                    </nav>
+          <div class="row">
+            <div class="col-12">
+              <nav class="main-nav">
+                <!-- ***** Logo Start ***** -->
+                <div class="container-fluid">
+                  <a href="index.html" class="logo">
+                    <img src="assets/images/EventChain.png" alt="Chain App Dev">
+                  </a>
                 </div>
+                <ul class="nav">
+                  <li><div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div></li> 
+                </ul>      
+                <ul class="nav">
+                  <div class="vlFromNavSeparation"></div>              
+                </ul>      
+                <p1 class="nav navMetasAmount" style="margin-top: 40px;">You have <strong class="balance">loading...</strong> META</p1>
+                
+                <!-- ***** Logo End ***** -->
+                <!-- ***** Menu Start ***** -->
+                <ul class="nav">
+                  <li class="scroll-to-section"><a onclick="Events.goToMainPage()">Main</a></li>
+                  <li class="scroll-to-section"><a onclick="Events.goToTradingPage()">Exchange</a></li>
+                  <li class="scroll-to-section"><a>Trading</a></li>
+                  <li class="scroll-to-section"><a class="active" onclick="Events.goToBalancePage()">Users</a></li>
+                  <li class="scroll-to-section"><a></a></li>
+                </ul>        
+                <a class='menu-trigger'>
+                    <span>Menu</span>
+                </a>
+                <!-- ***** Menu End ***** -->
+              </nav>
             </div>
+          </div>
         </div>
-    </header>
+    
+      </header>
 
     <div id="services" class="services section">
         <div class="container">
