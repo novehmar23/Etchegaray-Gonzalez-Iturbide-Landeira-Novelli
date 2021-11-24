@@ -79,7 +79,7 @@ const Events =
 {
   loginWithMetamask: async function() {
     await App.connect();
-    document.location.href = "./exchange.html";
+    document.location.href = "./mainPage.html";
   },
 
   getAccountsAndNetwork: async function() {
@@ -90,8 +90,15 @@ const Events =
     await App.connect();
     await App.getAccountsAndNetwork();
     console.log(App.account);
-  }
-}
+  },
 
+  goToExchangesPage: function() {
+    document.location.href = "./exchange.html";
+  },
+
+  goToMainPage: function() {
+    document.location.href = "./mainPage.html";
+  },
+}
 
 window.Events = Events;
