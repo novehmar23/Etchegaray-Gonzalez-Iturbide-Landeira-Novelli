@@ -176,6 +176,9 @@ const Events =
 window.Events = Events;
 
 window.addEventListener("load", async function() {
+  const index = getElementById("index");
+  if(index !== undefined) return;
+  
   await App.connect();
   await App.getAccountsAndNetwork();
   App.refreshBalance();
