@@ -131,3 +131,14 @@ Dia frustrante para el equipo de frontend que no pudo aplicar ningun template a 
 
 #### Matías González
     El equipo de backend se enfocó principalmente en la funcionalidad de emisión, intentando la creación de un faucet e investigando sobre las funciones ya existentes dentro de openZepellin. Se perdió un poco de tiempo ya que en un comienzo se creia que por "emisión" se referia a un faucet que se encargue de la creación de nuevos tokens pero luego de hablarlo más en detalle nos dimos cuenta que esto no era correcto y que con una cuenta a la que se le asignen las monedas al comienzo era suficiente.
+
+### DIA 5 - 23/11/2021
+
+#### Iñaki Etchegaray
+Ayude al equipo en buscar una solucion al problema que habia con el template y aplicado de estilos a las paginas en el frontend. Una vez solucionado, me concentre en realizar la pagina de Login y Landing con el equipo de Frontend.
+
+Se consiguio realizar una pagina de login pero que necesita trabajo en funcionalidad y algo de contenido. Me encargue de postear un issue relacionado al Login y de asignarme a solucionarlo.
+
+Luego, junto con el equipo, decidimos las tareas que faltaban realizarse para terminar la primera mitad del trabajo. Estas fueron planteadas y divididas entre los integrantes del frontend.
+
+Por ultimo, reorganice el tablero de trello, manteniendolo al dia con las nuevas tareas encontradas y asignadas al equipo de Frontend. Ademas, realice la bitacora de avances del Frontend en los dias 11/11 y el dia de hoy con sus imagenes respectivas sobre el avance de los tableros.
