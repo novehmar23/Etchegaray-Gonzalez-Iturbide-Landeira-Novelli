@@ -2,6 +2,7 @@
 pragma solidity 0.8.0;
 
 import "./ConvertLib.sol";
+import "./Vendor.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 // This is a simple example of a coin-like contract.
@@ -10,9 +11,8 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
 contract EventToken is ERC20{
-
     constructor() ERC20("EventToken", "EV") {
-        _mint(msg.sender, 1000000000);
+        _mint(msg.sender, 10000000 * 10 ** 18);
     }
 
     function getBalance(address addr) public view returns(uint256){
@@ -20,6 +20,13 @@ contract EventToken is ERC20{
     }
     
     function sendCoin(address recipient, uint256 amount) public returns (bool) {
+        // TODO: 5% para la cuenta principal
         return transfer(recipient, amount);
     }
+
+    function burn(uint amount) external {
+        _burn(msg.sender, amount);
+    }
+
+
 }
