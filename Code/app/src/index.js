@@ -170,11 +170,17 @@ const Events =
   },
 
   actualizeConvertionBuyState: function(){
-    document.getElementById("priceInETHBuy").innerHTML = App.getValueInEthsBuy(document.getElementById("quantityBuy").value);
+    App.getValueInEthsBuy(document.getElementById("quantityBuy").value).then(
+      balance => {
+        document.getElementById("priceInETHBuy").innerHTML = balance;
+      });
   },
 
   actualizeConvertionSellState: function(){
-    document.getElementById("priceInETHSell").innerHTML = App.getValueInEthsSell(document.getElementById("priceInETHSell").value);
+    App.getValueInEthsSell(document.getElementById("quantitySell").value).then(
+      balance => {
+        document.getElementById("priceInETHSell").innerHTML = balance;
+      });
   },
 
   buyCoin: function(){
