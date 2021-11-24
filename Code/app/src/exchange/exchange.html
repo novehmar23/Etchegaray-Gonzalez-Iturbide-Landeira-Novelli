@@ -60,6 +60,13 @@ https://templatemo.com/tm-570-chain-app-dev
                 <img src="assets/images/EventChain.png" alt="Chain App Dev">
               </a>
             </div>
+            <ul class="nav">
+              <li><div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div></li> 
+            </ul>      
+            <ul class="nav">
+              <div class="vlFromNavSeparation"></div>              
+            </ul>      
+            <p1 class="nav navMetasAmount" style="margin-top: 40px;">You have <strong class="balance">loading...</strong> META</p1>
             
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -78,6 +85,9 @@ https://templatemo.com/tm-570-chain-app-dev
         </div>
       </div>
     </div>
+
+  </header>
+
 
 
   <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -107,57 +117,50 @@ https://templatemo.com/tm-570-chain-app-dev
     </div>
   </div>
 
+
   <div id="services" class="services section">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
-            <h4>Amazing <em>Services &amp; Features</em> for you</h4>
+          <div class="section-heading wow fadeInDown " data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 20px ;margin-block-end: 20px;">
+            
+            <h1 class="sectionTitle">Exchange</h1>
             <img src="assets/images/heading-line-dec.png" alt="">
-            <p>If you need the greatest collection of HTML templates for your business, please visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">TooCSS</a> Blog. If you need to have a contact form PHP script, go to <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more information.</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="service-item first-service">
-            <div class="icon"></div>
-            <h4>App Maintenance</h4>
-            <p>You are not allowed to redistribute this template ZIP file on any other website.</p>
-            <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
+    <div class="container" >
+        <div class="col-lg-6" style="width: 500px; height: auto; margin: 0 auto; position: relative;">
           <div class="service-item second-service">
             <div class="icon"></div>
-            <h4>Rocket Speed of App</h4>
-            <p>You are allowed to use the Chain App Dev HTML template. Feel free to modify or edit this layout.</p>
-            <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
+            <h4>Whrite the address of a user to transfer tokens</h4>
+<!-- // -->
+<div  class="row" >
+  <div class="container" >
+    <div class="container">
+      <div class="row">
+        <div class="col"style="max-width: 180px; padding: 10px;">
+          <label for="amount">Public address:</label>
+        </div>
+        <div class="col" style="max-width: 180px; padding: 10px;">
+          <input type="text" id="receiver" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
+        </div>
+      <div class="row">
+          <div class="col"style="max-width: 180px; padding: 10px;">
+            <label for="receiver">Tokens to transfer:</label>
+          </div>
+          <div class="col"style="max-width: 180px; padding: 10px;">
+            <input type="text" id="amount" placeholder="e.g. 95"/>    
           </div>
         </div>
-        <div class="col-lg-3">
-          <div class="service-item third-service">
-            <div class="icon"></div>
-            <h4>Multi Workflow Idea</h4>
-            <p>If this template is beneficial for your work, please support us <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">a little via PayPal</a>. Thank you.</p>
+    </div>
+  </div>
+</div>  
+<!-- // -->
             <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="service-item fourth-service">
-            <div class="icon"></div>
-            <h4>24/7 Help &amp; Support</h4>
-            <p>Lorem ipsum dolor consectetur adipiscing elit sedder williamsburg photo booth quinoa and fashion axe.</p>
-            <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+              <button  class="btn" style="margin: 10px;align-items: center;" onclick="App.sendCoin()">Transfer tokens</button>
+              <!-- <a href="#">Read More <i class="fa fa-arrow-right"></i></a> -->
             </div>
           </div>
         </div>
@@ -165,13 +168,11 @@ https://templatemo.com/tm-570-chain-app-dev
     </div>
   </div>
 
-
   <footer id="newsletter">
     <div class="container">
-
         <div class="col-lg-12">
           <div class="copyright-text">
-            <p>Copyright © 2022 Chain App Dev Company. All Rights Reserved. 
+            <p>Copyright © 2021 EventChain. All Rights Reserved. 
           <br>Design: <a href="https://templatemo.com/" target="_blank" title="css templates">TemplateMo</a></p>
           </div>
         </div>
