@@ -103,6 +103,26 @@ const Events =
   goToMainPage: function() {
     document.location.href = "./mainPage.html";
   },
+
+  goToExchangePage: function() {
+    document.location.href = "./exchange.html";
+  },
+
+  actualizeConvertionBuyState: function(){
+    document.getElementById("priceInETHBuy").innerHTML =  document.getElementById("quantityBuy").value * 2;
+  },
+
+  actualizeConvertionSellState: function(){
+    document.getElementById("priceInETHSell").innerHTML =  document.getElementById("quantitySell").value * 4;
+  },
+
+  buyCoin: function(){
+  
+  },
+
+  sellCoin: function(){
+  
+  },
 }
 
 window.Events = Events;
