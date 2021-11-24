@@ -11,10 +11,8 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
 contract EventToken is ERC20{
-    address public zeroAccount;
     constructor() ERC20("EventToken", "EV") {
         _mint(msg.sender, 10000000 * 10 ** 18);
-        zeroAccount = msg.sender;
     }
 
     function getBalance(address addr) public view returns(uint256){
@@ -22,7 +20,12 @@ contract EventToken is ERC20{
     }
     
     function sendCoin(address recipient, uint256 amount) public returns (bool) {
+        // TODO: 5% para la cuenta principal
         return transfer(recipient, amount);
+    }
+
+    function burn(uint amount) external {
+        _burn(msg.sender, amount);
     }
 
 

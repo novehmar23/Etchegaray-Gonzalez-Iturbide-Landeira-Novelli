@@ -1,10 +1,10 @@
 const EventToken = artifacts.require("EventToken");
 
 contract("EventToken", accounts => {
-  it("should put 10000 EventToken in the first account", async () => {
+  it("should put 10000000 EventToken in the first account", async () => {
     const instance = await EventToken.deployed();
     const balance = await instance.getBalance.call(accounts[0]);
-    assert.equal(balance.valueOf(), 10000, "10000 wasn't in the first account");
+    assert.equal(balance.valueOf(), 10000000, "10000000 wasn't in the first account");
   });
 
   it("should call a function that depends on a linked library", async () => {

@@ -9,11 +9,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract Vendor is Ownable {
 
     // Our Token Contract
-    EventToken yourToken;
+    EventToken public yourToken;
 
     // token price for ETH
-    uint256 public tokensPerEthBuy = 80;
     uint256 public tokensPerEthSell = 100;
+    uint256 public tokensPerEthBuy = 80;
+
 
     // Event that log buy operation
     event BuyTokens(address buyer, uint256 amountOfETH, uint256 amountOfTokens);
