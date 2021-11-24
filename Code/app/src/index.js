@@ -68,16 +68,10 @@ const App = {
     return balance;
   },
 
-  sendCoin: async function() {
-    const amount = parseInt(document.getElementById("amount").value);
-    const receiver = document.getElementById("receiver").value;
-
-    this.setStatus("Initiating transaction... (please wait)");
-
+  sendCoin: async function(from, to, amount) {
     const { sendCoin } = this.meta.methods;
-    await sendCoin(receiver, amount).send({ from: this.account });
+    await sendCoin(to, amount).send({ from: from });
 
-    this.setStatus("Transaction complete!");
     this.refreshBalance();
   },
 
@@ -94,24 +88,40 @@ const Events =
     document.location.href = "./mainPage.html";
   },
 
-  getAccountsAndNetwork: async function() {
-    await App.getAccountsAndNetwork();
-  },
-
   getCoinsForUser: async function() {
     await App.connect();
-    await this.getAccountsAndNetwork();
+    await App.getAccountsAndNetwork();
 
     const receiver = document.getElementById("receiver");
+    if(receiver === undefined){
+      return;
+    }
 
     await App.getBalanceForAccount(receiver.value).then(
       balance => 
       {
         const showTokens = document.getElementById("showTokens");
 
+        if(showTokens === undefined){
+          return;
+        }
+
         showTokens.style = "";
         showTokens.innerHTML = balance;
       });
+  },
+
+  sendCoinsToUser: async function() {
+    await App.connect();
+    await App.getAccountsAndNetwork();
+
+    const receiver = document.getElementById("receiver");
+    const amount = document.getElementById("amount");
+    if(receiver === undefined || amount === undefined){
+      return;
+    }
+
+    await App.sendCoin(App.account, receiver.value, Number.parseInt(amount.value));
   },
 
   goToTradingPage: function() {
@@ -131,6 +141,6 @@ window.Events = Events;
 
 window.addEventListener("load", async function() {
   await App.connect();
-  await Events.getAccountsAndNetwork();
+  await App.getAccountsAndNetwork();
   App.refreshBalance();
 });

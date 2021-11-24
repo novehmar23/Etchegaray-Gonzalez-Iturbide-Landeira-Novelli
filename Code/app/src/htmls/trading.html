@@ -111,14 +111,14 @@ https://templatemo.com/tm-570-chain-app-dev
     <div class="container">
       <div class="row">
         <div class="col"style="max-width: 180px; padding: 10px;">
-          <label for="amount">Public address:</label>
+          <label for="receiver">Public address:</label>
         </div>
         <div class="col" style="max-width: 180px; padding: 10px;">
           <input type="text" id="receiver" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
         </div>
       <div class="row">
           <div class="col"style="max-width: 180px; padding: 10px;">
-            <label for="receiver">Tokens to transfer:</label>
+            <label for="amount">Tokens to transfer:</label>
           </div>
           <div class="col"style="max-width: 180px; padding: 10px;">
             <input type="text" id="amount" placeholder="e.g. 95"/>    
@@ -129,7 +129,7 @@ https://templatemo.com/tm-570-chain-app-dev
 </div>  
 <!-- // -->
             <div class="text-button">
-              <button  class="btn" style="margin: 10px;align-items: center;" onclick="App.sendCoin()">Transfer tokens</button>
+              <button  class="btn" style="margin: 10px;align-items: center;" onclick="Events.sendCoinsToUser()">Transfer tokens</button>
               <!-- <a href="#">Read More <i class="fa fa-arrow-right"></i></a> -->
             </div>
           </div>
