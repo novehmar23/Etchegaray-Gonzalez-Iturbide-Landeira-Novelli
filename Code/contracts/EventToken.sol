@@ -28,5 +28,11 @@ contract EventToken is ERC20{
         _burn(msg.sender, amount);
     }
 
+    function convertToEthBuy(uint256 eventTokens) public view returns(uint256){
+        return ConvertLib.convert((eventTokens), 2);
+    }
 
+    function convertToEthSell(uint256 eventTokens) public view returns(uint256){
+        return ConvertLib.convert((eventTokens), 2);
+    }
 }

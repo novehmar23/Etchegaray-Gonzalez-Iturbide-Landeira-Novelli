@@ -13,6 +13,8 @@ const App = {
       await window.ethereum.request({method: 'eth_requestAccounts'});
 
       web3 = new Web3(window.ethereum);
+
+      console.log("connected");
     }
     else 
     {
@@ -82,10 +84,21 @@ const App = {
     }
   },
 
-  setStatus: function(message) {
-    const status = document.getElementById("status");
-    status.innerHTML = message;
+  getValueInEthsBuy: async function(amount)
+  {
+    const { convertToEthBuy } = this.meta.methods;
+    const balance = await convertToEthBuy(amount).call();
+
+    return balance;
   },
+
+  getValueInEthsSell: async function(amount)
+  {
+    const { convertToEthSell } = this.meta.methods;
+    const balance = convertToEthSell(amount).call();
+
+    return balance;
+  }
 };
 
 const Events = 
@@ -157,11 +170,11 @@ const Events =
   },
 
   actualizeConvertionBuyState: function(){
-    document.getElementById("priceInETHBuy").innerHTML =  document.getElementById("quantityBuy").value * 2;
+    document.getElementById("priceInETHBuy").innerHTML = App.getValueInEthsBuy(document.getElementById("quantityBuy").value);
   },
 
   actualizeConvertionSellState: function(){
-    document.getElementById("priceInETHSell").innerHTML =  document.getElementById("quantitySell").value * 4;
+    document.getElementById("priceInETHSell").innerHTML = App.getValueInEthsSell(document.getElementById("priceInETHSell").value);
   },
 
   buyCoin: function(){
@@ -176,9 +189,11 @@ const Events =
 window.Events = Events;
 
 window.addEventListener("load", async function() {
-  const index = getElementById("index");
-  if(index !== undefined) return;
-  
+  const index = document.getElementById("index");
+  if(index === undefined){
+    return;
+  }
+
   await App.connect();
   await App.getAccountsAndNetwork();
   App.refreshBalance();
