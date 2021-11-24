@@ -49,16 +49,23 @@ const App = {
 
   refreshBalance: async function() {
     const balanceElement = document.getElementsByClassName("balance")[0];
-    console.log(balanceElement);
+
     if(balanceElement === undefined){
       return;
     }
 
-    const { getBalance } = this.meta.methods;
-    const balance = await getBalance(this.account).call();
-    console.log(balance);
+    this.getBalanceForAccount(this.account).then(
+    balance => 
+      {
+        balanceElement.innerHTML = balance;
+      });
+  },
 
-    balanceElement.innerHTML = balance;
+  getBalanceForAccount: async function(account) {
+    const { getBalance } = this.meta.methods;
+    const balance = await getBalance(account).call();
+
+    return balance;
   },
 
   sendCoin: async function() {
@@ -91,10 +98,20 @@ const Events =
     await App.getAccountsAndNetwork();
   },
 
-  testo: async function() {
+  getCoinsForUser: async function() {
     await App.connect();
-    await App.getAccountsAndNetwork();
-    console.log(App.account);
+    await this.getAccountsAndNetwork();
+
+    const receiver = document.getElementById("receiver");
+
+    await App.getBalanceForAccount(receiver.value).then(
+      balance => 
+      {
+        const showTokens = document.getElementById("showTokens");
+
+        showTokens.style = "";
+        showTokens.innerHTML = balance;
+      });
   },
 
   goToTradingPage: function() {
@@ -114,6 +131,6 @@ window.Events = Events;
 
 window.addEventListener("load", async function() {
   await App.connect();
-  await App.getAccountsAndNetwork();
+  await Events.getAccountsAndNetwork();
   App.refreshBalance();
 });
