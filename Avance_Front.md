@@ -12,3 +12,10 @@ Se intento durante el resto del dia poder hacer funcionar los estilos en webpack
 
 El estado final del Trello fue el siguiente:
 ![image info](./images/11-Nov.png)
+
+### 18/11/2021
+Se continuo intentando hacer funcionar el template. Pero fue una pared de errores. El equipo se vio reducido por factores externos como entregas de otra materia.
+No se pudo concretar ni solucionar los errores relacionados al funcionado de las paginas de estilos en Webpack.
+
+El tablero de trello no tuvo modifcaciones.
+
