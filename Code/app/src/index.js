@@ -215,12 +215,10 @@ const Events =
 window.Events = Events;
 
 window.addEventListener("load", async function() {
-  const index = document.getElementById("index");
-  if(index === undefined){
-    return;
+  const index = document.getElementById("indexChecker");
+  if(index === undefined || index === null){
+    await App.connect();
+    await App.getAccountsAndNetwork();
+    App.refreshBalance();
   }
-
-  await App.connect();
-  await App.getAccountsAndNetwork();
-  App.refreshBalance();
 });
