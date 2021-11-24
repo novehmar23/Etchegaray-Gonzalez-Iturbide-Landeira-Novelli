@@ -93,11 +93,3 @@ const E =
 
 document.E = E;
 window.App = App;
-
-class a
-{
-  b()
-  {
-    console.log("papas firtas")
-  }
-}

@@ -1,2 +1,2 @@
-console.log(new a().b());
-//window.App = App;
+
+window.App = App;

@@ -31,31 +31,6 @@ module.exports = {
         ],
       },
       {
-        // You can use `regexp`
-        // test: /vendor\.js/$
-        test: require.resolve("./src/index.js"),
-        loader: "exports-loader",
-        options: {
-          type: "module",
-          exports: "a",
-        },
-      },
-      {
-        // You can use `regexp`
-        // test: /example\.js/$
-        test: require.resolve("./src/exchange/exchange.js"),
-        use: [
-          {
-            loader: "imports-loader",
-            options: {
-              imports: [
-                "a",
-              ],
-            },
-          },
-        ],
-      },
-      {
         test: /\.(png|jpg|gif|eot|woff|ttf|svg|webp|PNG|woff2)(\?\S*)?$/,
         use: ["file-loader"],
       },
