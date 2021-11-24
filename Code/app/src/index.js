@@ -48,25 +48,38 @@ const App = {
   },
 
   refreshBalance: async function() {
-    const { getBalance } = this.meta.methods;
-    const balance = await getBalance(this.account).call();
-    console.log(balance);
-
     const balanceElement = document.getElementsByClassName("balance")[0];
-    balanceElement.innerHTML = balance;
+
+    if(balanceElement === undefined){
+      return;
+    }
+
+    this.getBalanceForAccount(this.account).then(
+    balance => 
+      {
+        balanceElement.innerHTML = balance;
+      });
   },
 
-  sendCoin: async function() {
-    const amount = parseInt(document.getElementById("amount").value);
-    const receiver = document.getElementById("receiver").value;
+  getBalanceForAccount: async function(account) {
+    const { getBalance } = this.meta.methods;
+    const balance = await getBalance(account).call();
 
-    this.setStatus("Initiating transaction... (please wait)");
+    return balance;
+  },
 
-    const { sendCoin } = this.meta.methods;
-    await sendCoin(receiver, amount).send({ from: this.account });
+  sendCoin: async function(from, to, amount) {
+    try{
+      const { sendCoin } = this.meta.methods;
+      await sendCoin(to, amount).send({ from: from });
 
-    this.setStatus("Transaction complete!");
-    this.refreshBalance();
+      this.refreshBalance();
+      return true;
+    }catch(error)
+    {
+      console.error(error);
+      return false;
+    }
   },
 
   setStatus: function(message) {
@@ -79,19 +92,91 @@ const Events =
 {
   loginWithMetamask: async function() {
     await App.connect();
+    document.location.href = "./mainPage.html";
+  },
+
+  getCoinsForUser: async function() {
+    await App.connect();
+    await App.getAccountsAndNetwork();
+
+    const receiver = document.getElementById("receiver");
+    if(receiver === undefined){
+      return;
+    }
+
+    await App.getBalanceForAccount(receiver.value).then(
+      balance => 
+      {
+        const showTokens = document.getElementById("showTokens");
+
+        if(showTokens === undefined){
+          return;
+        }
+
+        showTokens.style = "";
+        showTokens.innerHTML = balance;
+      });
+  },
+
+  sendCoinsToUser: async function() {
+    await App.connect();
+    await App.getAccountsAndNetwork();
+
+    const receiver = document.getElementById("receiver");
+    const amount = document.getElementById("amount");
+    if(receiver === undefined || amount === undefined){
+      return;
+    }
+
+    await App.sendCoin(App.account, receiver.value, Number.parseInt(amount.value)).then(
+      result => 
+      {
+        if(result)
+        {
+          receiver.value = "";
+          amount.value = "";
+        }
+      }
+    );
+  },
+
+  goToTradingPage: function() {
+    document.location.href = "./trading.html";
+  },
+
+  goToBalancePage: function() {
+    document.location.href = "./checkOtherUsersBalance.html";
+  },
+
+  goToMainPage: function() {
+    document.location.href = "./mainPage.html";
+  },
+
+  goToExchangePage: function() {
     document.location.href = "./exchange.html";
   },
 
-  getAccountsAndNetwork: async function() {
-    await App.getAccountsAndNetwork();
+  actualizeConvertionBuyState: function(){
+    document.getElementById("priceInETHBuy").innerHTML =  document.getElementById("quantityBuy").value * 2;
   },
 
-  testo: async function() {
-    await App.connect();
-    await App.getAccountsAndNetwork();
-    console.log(App.account);
-  }
+  actualizeConvertionSellState: function(){
+    document.getElementById("priceInETHSell").innerHTML =  document.getElementById("quantitySell").value * 4;
+  },
+
+  buyCoin: function(){
+  
+  },
+
+  sellCoin: function(){
+  
+  },
 }
 
-
 window.Events = Events;
+
+window.addEventListener("load", async function() {
+  await App.connect();
+  await App.getAccountsAndNetwork();
+  App.refreshBalance();
+});
