@@ -1,10 +1,12 @@
 import Web3 from "web3";
 import eventTokenArtifact from "../../build/contracts/EventToken.json";
+import vendorArtifact from "../../build/contracts/Vendor.json";
 
 const App = {
   web3: null,
   account: null,
-  meta: null,
+  ev: null,
+  vendor: null,
 
   connect: async function() {
     if(window.ethereum)
@@ -34,10 +36,14 @@ const App = {
       {
         const networkId = await web3.eth.net.getId();
         const deployedNetwork = eventTokenArtifact.networks[networkId];
-        this.meta = new web3.eth.Contract(
+        this.ev = new web3.eth.Contract(
           eventTokenArtifact.abi,
           deployedNetwork.address,
         );
+        this.vendor = new web3.eth.Contract(
+          vendorArtifact.abi,
+          deployedNetwork.address,
+        )
 
         const accounts = await web3.eth.getAccounts();
         this.account = accounts[0];
@@ -64,7 +70,7 @@ const App = {
   },
 
   getBalanceForAccount: async function(account) {
-    const { getBalance } = this.meta.methods;
+    const { getBalance } = this.ev.methods;
     const balance = await getBalance(account).call();
 
     return balance;
@@ -72,7 +78,7 @@ const App = {
 
   sendCoin: async function(from, to, amount) {
     try{
-      const { sendCoin } = this.meta.methods;
+      const { sendCoin } = this.ev.methods;
       await sendCoin(to, amount).send({ from: from });
 
       this.refreshBalance();
@@ -84,9 +90,23 @@ const App = {
     }
   },
 
+  buyCoin: async function(amount) {
+    const { buyTokens } = this.vendor.methods;
+    await buyTokens().send({value: amount, from: this.account});
+
+    this.refreshBalance();
+  },
+
+  sellCoin: async function(amount) {
+    const { sellTokens } = this.vendor.methods;
+    await sellTokens(amount).send({from: this.account});
+
+    this.refreshBalance();
+  },
+
   getValueInEthsBuy: async function(amount)
   {
-    const { convertToEthBuy } = this.meta.methods;
+    const { convertToEthBuy } = this.ev.methods;
     const balance = await convertToEthBuy(amount).call();
 
     return balance;
@@ -94,7 +114,7 @@ const App = {
 
   getValueInEthsSell: async function(amount)
   {
-    const { convertToEthSell } = this.meta.methods;
+    const { convertToEthSell } = this.ev.methods;
     const balance = convertToEthSell(amount).call();
 
     return balance;
@@ -184,11 +204,11 @@ const Events =
   },
 
   buyCoin: function(){
-  
+    App.buyCoin(document.getElementById("quantityBuy").value);
   },
 
   sellCoin: function(){
-  
+    App.sellCoin(document.getElementById("quantitySell").value);
   },
 }
 
