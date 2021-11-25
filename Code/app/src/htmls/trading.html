@@ -110,21 +110,19 @@ https://templatemo.com/tm-570-chain-app-dev
         <div class="service-item second-service">
           <div class="icon"></div>
           <h4>Write the address of a user to transfer tokens</h4>
-          <div class="container">
+          <div class="row">
+            <div class="col" style="max-width: 180px; padding: 10px;">
+              <p for="receiver" style="font-size:16px;">Public address:</p>
+            </div>
+            <div class="col" tyle="max-width: 180px; padding: 10px;">
+              <input type="text" id="receiver" placeholder="e.g. 0x93e...9dae" />
+            </div>
             <div class="row">
-              <div class="col-lg-6" style="max-width: 180px; padding: 10px;">
-                <label for="receiver">Public address:</label>
+              <div class="col" style="max-width: 180px; padding: 10px;">
+                <p for="amount" style="font-size:16px;">Tokens to transfer:</p>
               </div>
-              <div class="col-lg-6" tyle="max-width: 180px; padding: 10px;">
-                <input type="text"  id="receiver" placeholder="e.g. 0x93e...9dae" />
-              </div>
-              <div class="row">
-                <div class="col" style="max-width: 180px; padding: 10px;">
-                  <label for="amount">Tokens to transfer:</label>
-                </div>
-                <div class="col" style="max-width: 180px; padding: 10px;">
-                  <input type="number" id="amount" placeholder="10" min="1">
-                </div>
+              <div class="col" style="max-width: 180px; padding: 10px;">
+                <input type="number" id="amount" placeholder="10" min="1">
               </div>
             </div>
             <div class="text-button">
