@@ -121,13 +121,18 @@ const App = {
   }
 };
 
+// BUTTON EVENTS
 const Events = 
 {
+  //FOR INDEX.HTML
   loginWithMetamask: async function() {
     await App.connect();
     document.location.href = "./mainPage.html";
   },
 
+  ////
+
+  // FOR ALL NAVBAR HTML's
   getCoinsForUser: async function() {
     await App.connect();
     await App.getAccountsAndNetwork();
@@ -151,6 +156,25 @@ const Events =
       });
   },
 
+  goToTradingPage: function() {
+    document.location.href = "./trading.html";
+  },
+
+  goToBalancePage: function() {
+    document.location.href = "./checkOtherUsersBalance.html";
+  },
+
+  goToMainPage: function() {
+    document.location.href = "./mainPage.html";
+  },
+
+  goToExchangePage: function() {
+    document.location.href = "./exchange.html";
+  },
+
+  ////
+
+  // FOR TRADING.HTML
   sendCoinsToUser: async function() {
     await App.connect();
     await App.getAccountsAndNetwork();
@@ -172,23 +196,9 @@ const Events =
       }
     );
   },
+  ////
 
-  goToTradingPage: function() {
-    document.location.href = "./trading.html";
-  },
-
-  goToBalancePage: function() {
-    document.location.href = "./checkOtherUsersBalance.html";
-  },
-
-  goToMainPage: function() {
-    document.location.href = "./mainPage.html";
-  },
-
-  goToExchangePage: function() {
-    document.location.href = "./exchange.html";
-  },
-
+  // FOR EXCHANGE.HTML
   actualizeConvertionBuyState: function(){
     App.getValueInEthsBuy(document.getElementById("quantityBuy").value).then(
       balance => {
@@ -210,6 +220,8 @@ const Events =
   sellCoin: function(){
     App.sellCoin(document.getElementById("quantitySell").value);
   },
+
+  ////
 }
 
 window.Events = Events;
