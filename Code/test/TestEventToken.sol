@@ -28,4 +28,5 @@ contract TestEventToken {
             "Owner should have 10000 EventToken initially"
         );
     }
+
 }
