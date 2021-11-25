@@ -55,6 +55,7 @@ const App = {
       }
   },
 
+  // Account Balance
   refreshBalance: async function() {
     const balanceElement = document.getElementsByClassName("balance")[0];
 
@@ -75,6 +76,7 @@ const App = {
 
     return balance;
   },
+  ////
 
   sendCoin: async function(from, to, amount) {
     try{
@@ -90,6 +92,17 @@ const App = {
     }
   },
 
+  // Set Buy/Sell Price
+  setBuyPrice: async function(to) {
+    
+  },
+
+  setSellPrice: async function(to) {
+    
+  },
+  ////
+
+  //Buy / Sell coin
   buyCoin: async function(amount) {
     const { buyTokens } = this.vendor.methods;
     await buyTokens().send({value: amount, from: this.account});
@@ -119,58 +132,39 @@ const App = {
 
     return balance;
   }
+  ////
 };
 
+// BUTTON EVENTS
 const Events = 
 {
+  //FOR INDEX.HTML
   loginWithMetamask: async function() {
     await App.connect();
     document.location.href = "./mainPage.html";
   },
 
+  ////
+
+  // FOR ALL NAVBAR HTML's
   getCoinsForUser: async function() {
     await App.connect();
     await App.getAccountsAndNetwork();
 
-    const receiver = document.getElementById("receiver");
-    if(receiver === undefined){
-      return;
-    }
+    const receiver = getElementWrapper("receiver");
 
     await App.getBalanceForAccount(receiver.value).then(
       balance => 
       {
-        const showTokens = document.getElementById("showTokens");
-
-        if(showTokens === undefined){
-          return;
-        }
+        const showTokens = getElementWrapper("showTokens");
 
         showTokens.style = "";
         showTokens.innerHTML = balance;
       });
   },
 
-  sendCoinsToUser: async function() {
-    await App.connect();
-    await App.getAccountsAndNetwork();
-
-    const receiver = document.getElementById("receiver");
-    const amount = document.getElementById("amount");
-    if(receiver === undefined || amount === undefined){
-      return;
-    }
-
-    await App.sendCoin(App.account, receiver.value, Number.parseInt(amount.value)).then(
-      result => 
-      {
-        if(result)
-        {
-          receiver.value = "";
-          amount.value = "";
-        }
-      }
-    );
+  goToAdminPage: function() {
+    document.location.href = "./admin.html";
   },
 
   goToTradingPage: function() {
@@ -189,27 +183,98 @@ const Events =
     document.location.href = "./exchange.html";
   },
 
+  ////
+
+  // FOR TRADING.HTML
+  sendCoinsToUser: async function() {
+    await App.connect();
+    await App.getAccountsAndNetwork();
+
+    const receiver = document.getElementById("receiver");
+    const amount = document.getElementById("amount");
+
+    await App.sendCoin(App.account, receiver.value, Number.parseInt(amount.value)).then(
+      result => 
+      {
+        if(result)
+        {
+          receiver.value = "";
+          amount.value = "";
+        }
+      }
+    );
+  },
+  ////
+
+  // FOR EXCHANGE.HTML
   actualizeConvertionBuyState: function(){
-    App.getValueInEthsBuy(document.getElementById("quantityBuy").value).then(
+    const quantityBuy = getElementWrapper("quantityBuy");
+    const priceInETHBuy = getElementWrapper("priceInETHBuy");
+
+    App.getValueInEthsBuy(quantityBuy.value).then(
       balance => {
-        document.getElementById("priceInETHBuy").innerHTML = balance;
+        priceInETHBuy.innerHTML = balance;
       });
   },
 
   actualizeConvertionSellState: function(){
-    App.getValueInEthsSell(document.getElementById("quantitySell").value).then(
+    const quantitySell = getElementWrapper("quantitySell");
+    const priceInETHSell = getElementWrapper("priceInETHSell");
+
+    App.getValueInEthsSell(quantitySell.value).then(
       balance => {
-        document.getElementById("priceInETHSell").innerHTML = balance;
+        priceInETHSell.innerHTML = balance;
       });
   },
 
   buyCoin: function(){
-    App.buyCoin(document.getElementById("quantityBuy").value);
+    const quantityBuy = getElementWrapper("quantityBuy");
+
+    App.buyCoin(quantityBuy.value);
   },
 
   sellCoin: function(){
-    App.sellCoin(document.getElementById("quantitySell").value);
+    const quantitySell = getElementWrapper("quantitySell");
+
+    App.sellCoin(quantitySell.value);
   },
+
+  ////
+
+  // FOR ADMIN.HTML
+  setBuyPrice: function(){
+    const buyPrice = getElementWrapper("evBuyPrice");
+    const setBuyPrice = getElementWrapper("setBuyPrice");
+
+    App.setBuyPrice(setBuyPrice.value).then(
+      balance => {
+        buyPrice.innerHTML = balance;
+      });
+  },
+
+  setSellPrice: function(){
+    const sellPrice = getElementWrapper("evSellPrice");
+    const setSellPrice = getElementWrapper("setSellPrice");
+
+    App.setBuyPrice(setSellPrice.value).then(
+      balance => {
+        sellPrice.innerHTML = balance;
+      });
+  },
+  ////
+
+  getElementWrapper: function(name)
+  {
+    const element = document.getElementById(name);
+
+    if(element === undefined)
+    {
+      console.error("Element doesnt exist");
+      throw new Error("Element doesnt exist");
+    }
+
+    return element;
+  }
 }
 
 window.Events = Events;

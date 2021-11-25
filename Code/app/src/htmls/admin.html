@@ -76,10 +76,10 @@ https://templatemo.com/tm-570-chain-app-dev
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a onclick="Events.goToMainPage()">Main</a></li>
-              <li class="scroll-to-section"><a class="active" onclick="Events.goToExchangePage()">Exchange</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToExchangePage()">Exchange</a></li>
               <li class="scroll-to-section"><a onclick="Events.goToTradingPage()">Trading</a></li>
               <li class="scroll-to-section"><a onclick="Events.goToBalancePage()">Users</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToAdminPage()">Admin</a></li>
+              <li class="scroll-to-section"><a class="active" onclick="Events.goToAdminPage()">Admin</a></li>
               <li class="scroll-to-section"><a></a></li>
             </ul>
             <a class='menu-trigger'>
@@ -100,7 +100,7 @@ https://templatemo.com/tm-570-chain-app-dev
           <div class="section-heading wow fadeInDown " data-wow-duration="1s" data-wow-delay="0.5s"
             style="margin-bottom: 20px ;margin-block-end: 20px;">
 
-            <h1 class="sectionTitle">Exchange</h1>
+            <h1 class="sectionTitle">Admin settings</h1>
             <img src="assets/images/heading-line-dec.png" alt="">
           </div>
         </div>
@@ -113,25 +113,22 @@ https://templatemo.com/tm-570-chain-app-dev
           <div class="col-lg-6" style="width: 500px; height: auto; margin: 0 auto; position: relative;">
             <div class="service-item third-service">
               <div class="icon"></div>
-              <h4>Buy token</h4>
+              <h4>Adjust Buy Price</h4>
               <!-- // -->
               <div class="row">
                 <div class="container">
                   <div class="container">
                     <div class="row">
                       <div class="col" style="max-width: 180px; padding: 10px;">
-                        <label for="amount">Quantity:</label>
+                        <label for="amount">Amount per ETH:</label>
                       </div>
                       <div class="col" style="max-width: 180px; padding: 10px;">
-                        <input type="number" onchange="Events.actualizeConvertionBuyState()" min="1" id="quantityBuy"
+                        <input type="number" min="1" id="setBuyPrice"
                           placeholder="100" />
                       </div>
                       <div class="row">
-                        <div class="col" style="max-width: 180px; padding: 10px;">
-                          <label for="receiver">Price in ETH:</label>
-                        </div>
-                        <div class="col" style="max-width: 180px; padding: 10px; text-align: center;">
-                          <label type="text" min="0" id="priceInETHBuy" />
+                        <div class="col" style="max-width: 400px; padding: 10px;">
+                          <label for="receiver">Current Buy Conversion: 1 ETH -> <strong id="evBuyPrice">X</strong> EV</label>
                         </div>
                       </div>
                     </div>
@@ -139,7 +136,7 @@ https://templatemo.com/tm-570-chain-app-dev
                 </div>
                 <!-- // -->
                 <div class="text-button">
-                  <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.buyCoin()">Buy</button>
+                  <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.setBuyPrice()">Set</button>
                   <!-- <a href="#">Read More <i class="fa fa-arrow-right"></i></a> -->
                 </div>
               </div>
@@ -149,25 +146,22 @@ https://templatemo.com/tm-570-chain-app-dev
           <div class="col-lg-6" style="width: 500px; height: auto; margin: 0 auto; position: relative;">
             <div class="service-item second-service">
               <div class="icon"></div>
-              <h4>Sell token</h4>
+              <h4>Adjust Sell Price</h4>
               <!-- // -->
               <div class="row">
                 <div class="container">
                   <div class="container">
                     <div class="row">
                       <div class="col" style="max-width: 180px; padding: 10px;">
-                        <label for="amount">Quantity:</label>
+                        <label for="amount">Amount per EV:</label>
                       </div>
                       <div class="col" style="max-width: 180px; padding: 10px;">
-                        <input type="number" onchange="Events.actualizeConvertionSellState()" min="1" id="quantitySell"
+                        <input type="number" min="1" id="setSellPrice"
                           placeholder="100" />
                       </div>
                       <div class="row">
-                        <div class="col" style="max-width: 180px; padding: 10px;">
-                          <label for="receiver">Price in ETH:</label>
-                        </div>
-                        <div class="col" style="max-width: 180px; padding: 10px; text-align: center;">
-                          <label type="text" min="0" id="priceInETHSell" />
+                        <div class="col" style="max-width: 400px; padding: 10px;">
+                          <label for="receiver">Current Sell Conversion: 1 EV -> <strong id="evSellPrice">X</strong> ETH</label>
                         </div>
                       </div>
                     </div>
@@ -175,7 +169,7 @@ https://templatemo.com/tm-570-chain-app-dev
                 </div>
                 <!-- // -->
                 <div class="text-button">
-                  <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.sellCoin()">Sell</button>
+                  <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.setSellPrice()">Set</button>
                   <!-- <a href="#">Read More <i class="fa fa-arrow-right"></i></a> -->
                 </div>
               </div>
