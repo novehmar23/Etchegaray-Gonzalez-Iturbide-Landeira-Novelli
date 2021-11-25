@@ -50,7 +50,7 @@ contract EventToken is ERC20{
         require(sent, "Failed to transfer token to user");
 
         // emit the event
-        emit BuyTokens(msg.sender, (msg.value / tokensPerEthBuy), amountToBuy);
+        emit BuyTokens(msg.sender, (amountToBuy / tokensPerEthBuy), amountToBuy);
 
         return amountToBuy;
     }
