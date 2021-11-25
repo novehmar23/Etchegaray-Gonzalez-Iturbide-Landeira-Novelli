@@ -142,3 +142,14 @@ Se consiguio realizar una pagina de login pero que necesita trabajo en funcional
 Luego, junto con el equipo, decidimos las tareas que faltaban realizarse para terminar la primera mitad del trabajo. Estas fueron planteadas y divididas entre los integrantes del frontend.
 
 Por ultimo, reorganice el tablero de trello, manteniendolo al dia con las nuevas tareas encontradas y asignadas al equipo de Frontend. Ademas, realice la bitacora de avances del Frontend en los dias 11/11 y el dia de hoy con sus imagenes respectivas sobre el avance de los tableros.
+
+### DIA 6 - 24/11/2021
+Hoy intente lograr la separacion de los JS, trabajando con webpack e implementando librerias con NPM para distintos plugins. El proceso fue muy lento y honestamente frustrante, estuve cerca de lograr hacerlo funcionar instalando versiones viejas de paquetes. Pero al final no se pudo lograr una buena separacion de archivos.
+
+Una vez concluido eso, me encarge de completar la pantalla principal y sus links hacia las otras pantallas. Tambien me ocupe de escribir el contenido de las páginas principal y de landing para que sea un poco mas estetica.
+
+Luego, mientras el equipo se encargaba de la última página, fui a realizar las conexiones de la funcionalidad del backend con el frontend. El proceso fue fácil y no hubo mucho problema.
+
+Una vez terminado eso, consulte con el backend sus avances y cuando frontend terminó la última página intentamos vincular la ultima funcionalidad de backend con lo realizado con frontend. La funcionalidad no se dio.
+
+Finalmente, trabaje con el equipo en preparar la presentacion y la demo de lo avanzado.
