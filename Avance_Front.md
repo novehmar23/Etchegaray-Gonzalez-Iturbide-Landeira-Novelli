@@ -41,3 +41,32 @@ GL: Gaston Landeira, S: Iñaki Etchegaray y Marcos Novelli con su foto, los miem
 La pagina relacionada al Exchange de Tokens avanzo mucho, con algunas cosas por verse para concretar su funcionamiento.
 
 Fue un dia muy productivo que permitio avanzar mucho al equipo.
+
+### 24/11/2021
+Hubieron cientos de avances hoy, dado que el template ya no era un problema, nos concentramos en implementar las paginas. Antes de ir a trabajar con eso, sin embargo, se intento separar los archivos js en distintos archivos js.
+
+Despues de intentar mucho con webpack, agregando distintos loaders y plugins de versiones nuevas y anteriores, no logramos separar los archivos js, ya que no era posible conseguir la informacion obtenida en el primer HTML. Por lo tanto, no tuvimos otra que componer toda la funcionalidad en un mismo archivo js y consultar a la blockchain cada vez que se queria utilizar una funcionalidad que requiera la blockchain.
+
+Luego de resolver eso, se comenzo a implementar las paginas. El trello este dia comenzo asi:
+![image info](./images/frontend/24-Nov-1.png)
+
+El equipo se enfoco en cada uno terminar una pagina respectivamente:
+[image info](./images/frontend/24-Nov-2.png)
+
+Cada página quedo implementada con los botones, los inputs y la estética deseada, la resolución fue sumamente rapida. Luego solo quedaba una pantalla para completar la primera funcionalidad grande. Dos integrantes del equipo se encargaron de implementar esa ultima pagina mientras otro se encargaba de implementar las funcionalidades prontas del backend con el frontend.
+
+Progreso del tablero en este tiempo:
+[image info](./images/frontend/24-Nov-3.png)
+[image info](./images/frontend/24-Nov-4.png)
+[image info](./images/frontend/24-Nov-5.png)
+[image info](./images/frontend/24-Nov-6.png)
+
+Finalmente el tablero quedo de la siguiente manera:
+[image info](./images/frontend/24-Nov-7.png)
+
+Las implementaciones con el backend eran simples y fueron rapidas. Una vez terminada la ultima pantalla, el equipo se junto con backend para ver avances.
+
+Luego de ver los avances de backend, se vio de empezar a implementar la ultima gran funcionalidad de la primera parte del proyecto: el Exchange. Esta funcionalidad aun no estaba pronta del backend. Igual se decidio vincular las funcionalidades para tener eso pronto:
+[image info](./images/frontend/24-Nov-8.png)
+
+Aun así, no se dio por terminada la tarea ya que las cosas del backend aun no estaban prontas. Para el próximo día, se decidió definir las tareas para la segunda gran funcionalidad.
