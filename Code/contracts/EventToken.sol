@@ -39,10 +39,7 @@ contract EventToken is ERC20{
         _burn(msg.sender, amount);
     }
 
-    function buyTokens() public payable returns (uint256 tokenAmount) {
-        require(msg.value > 0, "Send ETH to buy some tokens");
-
-        uint256 amountToBuy = msg.value * tokensPerEthBuy;
+    function buyTokens(uint256 amountToBuy) public payable returns (uint256 tokenAmount) {
 
         // check if the Vendor Contract has enough amount of tokens for the transaction
         uint256 vendorBalance = getBalance(_owner);
@@ -53,7 +50,7 @@ contract EventToken is ERC20{
         require(sent, "Failed to transfer token to user");
 
         // emit the event
-        emit BuyTokens(msg.sender, msg.value, amountToBuy);
+        emit BuyTokens(msg.sender, (msg.value / tokensPerEthBuy), amountToBuy);
 
         return amountToBuy;
     }
