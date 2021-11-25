@@ -156,6 +156,10 @@ const Events =
       });
   },
 
+  goToAdminPage: function() {
+    document.location.href = "./admin.html";
+  },
+
   goToTradingPage: function() {
     document.location.href = "./trading.html";
   },
