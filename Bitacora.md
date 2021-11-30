@@ -176,4 +176,8 @@ Realize el html de visualizar tokens de usuarios y lo integramos con el backend.
 ### DIA 7 - 25/11/2021
 
 #### Gaston Landeira
-Hoy fue un dia de arreglos. Separe una rama TradingHotfixes para probar solo en el html trading de que el texto al pasar por la plantilla se vuelva blanco, y lo consegui. Ademas se agrego el id de la cuenta arriba del balance en la natvar. Queda propagarlo a todas los demas html.
+Hoy fue un dia de arreglos. Separe una rama TradingHotfixes para probar solo en el html trading de que el texto al pasar por la plantilla se vuelva blanco, y lo consegui. Ademas se agrego el id de la cuenta arriba del balance en la navbar. Queda propagarlo a todas los demas html.
+
+#### Iñaki Etchegaray
+El dia de hoy me ocupe de realizar la funcionalidad faltante del Administrador de la pagina. Realice la pagina e hice las funciones que conectarian con el backend en si. La pagina fue completada satisfactoriamente.
+

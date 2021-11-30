@@ -76,7 +76,7 @@ Luego de presentar los avances del proyecto, el equipo de frontend se encargo de
 
 Se agrego en el header de la pagina, un label que indica la cuenta ingresada presentemente. Ademas, se arreglo unos errores de formato en la muestra del balance de la cuenta. Ademas, se arreglaron unos bugs visuales de las cartas en Exchange. Falta hacer este arreglo en las cartas de las otras paginas.
 
-Estas pequeñas tareas no fueron anotadas en el Trello, pero fueron realizadas por Gaston.
+Estas pequeñas tareas no fueron anotadas en el Trello, pero fueron realizadas por Gastón Landeira.
 
 Luego se decidio realizar una pagina nueva para el Admin de la aplicacion (los dueños de la empresa), los cuales pueden adaptar el precio de la moneda Event Token. Se agrego la tarea al trello y fue asignada:
 [image info](./images/frontend/25-Nov-1.png)
