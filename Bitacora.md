@@ -148,7 +148,12 @@ Dedique parte del tiempo a indagar un poco mas en la documentacion de OpenZeppel
 
 Tambien estuvimos con el equipo de Backend trabajando en la funcionalidad de compra y venta de EV.
 
+#### Gaston Landeira
+Se pidio ayuda al equipo de backend y porfin pudimos resolver el problema del template. Acto siguiente nos volvimos a dividir, y todos los integrantes del frontend definimos un plan de menus e hicimos un html en comun, el main, para usar como ejemplo a la hora de dividirnos.
+
 ### DIA 6 - 24/11/2021
+
+#### Iñaki Etchegaray
 Hoy intente lograr la separacion de los JS, trabajando con webpack e implementando librerias con NPM para distintos plugins. El proceso fue muy lento y honestamente frustrante, estuve cerca de lograr hacerlo funcionar instalando versiones viejas de paquetes. Pero al final no se pudo lograr una buena separacion de archivos.
 
 Una vez concluido eso, me encarge de completar la pantalla principal y sus links hacia las otras pantallas. Tambien me ocupe de escribir el contenido de las páginas principal y de landing para que sea un poco mas estetica.
@@ -164,3 +169,11 @@ Continue trabajando sobre la implementacion de un Vendor Contract, encargado de 
 Tambien estuve trabajando sobre los test del contract de EV. Ya que la ultima vez realizamos muchos cambios que rompieron esos tests y arregle algunos para que todo siga funcionando correctamente.
 
 Finalmente, me uni al resto del equipo para trabajar en la presentacion y la demo de lo trabajado hasta hoy.
+
+#### Gaston Landeira
+Realize el html de visualizar tokens de usuarios y lo integramos con el backend. Despues hicimos una retrospectiva de lo trabajado y preparamos la presentacion.
+
+### DIA 7 - 25/11/2021
+
+#### Gaston Landeira
+Hoy fue un dia de arreglos. Separe una rama TradingHotfixes para probar solo en el html trading de que el texto al pasar por la plantilla se vuelva blanco, y lo consegui. Ademas se agrego el id de la cuenta arriba del balance en la natvar. Queda propagarlo a todas los demas html.
