@@ -85,3 +85,19 @@ Durante el resto del dia, se logro realizar la funcionalidad del Admin.
 [image info](./images/frontend/25-Nov-2.png)
 
 Los avances no fueron enormes, pero fueron sustanciales.
+
+### 30/11/2021
+El equipo de frontend discutio los pasos siguientes a tomar. Dado que el backend aun esta intentando hacer funcionar las partes de la moneda en si, el frontend decidio seguir trabajando en las pantallas restantes. Luego, una vez terminados, el equipo de frontend puede juntarse al de backend para lograr concluir las funcionalidades.
+
+En un principio, se definieron las tareas restantes para las funcionalidades de Voting:
+[image info](./images/frontend/30-Nov-1.png)
+
+Luego el equipo se tomo un descanso para luego empezar a trabajar. Lamentablemente, algunos de los miembros tuvieron problemas tecnicos y nos tuvimos que separar en el trabajo por realizar. Cada uno se iba a asignar la pantalla deseada y la realizaria.
+
+La primera asingacion fue realizada:
+[image info](./images/frontend/30-Nov-2.png)
+
+Y completada al rato, para luego realizar otra asignacion:
+[image info](./images/frontend/30-Nov-3.png)
+
+Pero esto siguio con otros integrantes asignandose y avanzando cuando podian:
