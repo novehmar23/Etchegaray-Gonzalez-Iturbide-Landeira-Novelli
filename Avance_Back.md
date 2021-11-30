@@ -14,3 +14,10 @@ Entonces el estado paso a este:
 Conmenzamos a trabajar en la funcionalidad de emitir un Token pero luego de no lograr hacerla funcionar y por feedback de los profesores, decidimos descartar tal funcionalidad y quedarnos con un sistema basico que genere una cantidad fija de tokens al comenzar y no se puedan emitir nuevos.
 
 Esto hizo que el progreso del dia fuera muy poco, pero nos dio la oportunidad de investigar un poco más ERC20 y como funciona. El objetivo para el proximo dia de trabajo será implementar la funcionalidad que falta y volver a hacer una revision de los requerimientos para encontrar mas funcionalidades en las que debemos trabajar.
+
+
+### 24/11/2021
+Continuamos trabajando sobre las funcionalidades del contract del token, corroborando que al conectarlo con el frontend todo se mantenga funcionando. 
+Tambien, empezamos a trabajar en un Vendor contract, encargado de comprar y vender tokens, sin embargo no pudimos terminar de hacerlo funcionar.
+
+Hemos hecho tambien algunas investigaciones respecto a el sistema de votacion, en el que estaremos trabajando la proxima semana
