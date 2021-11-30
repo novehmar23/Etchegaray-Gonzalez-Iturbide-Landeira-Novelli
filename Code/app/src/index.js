@@ -58,6 +58,7 @@ const App = {
   // Account Balance
   refreshBalance: async function() {
     const balanceElement = document.getElementsByClassName("balance")[0];
+    const accountElement = document.getElementsByClassName("account")[0];
 
     if(balanceElement === undefined){
       return;
@@ -67,6 +68,7 @@ const App = {
     balance => 
       {
         balanceElement.innerHTML = balance;
+        accountElement.innerHTML = this.account.substring(0, 4) + "..." + this.account.substring(this.account.length - 4);
       });
   },
 

@@ -1,23 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
 
-    <title>Chain App Dev - App Landing Page HTML5 Template</title>
+  <title>Chain App Dev - App Landing Page HTML5 Template</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!--
+  <!--
 
 TemplateMo 570 Chain App Dev
 
@@ -25,13 +25,14 @@ https://templatemo.com/tm-570-chain-app-dev
 
 -->
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+  <link rel="stylesheet" href="assets/css/animated.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
 
-  </head>
+</head>
 
 <body>
 
@@ -61,13 +62,28 @@ https://templatemo.com/tm-570-chain-app-dev
               </a>
             </div>
             <ul class="nav">
-              <li><div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div></li> 
-            </ul>      
+              <li>
+                <div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div>
+              </li>
+            </ul>
             <ul class="nav">
-              <div class="vlFromNavSeparation"></div>              
-            </ul>      
-            <p1 class="nav navMetasAmount" style="margin-top: 40px;">You have   <strong class="balance">loading... </strong>   EV's.</p1>
-            
+              <div class="vlFromNavSeparation"></div>
+            </ul>
+            <div class="nav row" style="margin-top: 30px;margin-right: -200px;">
+              </li class="navMetasAccount">
+              <h7>Your account:
+                <strong class="account"> loading... </strong>
+              </h7>
+              </li>
+              <li class="navMetasAmount" style="margin-left: -6px;">
+                <h7>
+                  You have
+                  <strong class="balance"> loading... </strong>
+                  EV's.
+                </h7>
+              </li>
+            </div>
+
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
@@ -77,9 +93,9 @@ https://templatemo.com/tm-570-chain-app-dev
               <li class="scroll-to-section"><a onclick="Events.goToBalancePage()">Users</a></li>
               <li class="scroll-to-section"><a onclick="Events.goToAdminPage()">Admin</a></li>
               <li class="scroll-to-section"><a></a></li>
-            </ul>        
+            </ul>
             <a class='menu-trigger'>
-                <span>Menu</span>
+              <span>Menu</span>
             </a>
             <!-- ***** Menu End ***** -->
           </nav>
@@ -93,45 +109,38 @@ https://templatemo.com/tm-570-chain-app-dev
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading wow fadeInDown " data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 20px ;margin-block-end: 20px;">
-            
+          <div class="section-heading wow fadeInDown " data-wow-duration="1s" data-wow-delay="0.5s"
+            style="margin-bottom: 20px ;margin-block-end: 20px;">
+
             <h1 class="sectionTitle">Trading</h1>
             <img src="assets/images/heading-line-dec.png" alt="">
           </div>
         </div>
       </div>
     </div>
-    <div class="container" >
-        <div class="col-lg-6" style="width: 500px; height: auto; margin: 0 auto; position: relative;">
-          <div class="service-item second-service">
-            <div class="icon"></div>
-            <h4>Write the address of a user to transfer tokens</h4>
-<!-- // -->
-<div  class="row" >
-  <div class="container" >
     <div class="container">
-      <div class="row">
-        <div class="col"style="max-width: 180px; padding: 10px;">
-          <label for="receiver">Public address:</label>
-        </div>
-        <div class="col" style="max-width: 180px; padding: 10px;">
-          <input type="text" id="receiver" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
-        </div>
-      <div class="row">
-          <div class="col"style="max-width: 180px; padding: 10px;">
-            <label for="amount">Tokens to transfer:</label>
-          </div>
-          <div class="col"style="max-width: 180px; padding: 10px;">
-            <input type="text" id="amount" placeholder="e.g. 95"/>    
-          </div>
-        </div>
-    </div>
-  </div>
-</div>  
-<!-- // -->
+      <div class="col-lg-6" style="width: 500px; height: auto; margin: 0 auto; position: relative;">
+        <div class="service-item second-service">
+          <div class="icon"></div>
+          <h4>Write the address of a user to transfer tokens</h4>
+          <div class="row">
+            <div class="col" style="max-width: 180px; padding: 10px;">
+              <p for="receiver" style="font-size:16px;"><strong>Public address:</strong></p>
+            </div>
+            <div class="col" tyle="max-width: 180px; padding: 10px;">
+              <input type="text" id="receiver" placeholder="e.g. 0x93e...9dae" />
+            </div>
+            <div class="row">
+              <div class="col" style="max-width: 180px; padding: 10px;">
+                <p for="amount" style="font-size:16px;"><strong>Tokens to transfer:</strong></p>
+              </div>
+              <div class="col" style="max-width: 180px; padding: 10px;">
+                <input type="number" id="amount" placeholder="10" min="1">
+              </div>
+            </div>
             <div class="text-button">
-              <button  class="btn" style="margin: 10px;align-items: center;" onclick="Events.sendCoinsToUser()">Transfer tokens</button>
-              <!-- <a href="#">Read More <i class="fa fa-arrow-right"></i></a> -->
+              <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.sendCoinsToUser()">Transfer
+                tokens</button>
             </div>
           </div>
         </div>
@@ -141,13 +150,14 @@ https://templatemo.com/tm-570-chain-app-dev
 
   <footer id="newsletter">
     <div class="container">
-        <div class="col-lg-12">
-          <div class="copyright-text">
-            <p>Copyright © 2021 EventChain. All Rights Reserved. 
-          <br>Design: <a href="https://templatemo.com/" target="_blank" title="css templates">TemplateMo</a></p>
-          </div>
+      <div class="col-lg-12">
+        <div class="copyright-text">
+          <p>Copyright © 2021 EventChain. All Rights Reserved.
+            <br>Design: <a href="https://templatemo.com/" target="_blank" title="css templates">TemplateMo</a>
+          </p>
         </div>
       </div>
+    </div>
     </div>
   </footer>
 
@@ -162,4 +172,5 @@ https://templatemo.com/tm-570-chain-app-dev
   <script src="assets/js/custom.js"></script>
   <script src="./index.js"></script>
 </body>
+
 </html>
