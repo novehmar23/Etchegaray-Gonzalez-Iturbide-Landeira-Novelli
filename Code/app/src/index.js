@@ -151,12 +151,12 @@ const Events =
     await App.connect();
     await App.getAccountsAndNetwork();
 
-    const receiver = getElementWrapper("receiver");
+    const receiver = this.getElementWrapper("receiver");
 
     await App.getBalanceForAccount(receiver.value).then(
       balance => 
       {
-        const showTokens = getElementWrapper("showTokens");
+        const showTokens = this.getElementWrapper("showTokens");
 
         showTokens.style = "";
         showTokens.innerHTML = balance;
@@ -208,8 +208,8 @@ const Events =
 
   // FOR EXCHANGE.HTML
   actualizeConvertionBuyState: function(){
-    const quantityBuy = getElementWrapper("quantityBuy");
-    const priceInETHBuy = getElementWrapper("priceInETHBuy");
+    const quantityBuy = this.getElementWrapper("quantityBuy");
+    const priceInETHBuy = this.getElementWrapper("priceInETHBuy");
 
     App.getValueInEthsBuy(quantityBuy.value).then(
       balance => {
@@ -218,8 +218,8 @@ const Events =
   },
 
   actualizeConvertionSellState: function(){
-    const quantitySell = getElementWrapper("quantitySell");
-    const priceInETHSell = getElementWrapper("priceInETHSell");
+    const quantitySell = this.getElementWrapper("quantitySell");
+    const priceInETHSell = this.getElementWrapper("priceInETHSell");
 
     App.getValueInEthsSell(quantitySell.value).then(
       balance => {
@@ -228,13 +228,13 @@ const Events =
   },
 
   buyCoin: function(){
-    const quantityBuy = getElementWrapper("quantityBuy");
+    const quantityBuy = this.getElementWrapper("quantityBuy");
 
     App.buyCoin(quantityBuy.value);
   },
 
   sellCoin: function(){
-    const quantitySell = getElementWrapper("quantitySell");
+    const quantitySell = this.getElementWrapper("quantitySell");
 
     App.sellCoin(quantitySell.value);
   },
@@ -243,8 +243,8 @@ const Events =
 
   // FOR ADMIN.HTML
   setBuyPrice: function(){
-    const buyPrice = getElementWrapper("evBuyPrice");
-    const setBuyPrice = getElementWrapper("setBuyPrice");
+    const buyPrice = this.getElementWrapper("evBuyPrice");
+    const setBuyPrice = this.getElementWrapper("setBuyPrice");
 
     App.setBuyPrice(setBuyPrice.value).then(
       balance => {
@@ -253,8 +253,8 @@ const Events =
   },
 
   setSellPrice: function(){
-    const sellPrice = getElementWrapper("evSellPrice");
-    const setSellPrice = getElementWrapper("setSellPrice");
+    const sellPrice = this.getElementWrapper("evSellPrice");
+    const setSellPrice = this.getElementWrapper("setSellPrice");
 
     App.setBuyPrice(setSellPrice.value).then(
       balance => {
@@ -285,5 +285,10 @@ window.addEventListener("load", async function() {
     await App.connect();
     await App.getAccountsAndNetwork();
     App.refreshBalance();
+
+    window.ethereum.on('accountsChanged', async () => {
+      await App.getAccountsAndNetwork();
+      App.refreshBalance();
+    })
   }
 });
