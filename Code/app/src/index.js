@@ -60,7 +60,7 @@ const App = {
     const balanceElement = document.getElementsByClassName("balance")[0];
     const accountElement = document.getElementsByClassName("account")[0];
 
-    if(balanceElement === undefined){
+    if(balanceElement === undefined || accountElement === undefined){
       return;
     }
 
