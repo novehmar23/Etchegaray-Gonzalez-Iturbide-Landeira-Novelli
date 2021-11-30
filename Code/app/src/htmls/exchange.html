@@ -69,8 +69,20 @@ https://templatemo.com/tm-570-chain-app-dev
             <ul class="nav">
               <div class="vlFromNavSeparation"></div>
             </ul>
-            <p1 class="nav navMetasAmount" style="margin-top: 40px;">You have <strong
-                class="balance">loading...</strong> EV's</p1>
+            <div class="nav row" style="margin-top: 30px;margin-right: -200px;">
+            </li class="navMetasAccount">
+            <h7>Your account:
+              <strong class="account"> loading... </strong>
+            </h7>
+            </li>
+            <li class="navMetasAmount" style="margin-left: -6px;">
+              <h7>
+                You have
+                <strong class="balance"> loading... </strong>
+                EV's.
+              </h7>
+            </li>
+          </div>
 
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -120,18 +132,18 @@ https://templatemo.com/tm-570-chain-app-dev
                   <div class="container">
                     <div class="row">
                       <div class="col" style="max-width: 180px; padding: 10px;">
-                        <label for="amount">Quantity:</label>
+                        <p for="amount" style="font-size:16px;"><strong>Quantity:</strong></p>
                       </div>
                       <div class="col" style="max-width: 180px; padding: 10px;">
-                        <input type="number" onchange="Events.actualizeConvertionBuyState()" min="1" id="quantityBuy"
+                        <input type="number" onkeyup="Events.actualizeConvertionBuyState()" onchange="Events.actualizeConvertionBuyState()" min="1" id="quantityBuy"
                           placeholder="100" />
                       </div>
                       <div class="row">
                         <div class="col" style="max-width: 180px; padding: 10px;">
-                          <label for="receiver">Price in ETH:</label>
+                          <p for="amount" style="font-size:16px;"><strong>Price in ETH:</strong></p>
                         </div>
                         <div class="col" style="max-width: 180px; padding: 10px; text-align: center;">
-                          <label type="text" min="0" id="priceInETHBuy" />
+                          <p type="text" min="0" id="priceInETHBuy"></p>
                         </div>
                       </div>
                     </div>
@@ -156,18 +168,18 @@ https://templatemo.com/tm-570-chain-app-dev
                   <div class="container">
                     <div class="row">
                       <div class="col" style="max-width: 180px; padding: 10px;">
-                        <label for="amount">Quantity:</label>
+                        <p for="amount" style="font-size:16px;"><strong>Quantity:</strong></p>
                       </div>
                       <div class="col" style="max-width: 180px; padding: 10px;">
-                        <input type="number" onchange="Events.actualizeConvertionSellState()" min="1" id="quantitySell"
+                        <input type="number" onkeyup="Events.actualizeConvertionSellState()" onchange="Events.actualizeConvertionSellState()" min="1" id="quantitySell"
                           placeholder="100" />
                       </div>
                       <div class="row">
                         <div class="col" style="max-width: 180px; padding: 10px;">
-                          <label for="receiver">Price in ETH:</label>
+                          <p for="receiver" style="font-size:16px;"><strong>Price in ETH:</strong></p>
                         </div>
                         <div class="col" style="max-width: 180px; padding: 10px; text-align: center;">
-                          <label type="text" min="0" id="priceInETHSell" />
+                          <p type="text" min="0" id="priceInETHSell"></p>
                         </div>
                       </div>
                     </div>

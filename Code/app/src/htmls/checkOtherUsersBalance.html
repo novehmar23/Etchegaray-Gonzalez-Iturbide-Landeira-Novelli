@@ -67,7 +67,20 @@ https://templatemo.com/tm-570-chain-app-dev
                 <ul class="nav">
                   <div class="vlFromNavSeparation"></div>              
                 </ul>      
-                <p1 class="nav navMetasAmount" style="margin-top: 40px;">You have   <strong class="balance">  loading... </strong>   EV's.</p1>
+                <div class="nav row" style="margin-top: 30px;margin-right: -200px;">
+                </li class="navMetasAccount">
+                <h7>Your account:
+                  <strong class="account"> loading... </strong>
+                </h7>
+                </li>
+                <li class="navMetasAmount" style="margin-left: -6px;">
+                  <h7>
+                    You have
+                    <strong class="balance"> loading... </strong>
+                    EV's.
+                  </h7>
+                </li>
+              </div>
                 
                 <!-- ***** Logo End ***** -->
                 <!-- ***** Menu Start ***** -->
@@ -109,7 +122,7 @@ https://templatemo.com/tm-570-chain-app-dev
                     <div class="icon"></div>
                     <h4>Insert the address of a user to see their tokens</h4>
                     <P for="receiver" type="text">Public address:</P>
-                    <input type="text" id="receiver" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
+                    <input type="text" id="receiver" style="width: 425px;" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
                     <div class="text-button">
                         <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.getCoinsForUser()">See
                             tokens</button>
