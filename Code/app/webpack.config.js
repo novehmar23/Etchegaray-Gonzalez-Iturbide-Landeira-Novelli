@@ -12,6 +12,8 @@ module.exports = {
     new CopyWebpackPlugin([{ from: "./src/index.html", to: "index.html" },
                            { from: "./src/htmls/mainPage.html", to: "mainPage.html" },
                            { from: "./src/htmls/admin.html", to: "admin.html" },
+                           { from: "./src/htmls/tokensMainPage.html", to: "tokensMainPage.html" },
+                           { from: "./src/htmls/votingMainPage.html", to: "votingMainPage.html" },
                            { from: "./src/htmls/checkOtherUsersBalance.html", to: "checkOtherUsersBalance.html" },
                            { from: "./src/htmls/exchange.html", to: "exchange.html" },
                            { from: "./src/htmls/trading.html", to: "trading.html" },

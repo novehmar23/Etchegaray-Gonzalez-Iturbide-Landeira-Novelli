@@ -84,9 +84,11 @@ https://templatemo.com/tm-570-chain-app-dev
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a class="active" onclick="Events.goToMainPage()">Main</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToTokensMainPage()">Tokens</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToVotingMainPage()">Voting</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToMainPage()">Main</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToExchangePage()">Exchange</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToTradingPage()">Trading</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToBalancePage()">Users</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToAdminPage()">Admin</a></li>
               <li class="scroll-to-section"><a></a></li>
             </ul>
             <!-- ***** Menu End ***** -->
@@ -101,35 +103,55 @@ https://templatemo.com/tm-570-chain-app-dev
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
-            <h4>Welcome to <em>Event Chain</em></h4>
+            <h4>Don't know <em>where to start?</em></h4>
             <img src="assets/images/heading-line-dec.png" alt="">
-            <p>Access to the main functionalities through the cards below or on the navbar in the header! Access our Event Token system or our voting system below.</p>
+            <p>Access to functionalities through the cards below or on the navbar in the header! Exchange EventTokens freely in the exchange tab, access other accounts information in See Tokens.</p>
           </div>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-3">
           <div class="service-item first-service">
             <div class="icon"></div>
-            <h4>Trade, Exchange and obtain Event Tokens</h4>
-            <p>Buy and sell EventTokens, our special token, in exchange for ETHs or trade with other users!</p>
+            <h4>Exchange Tokens</h4>
+            <p>Buy and sell EventTokens, our special token, in exchange for ETHs in the <a >Exchanges</a> tab!</p>
             <div class="text-button">
-              <a href="javascript:void(0);" onclick="Events.goToTokensMainPage()">Tokens Main Page <i class="fa fa-arrow-right"></i></a>
+              <a href="javascript:void(0);" onclick="Events.goToExchangePage()">Access functionality <i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-3">
           <div class="service-item second-service">
             <div class="icon"></div>
-            <h4>Create or participate in public Voting Ballots</h4>
-            <p>Use Event Tokens to create and participate in different Voting Ballots. Decide the winner with your grain of sand!</p>
+            <h4>Trade with other users</h4>
+            <p>Trade with other accounts across the network using the <a >Trading</a> tab. Just provide an address and an amount of EventToken's to transfer, confirm the transaction with MetaMask and you're good to go!</p>
             <div class="text-button">
-              <a href="javascript:void(0);" onclick="Events.goToVotingMainPage()">Voting Main Page <i class="fa fa-arrow-right"></i></a>
+              <a href="javascript:void(0);" onclick="Events.goToTradingPage()">Access functionality <i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
+        <div class="col-lg-3">
+            <div class="service-item third-service">
+              <div class="icon"></div>
+              <h4>Inspect other users accounts</h4>
+              <p>At the <a >Users</a> tab, you can inspect other user's accounts. This allows you to see their account balance at any time.</p>
+              <div class="text-button">
+                <a href="javascript:void(0);" onclick="Events.goToBalancePage()">Access functionality <i class="fa fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="service-item fourth-service">
+              <div class="icon"></div>
+              <h4>Access Admin Functionalities</h4>
+              <p>Are you an Admin? Then access your exclusive functionalities at the <a>Admin</a> tab, company owners only.</p>
+              <div class="text-button">
+                <a href="javascript:void(0);" onclick="Events.goToAdminPage()">Access functionality <i class="fa fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>

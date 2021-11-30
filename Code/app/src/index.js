@@ -177,6 +177,14 @@ const Events =
     document.location.href = "./checkOtherUsersBalance.html";
   },
 
+  goToTokensMainPage: function() {
+    document.location.href = "./tokensMainPage.html";
+  },
+
+  goToVotingMainPage: function() {
+    document.location.href = "./votingMainPage.html";
+  },
+
   goToMainPage: function() {
     document.location.href = "./mainPage.html";
   },
