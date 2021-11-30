@@ -185,6 +185,10 @@ const Events =
     document.location.href = "./votingMainPage.html";
   },
 
+  goToCreateBallotPage: function() {
+    document.location.href = "./createBallot.html";
+  },
+
   goToMainPage: function() {
     document.location.href = "./mainPage.html";
   },
