@@ -181,3 +181,12 @@ Hoy fue un dia de arreglos. Separe una rama TradingHotfixes para probar solo en 
 #### Iñaki Etchegaray
 El dia de hoy me ocupe de realizar la funcionalidad faltante del Administrador de la pagina. Realice la pagina e hice las funciones que conectarian con el backend en si. La pagina fue completada satisfactoriamente.
 
+### DIA 8 - 30/11/2021
+#### Iñaki Etchegaray
+Hoy participe de la decision de los ultimos pasos para terminar el frontend de la pagina. Se decidieron sobre varias paginas distintas de la funcionalidad de votos. Luego de unos errores tecnicos y de coordinacion por parte del grupo, me ocupe en avanzar en lo que podia.
+
+Realice la pagina principal de la seccion de votos. Ademas, ajuste el contenido de la pagina de principal y la principal de votos tambien. Hice todas las redirecciones asociadas a los botones en la navbar. Una vez terminada la pagina, ajuste el tablero Trello.
+
+Luego, una vez terminado esto, me dedique a realizar la pagina de creacion de votos. Siguiendo los prototipos realizados, creo que llegue a un resultado placentero. Su unico problema es un boton que esta mal alineado y que decidi dejar como issue para arreglar luego. Los IDs de los inputs fueron posicionados, solo falta realizar conexion con el backend.
+
+Finalmente, me ocupe de realizar los avances de la bitacora de frontend, ademas de los avances faltantes del dia 25/11.
