@@ -8,18 +8,16 @@ const App = {
   ev: null,
   vendor: null,
 
-  connect: async function() {
-    if(window.ethereum)
-    {
+  connect: async function () {
+    if (window.ethereum) {
       // Proveedor web 3
-      await window.ethereum.request({method: 'eth_requestAccounts'});
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
 
       web3 = new Web3(window.ethereum);
 
       console.log("connected");
     }
-    else 
-    {
+    else {
       console.warn(
         "No web3 detected. Falling back to http://127.0.0.1:8545. You should remove this fallback when you deploy live",
       );
@@ -30,49 +28,45 @@ const App = {
     }
   },
 
-  getAccountsAndNetwork: async function()
-  {
-    try
-      {
-        const networkId = await web3.eth.net.getId();
-        const deployedNetwork = eventTokenArtifact.networks[networkId];
-        this.ev = new web3.eth.Contract(
-          eventTokenArtifact.abi,
-          deployedNetwork.address,
-        );
-        this.vendor = new web3.eth.Contract(
-          vendorArtifact.abi,
-          deployedNetwork.address,
-        )
+  getAccountsAndNetwork: async function () {
+    try {
+      const networkId = await web3.eth.net.getId();
+      const deployedNetwork = eventTokenArtifact.networks[networkId];
+      this.ev = new web3.eth.Contract(
+        eventTokenArtifact.abi,
+        deployedNetwork.address,
+      );
+      this.vendor = new web3.eth.Contract(
+        vendorArtifact.abi,
+        deployedNetwork.address,
+      )
 
-        const accounts = await web3.eth.getAccounts();
-        this.account = accounts[0];
-      }
-      catch(error)
-      {
-        //Rechazado, o la network no existe/ no quiere conectar.
-        console.error("Could not connect to contract or chain.");
-      }
+      const accounts = await web3.eth.getAccounts();
+      this.account = accounts[0];
+    }
+    catch (error) {
+      //Rechazado, o la network no existe/ no quiere conectar.
+      console.error("Could not connect to contract or chain.");
+    }
   },
 
   // Account Balance
-  refreshBalance: async function() {
+  refreshBalance: async function () {
     const balanceElement = document.getElementsByClassName("balance")[0];
     const accountElement = document.getElementsByClassName("account")[0];
 
-    if(balanceElement === undefined || accountElement === undefined){
+    if (balanceElement === undefined || accountElement === undefined) {
       return;
     }
 
     this.getBalanceForAccount(this.account).then(
-    balance => 
-      {
+      balance => {
         balanceElement.innerHTML = balance;
         accountElement.innerHTML = this.account.substring(0, 4) + "..." + this.account.substring(this.account.length - 4);
       });
   },
 
-  getBalanceForAccount: async function(account) {
+  getBalanceForAccount: async function (account) {
     const { getBalance } = this.ev.methods;
     const balance = await getBalance(account).call();
 
@@ -80,55 +74,52 @@ const App = {
   },
   ////
 
-  sendCoin: async function(from, to, amount) {
-    try{
+  sendCoin: async function (from, to, amount) {
+    try {
       const { sendCoin } = this.ev.methods;
       await sendCoin(to, amount).send({ from: from });
 
       this.refreshBalance();
       return true;
-    }catch(error)
-    {
+    } catch (error) {
       console.error(error);
       return false;
     }
   },
 
   // Set Buy/Sell Price
-  setBuyPrice: async function(to) {
-    
+  setBuyPrice: async function (to) {
+
   },
 
-  setSellPrice: async function(to) {
-    
+  setSellPrice: async function (to) {
+
   },
   ////
 
   //Buy / Sell coin
-  buyCoin: async function(amount) {
+  buyCoin: async function (amount) {
     const { buyTokens } = this.vendor.methods;
-    await buyTokens().send({value: amount, from: this.account});
+    await buyTokens().send({ value: amount, from: this.account });
 
     this.refreshBalance();
   },
 
-  sellCoin: async function(amount) {
+  sellCoin: async function (amount) {
     const { sellTokens } = this.vendor.methods;
-    await sellTokens(amount).send({from: this.account});
+    await sellTokens(amount).send({ from: this.account });
 
     this.refreshBalance();
   },
 
-  getValueInEthsBuy: async function(amount)
-  {
+  getValueInEthsBuy: async function (amount) {
     const { convertToEthBuy } = this.ev.methods;
     const balance = await convertToEthBuy(amount).call();
 
     return balance;
   },
 
-  getValueInEthsSell: async function(amount)
-  {
+  getValueInEthsSell: async function (amount) {
     const { convertToEthSell } = this.ev.methods;
     const balance = convertToEthSell(amount).call();
 
@@ -138,10 +129,10 @@ const App = {
 };
 
 // BUTTON EVENTS
-const Events = 
+const Events =
 {
   //FOR INDEX.HTML
-  loginWithMetamask: async function() {
+  loginWithMetamask: async function () {
     await App.connect();
     document.location.href = "./mainPage.html";
   },
@@ -149,15 +140,14 @@ const Events =
   ////
 
   // FOR ALL NAVBAR HTML's
-  getCoinsForUser: async function() {
+  getCoinsForUser: async function () {
     await App.connect();
     await App.getAccountsAndNetwork();
 
     const receiver = this.getElementWrapper("receiver");
 
     await App.getBalanceForAccount(receiver.value).then(
-      balance => 
-      {
+      balance => {
         const showTokens = this.getElementWrapper("showTokens");
 
         showTokens.style = "";
@@ -165,56 +155,61 @@ const Events =
       });
   },
 
-  goToAdminPage: function() {
+  goToAdminPage: function () {
     document.location.href = "./admin.html";
   },
 
-  goToTradingPage: function() {
+  goToTradingPage: function () {
     document.location.href = "./trading.html";
   },
 
-  goToBalancePage: function() {
+  goToBalancePage: function () {
     document.location.href = "./checkOtherUsersBalance.html";
   },
 
-  goToTokensMainPage: function() {
+  goToTokensMainPage: function () {
     document.location.href = "./tokensMainPage.html";
   },
 
-  goToVotingMainPage: function() {
+  goToVotingMainPage: function () {
     document.location.href = "./votingMainPage.html";
   },
 
-  goToCreateBallotPage: function() {
+  goToCreateBallotPage: function () {
     document.location.href = "./createBallot.html";
   },
 
-  goToMainPage: function() {
+  goToMainPage: function () {
     document.location.href = "./mainPage.html";
   },
 
-  goToExchangePage: function() {
+  goToExchangePage: function () {
     document.location.href = "./exchange.html";
   },
 
-  goToMyBallots: function() {
+  goToMyBallots: function () {
     document.location.href = "./myBallots.html";
   },
 
-  goToAllBallots: function() {
+  goToAllBallots: function () {
     document.location.href = "./allBallots.html";
   },
 
-  closeBallot: function() {
-    selectedRow.cells[4].innerHTML = 'close';
-    selectedRow.cells[4].style.color = 'red';
-    Events.refreshCloseBallotButton('close');
+  closeBallot: function () {
+    selectedRow.cells[4].innerHTML = 'destroyed';
+    selectedRow.cells[0].style.color = '#AFAFAF';
+    selectedRow.cells[1].style.color = '#AFAFAF';
+    selectedRow.cells[2].style.color = '#AFAFAF';
+    selectedRow.cells[3].style.color = '#AFAFAF';
+    selectedRow.cells[4].style.color = '#B5573C';
+
+    Events.refreshCloseBallotButton('destroyed');
   },
 
   ////
 
   // FOR TRADING.HTML
-  sendCoinsToUser: async function() {
+  sendCoinsToUser: async function () {
     await App.connect();
     await App.getAccountsAndNetwork();
 
@@ -222,10 +217,8 @@ const Events =
     const amount = this.getElementWrapper("amount");
 
     await App.sendCoin(App.account, receiver.value, Number.parseInt(amount.value)).then(
-      result => 
-      {
-        if(result)
-        {
+      result => {
+        if (result) {
           receiver.value = "";
           amount.value = "";
         }
@@ -233,109 +226,168 @@ const Events =
     );
   },
   ////
-  
-  // FOR MYBALLOTS.HTML
-  coadBallotsTable: function(currentPageName){
-    console.log(currentPageName);
-    if(currentPageName == 'myBallots'){
-      var currentButton = this.getElementWrapper('closeButton');
-      currentButton.disabled = true;
-    }else{
-      var currentButton = this.getElementWrapper('closeButton');
-      currentButton = '';
-    }
 
-    let myTable = this.getElementWrapper('myBallotsTable');
+  // FOR MYBALLOTS.HTML
+  loadBallotsTable: function (currentPageName) {
+
+    let myTable = this.getElementWrapper('ballotsTable');
     let headerRow = document.createElement('tr');
 
     myBallotsTableHeaders.forEach(headerText => {
-        let header = document.createElement('th');
-        header.style.padding = '8px';
-        let textNode = document.createTextNode(headerText);
-        header.appendChild(textNode);
-        headerRow.appendChild(header);
+      let header = document.createElement('th');
+      header.style.padding = '8px';
+      let textNode = document.createTextNode(headerText);
+      header.appendChild(textNode);
+      headerRow.appendChild(header);
     });
 
     myTable.appendChild(headerRow);
 
+    if (currentPageName == 'myBallots') {
+      var currentButton = this.getElementWrapper('closeButton');
+      currentButton.disabled = true;
       Events.refreshMyBallotsTable();
+    }else{
+      Events.refreshAllBallotsTable();
+    }
 
-      //Para poner en otro evento      
-      let detailsSelectedOptions = this.getElementWrapper('options');
-      let infoDetailsText = document.createElement('p');
-      infoDetailsText.textContent = 'Double click a ballot to see their details.'
-      infoDetailsText.style.textAlign = 'center';
-      infoDetailsText.style.marginTop = '160px';
-      detailsSelectedOptions.appendChild(infoDetailsText);
-    
+    this.loadInfoText();
 
-      
   },
-  ////
-  
-  refreshMyBallotsTable: function(){
-    let myTable = this.getElementWrapper('myBallotsTable');
-    
+
+  loadInfoText: function () {
+    let detailsSelectedOptions = this.getElementWrapper('options');
+    let infoDetailsText = document.createElement('p');
+    infoDetailsText.textContent = 'Double click a ballot to see their details.'
+    infoDetailsText.style.textAlign = 'center';
+    infoDetailsText.style.marginTop = '160px';
+    detailsSelectedOptions.appendChild(infoDetailsText);
+  },
+
+  refreshMyBallotsTable: function () {
+    let myTable = this.getElementWrapper('ballotsTable');
+
     let myBallotsIndex = 0;
     myBallots.forEach(currentBallot => {
-        let row = document.createElement('tr');
+      let row = document.createElement('tr');
 
-        Object.values(currentBallot).forEach(text => {
-            let cell = document.createElement('td');
-            cell.style.padding = '8px';
-            let textNode = document.createTextNode(text);
-            cell.appendChild(textNode);
-            row.appendChild(cell);
-        })
-        
-        row.style.borderBlockWidth = '0.5px';
+      Object.values(currentBallot).forEach(text => {
+        let cell = document.createElement('td');
+        cell.style.padding = '8px';
+        let textNode = document.createTextNode(text);
+        cell.appendChild(textNode);
+        row.appendChild(cell);
+      })
 
-        if (row.cells[4].innerHTML == 'open'){
-          row.cells[4].style.color = 'green';
-        }else{
-          row.cells[4].style.color = 'red';
+      row.style.borderBlockWidth = '0.5px';
+
+      if (row.cells[4].innerHTML == 'open') {
+        row.cells[4].style.color = 'green';
+      } else {
+        row.cells[4].style.color = 'red';
+      }
+
+      if (myBallotsIndex % 2 === 0) {
+        row.style.backgroundColor = '#ECF6FE';
+      } else {
+        row.style.backgroundColor = '#FFFFFF';
+      }
+      let currentBackgroundColor = row.style.backgroundColor;
+
+      row.addEventListener('mouseover', () => {
+        if (selectedRowId != row.cells[0]) {
+          row.style.backgroundColor = '#C0E3FB';
         }
+      });
 
-        if (myBallotsIndex % 2 === 0) {
-          row.style.backgroundColor = '#ECF6FE';
-        } else {
-          row.style.backgroundColor = '#FFFFFF';
+      row.addEventListener('mouseout', () => {
+        if (selectedRowId != row.cells[0]) {
+          row.style.backgroundColor = currentBackgroundColor;
         }
-        let currentBackgroundColor = row.style.backgroundColor;
+      });
 
-        row.addEventListener('mouseover', () => {
-            if (selectedRowId != row.cells[0]){
-              row.style.backgroundColor = '#C0E3FB';
-            }
-         });
-         
-         row.addEventListener('mouseout', () => {
-            if (selectedRowId != row.cells[0]){
-              row.style.backgroundColor = currentBackgroundColor;
-            }
-          });
+      row.addEventListener('dblclick', () => {
+        Events.refreshSelectedDetailsBallot(row, row.cells[0]);
+        if (selectedRow != null) {
+          selectedRow.style.backgroundColor = selectedRowOriginalBackgroundColor;
+        }
+        selectedRow = row;
+        selectedRowId = row.cells[0];
+        Events.refreshCloseBallotButton(row.cells[4].innerHTML);
+      });
 
-          row.addEventListener('dblclick', () => {
-            Events.refreshSelectedDetailsBallot(row, row.cells[0]);
-            if (selectedRow != null) {
-              selectedRow.style.backgroundColor = selectedRowOriginalBackgroundColor;
-            }
-            selectedRow = row;
-            selectedRowId = row.cells[0];
-            Events.refreshCloseBallotButton(row.cells[4].innerHTML);
-           });
-
-        myTable.appendChild(row);
-        myBallotsIndex++;
+      myTable.appendChild(row);
+      myBallotsIndex++;
     });
 
   },
-  
-  refreshSelectedDetailsBallot: function(currentRow, rowIndex){
+
+  refreshAllBallotsTable: function () {
+    let myTable = this.getElementWrapper('ballotsTable');
+
+    let myBallotsIndex = 0;
+    myBallots.forEach(currentBallot => {
+      let row = document.createElement('tr');
+
+      Object.values(currentBallot).forEach(text => {
+        let cell = document.createElement('td');
+        cell.style.padding = '8px';
+        let textNode = document.createTextNode(text);
+        cell.appendChild(textNode);
+        row.appendChild(cell);
+      })
+
+      row.style.borderBlockWidth = '0.5px';
+
+      if (row.cells[4].innerHTML == 'open') {
+        row.cells[4].style.color = 'green';
+      } else {
+        row.cells[4].style.color = 'red';
+      }
+
+      if (myBallotsIndex % 2 === 0) {
+        row.style.backgroundColor = '#ECF6FE';
+      } else {
+        row.style.backgroundColor = '#FFFFFF';
+      }
+      let currentBackgroundColor = row.style.backgroundColor;
+
+      row.addEventListener('mouseover', () => {
+        if (selectedRowId != row.cells[0]) {
+          row.style.backgroundColor = '#C0E3FB';
+        }
+      });
+
+      row.addEventListener('mouseout', () => {
+        if (selectedRowId != row.cells[0]) {
+          row.style.backgroundColor = currentBackgroundColor;
+        }
+      });
+
+      row.addEventListener('dblclick', () => {
+        Events.refreshSelectedDetailsBallot(row, row.cells[0]);
+        if (selectedRow != null) {
+          selectedRow.style.backgroundColor = selectedRowOriginalBackgroundColor;
+        }
+        selectedRow = row;
+        selectedRowId = row.cells[0]; 
+        Events.refreshCloseBallotButton(row.cells[4].innerHTML);
+      });
+      
+      if(row.cells[4].innerHTML !== 'expired'){
+        myTable.appendChild(row);
+      }
+
+      myBallotsIndex++;
+    });
+
+  },
+
+  refreshSelectedDetailsBallot: function (currentRow, rowIndex) {
     currentRow.style.backgroundColor = '#83B8DE';
-    
+
     let options = this.getElementWrapper('options');
-    options.innerHTML = ''; 
+    options.innerHTML = '';
     let detailsTitle = document.createElement('h4');
     detailsTitle.textContent = 'Selected ballot details:';
     options.appendChild(detailsTitle);
@@ -367,25 +419,24 @@ const Events =
       descriptionA.appendChild(descriptionAText);
       currentOption.appendChild(descriptionA);
 
-      options.appendChild(currentOption);      
+      options.appendChild(currentOption);
     });
   },
-  
-  refreshCloseBallotButton: function(currentStatus){
-    var currentButton = this.getElementWrapper('closeButton');
 
-    if(currentStatus != 'open'){
+  refreshCloseBallotButton: function (currentStatus) {
+    var currentButton = this.getElementWrapper('closeButton');
+    if (currentStatus == 'destroyed') {
       currentButton.disabled = true;
-      currentButton.style.backgroundColor ='#73A7F4';
-    }else{
+      currentButton.style.backgroundColor = '#73A7F4';
+    } else {
       currentButton.disabled = false;
-      currentButton.style.backgroundColor ='#4B8EF1';
+      currentButton.style.backgroundColor = '#4B8EF1';
     }
   },
   ////
 
   // FOR EXCHANGE.HTML
-  actualizeConvertionBuyState: function(){
+  actualizeConvertionBuyState: function () {
     const quantityBuy = this.getElementWrapper("quantityBuy");
     const priceInETHBuy = this.getElementWrapper("priceInETHBuy");
 
@@ -395,7 +446,7 @@ const Events =
       });
   },
 
-  actualizeConvertionSellState: function(){
+  actualizeConvertionSellState: function () {
     const quantitySell = this.getElementWrapper("quantitySell");
     const priceInETHSell = this.getElementWrapper("priceInETHSell");
 
@@ -405,13 +456,13 @@ const Events =
       });
   },
 
-  buyCoin: function(){
+  buyCoin: function () {
     const quantityBuy = this.getElementWrapper("quantityBuy");
 
     App.buyCoin(quantityBuy.value);
   },
 
-  sellCoin: function(){
+  sellCoin: function () {
     const quantitySell = this.getElementWrapper("quantitySell");
 
     App.sellCoin(quantitySell.value);
@@ -420,7 +471,7 @@ const Events =
   ////
 
   // FOR ADMIN.HTML
-  setBuyPrice: function(){
+  setBuyPrice: function () {
     const buyPrice = this.getElementWrapper("evBuyPrice");
     const setBuyPrice = this.getElementWrapper("setBuyPrice");
 
@@ -430,7 +481,7 @@ const Events =
       });
   },
 
-  setSellPrice: function(){
+  setSellPrice: function () {
     const sellPrice = this.getElementWrapper("evSellPrice");
     const setSellPrice = this.getElementWrapper("setSellPrice");
 
@@ -441,12 +492,10 @@ const Events =
   },
   ////
 
-  getElementWrapper: function(name)
-  {
+  getElementWrapper: function (name) {
     const element = document.getElementById(name);
 
-    if(element === undefined)
-    {
+    if (element === undefined) {
       console.error("Element doesnt exist");
       throw new Error("Element doesnt exist");
     }
@@ -457,9 +506,9 @@ const Events =
 
 window.Events = Events;
 
-window.addEventListener("load", async function() {
+window.addEventListener("load", async function () {
   const index = Events.getElementWrapper("indexChecker");
-  if(index === undefined || index === null){
+  if (index === undefined || index === null) {
     await App.connect();
     await App.getAccountsAndNetwork();
     App.refreshBalance();
@@ -473,9 +522,9 @@ window.addEventListener("load", async function() {
 
 //TESTING ATTRIBUTES FOR FRONT
 let myBallots = [
-  { id: '1', title: 'Which cat is the cutest?', startingDate: '2021/12/08', ballotDuration: '240', status: 'open'},
-  { id: '2', title: 'Which dog is the cutest?', startingDate: '2021/12/10', ballotDuration: '300', status: 'close'},
-  { id: '3', title: 'Which bird is the cutest?', startingDate: '2021/12/15', ballotDuration: '210', status: 'open'}
+  { id: '1', title: 'Which cat is the cutest?', startingDate: '2021/12/08', ballotDuration: '240', status: 'open' },
+  { id: '2', title: 'Which dog is the cutest?', startingDate: '2021/12/10', ballotDuration: '300', status: 'expired' },
+  { id: '3', title: 'Which bird is the cutest?', startingDate: '2021/12/15', ballotDuration: '210', status: 'open' }
 ]
 let myBallotsTableHeaders = ['#', 'Title', 'Starting date', 'Ballot duration', 'Status']
 var selectedRow = null;
@@ -486,29 +535,29 @@ let selectedRowOriginalBackgroundColor = null;
 let selectedBallotOptionDetailsTittles = ['Name:         ', 'Account:      ', 'Description:  ']
 
 let OptonsFromSelected1 = [
-  { title: 'Option A', name: 'El nombre 1', account: 'El numero de cuenta 1', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa1'},
-  { title: 'Option B', name: 'El nombre 2', account: 'El numero de cuenta 2', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa2'},
-  { title: 'Option C', name: 'El nombre 3', account: 'El numero de cuenta 3', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa3'}
+  { title: 'Option A', name: 'El nombre 1', account: 'El numero de cuenta 1', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa1' },
+  { title: 'Option B', name: 'El nombre 2', account: 'El numero de cuenta 2', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa2' },
+  { title: 'Option C', name: 'El nombre 3', account: 'El numero de cuenta 3', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa3' }
 ]
 
 
 let OptonsFromSelected2 = [
-  { title: 'Option A', name: 'El nombre 4', account: 'El numero de cuenta 4', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa4'},
-  { title: 'Option B', name: 'El nombre 5', account: 'El numero de cuenta 5', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa5'},
-  { title: 'Option C', name: 'El nombre 6', account: 'El numero de cuenta 6', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa6'}
+  { title: 'Option A', name: 'El nombre 4', account: 'El numero de cuenta 4', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa4' },
+  { title: 'Option B', name: 'El nombre 5', account: 'El numero de cuenta 5', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa5' },
+  { title: 'Option C', name: 'El nombre 6', account: 'El numero de cuenta 6', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa6' }
 ]
 
 
 let OptonsFromSelected3 = [
-  { title: 'Option A', name: 'El nombre 7', account: 'El numero de cuenta 7', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa7'},
-  { title: 'Option B', name: 'El nombre 8', account: 'El numero de cuenta 8', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa8'},
-  { title: 'Option C', name: 'El nombre 9', account: 'El numero de cuenta 9', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa9'}
+  { title: 'Option A', name: 'El nombre 7', account: 'El numero de cuenta 7', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa7' },
+  { title: 'Option B', name: 'El nombre 8', account: 'El numero de cuenta 8', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa8' },
+  { title: 'Option C', name: 'El nombre 9', account: 'El numero de cuenta 9', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa9' }
 ]
 
 let myBallotsDetails = [
-  { id: '1', details: OptonsFromSelected1},
-  { id: '2', details: OptonsFromSelected2},
-  { id: '3', details: OptonsFromSelected3}
+  { id: '1', details: OptonsFromSelected1 },
+  { id: '2', details: OptonsFromSelected2 },
+  { id: '3', details: OptonsFromSelected3 }
 ]
 
 let firstVote = document.createElement('checkbox');
@@ -516,9 +565,9 @@ let secondVote = document.createElement('checkbox');
 let thirdVote = document.createElement('checkbox');
 
 let myBallotsVote = [
-  { id: '1', vote: firstVote},
-  { id: '2', vote: secondVote},
-  { id: '3', vote: thirdVote}
+  { id: '1', vote: firstVote },
+  { id: '2', vote: secondVote },
+  { id: '3', vote: thirdVote }
 ]
 
 let currentNamePage = "";
