@@ -190,3 +190,13 @@ Realice la pagina principal de la seccion de votos. Ademas, ajuste el contenido 
 Luego, una vez terminado esto, me dedique a realizar la pagina de creacion de votos. Siguiendo los prototipos realizados, creo que llegue a un resultado placentero. Su unico problema es un boton que esta mal alineado y que decidi dejar como issue para arreglar luego. Los IDs de los inputs fueron posicionados, solo falta realizar conexion con el backend.
 
 Finalmente, me ocupe de realizar los avances de la bitacora de frontend, ademas de los avances faltantes del dia 25/11.
+
+#### Marcos Novelli
+El día de hoy:
+- Desglosé en el trello las tareas restantes para el front creando checklists en tarjetas.
+- Creo la base de la página "myBallots"
+- Creo la tabla de myBallots en el .js. Se hace en el .js y con determinada manera para que se pueda reutilizar en otras situaciones simplemente cambiando los valores de los headers y de los elementos a agregar. No se utliza bootstrap por inconvenientes en incorporar clases dentro del js. Sí no hay problema en utilizarlo dentro de el html, pero al querer usarlo en la creación de elementos en el js se complica (porque bootstrap utiliza jQuery y no se referencia al mismo desde el js). Eventos de visualizacion por ejemplo el mouseover o el mouseout son creados tambien en el .js al momento de refreshear la tabla.
+- Creo los detalles de la ballot selecionada
+- Incorporo evento de doble click en la fila de la tabla
+- Hago funcional el doble click para mostrar los detalles del ballot seleccionado. Se crean variables de prueba en el js que posteriormente serán migrados hacia el back.
+
