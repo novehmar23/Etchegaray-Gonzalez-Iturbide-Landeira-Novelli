@@ -402,6 +402,9 @@ const Events =
     let optionB = this.getElementWrapper('optionB');
     let optionC = this.getElementWrapper('optionC');
 
+
+    let visibility = this.getElementWrapper('visibility');
+    visibility.hidden = false;
     // options.innerHTML = '';
 
     let count = 0;
