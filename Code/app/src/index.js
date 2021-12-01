@@ -223,6 +223,126 @@ const Events =
     );
   },
   ////
+  
+  // FOR MYBALLOTS.HTML
+  createMyBallotsTable: function(){
+    let myTable = document.getElementById('myBallotsTable');
+    let headerRow = document.createElement('tr');
+
+    myBallotsTableHeaders.forEach(headerText => {
+        let header = document.createElement('th');
+        header.style.padding = '8px';
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+
+    myTable.appendChild(headerRow);
+
+      Events.refreshMyBallotsTable();
+
+      //Para poner en otro evento      
+      let detailsSelectedOptions = document.getElementById('options');
+      let infoDetailsText = document.createElement('p');
+      infoDetailsText.textContent = 'Double click a ballot to see their details.'
+      infoDetailsText.style.textAlign = 'center';
+      infoDetailsText.style.marginTop = '160px';
+      detailsSelectedOptions.appendChild(infoDetailsText);
+
+      
+  },
+  
+  refreshMyBallotsTable: function(){
+    let myTable = document.getElementById('myBallotsTable');
+    
+    let myBallotsIndex = 0;
+    myBallots.forEach(currentBallot => {
+        let row = document.createElement('tr');
+
+        Object.values(currentBallot).forEach(text => {
+            let cell = document.createElement('td');
+            cell.style.padding = '8px';
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+        
+        row.style.borderBlockWidth = '0.5px';
+
+        if (myBallotsIndex % 2 === 0) {
+          row.style.backgroundColor = '#ECF6FE';
+        } else {
+          row.style.backgroundColor = '#FFFFFF';
+        }
+        let currentBackgroundColor = row.style.backgroundColor;
+
+        row.addEventListener('mouseover', () => {
+            if (selectedRowId != row.cells[0]){
+              row.style.backgroundColor = '#C0E3FB';
+            }
+         });
+         
+         row.addEventListener('mouseout', () => {
+            if (selectedRowId != row.cells[0]){
+              row.style.backgroundColor = currentBackgroundColor;
+            }
+          });
+
+          row.addEventListener('dblclick', () => {
+            Events.refreshSelectedDetailsBallot(row, row.cells[0]);
+            if (selectedRow != null) {
+              selectedRow.style.backgroundColor = selectedRowOriginalBackgroundColor;
+            }
+            selectedRow = row;
+            selectedRowId = row.cells[0];
+            
+           });
+
+        myTable.appendChild(row);
+        myBallotsIndex++;
+    });
+  },
+  
+  refreshSelectedDetailsBallot: function(currentRow, S){
+    currentRow.style.backgroundColor = '#83B8DE';
+    
+    let options = document.getElementById('options');
+    options.innerHTML = ''; 
+    let detailsTitle = document.createElement('h4');
+    detailsTitle.textContent = 'Selected ballot details:';
+    options.appendChild(detailsTitle);
+    options.appendChild(document.createElement('br'));
+    myBallotsDetails[S.innerHTML - 1].details.forEach(currentOptionData => {
+      let currentOption = document.createElement('div');
+      let titleA = document.createElement('h6');
+      let naemA = document.createElement('pre');
+      let naemAText = document.createElement("i");
+      let accountA = document.createElement('pre');
+      let accountAText = document.createElement('i');
+      let descriptionA = document.createElement('pre');
+      let descriptionAText = document.createElement('i');
+      descriptionA.style.marginBottom = '15px';
+
+      titleA.textContent = currentOptionData.title;
+      naemA.textContent = selectedBallotOptionDetailsTittles[0];
+      naemAText.textContent = currentOptionData.name;
+      accountA.textContent = selectedBallotOptionDetailsTittles[1];
+      accountAText.textContent = currentOptionData.account;
+      descriptionA.textContent = selectedBallotOptionDetailsTittles[2];
+      descriptionAText.textContent = currentOptionData.description;
+
+      currentOption.appendChild(titleA);
+      naemA.appendChild(naemAText);
+      currentOption.appendChild(naemA);
+      accountA.appendChild(accountAText);
+      currentOption.appendChild(accountA);
+      descriptionA.appendChild(descriptionAText);
+      currentOption.appendChild(descriptionA);
+
+      options.appendChild(currentOption);      
+    });
+  },
+  ////
 
   // FOR EXCHANGE.HTML
   actualizeConvertionBuyState: function(){
@@ -310,3 +430,43 @@ window.addEventListener("load", async function() {
     })
   }
 });
+
+//TESTING ATTRIBUTES FOR FRONT
+let myBallots = [
+  { id: '1', title: 'Which cat is the cutest?', startingDate: '2021/12/08', ballotDuration: '240'},
+  { id: '2', title: 'Which dog is the cutest?', startingDate: '2021/12/10', ballotDuration: '300'},
+  { id: '3', title: 'Which bird is the cutest?', startingDate: '2021/12/15', ballotDuration: '210'}
+]
+let myBallotsTableHeaders = ['#', 'Title', 'Starting date', 'Ballot duration']
+let selectedRow = null;
+let selectedRowId = 0;
+let selectedRowOriginalBackgroundColor = null;
+
+
+let selectedBallotOptionDetailsTittles = ['Name:         ', 'Account:      ', 'Description:  ']
+
+let OptonsFromSelected1 = [
+  { title: 'Option A', name: 'El nombre 1', account: 'El numero de cuenta 1', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa1'},
+  { title: 'Option B', name: 'El nombre 2', account: 'El numero de cuenta 2', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa2'},
+  { title: 'Option C', name: 'El nombre 3', account: 'El numero de cuenta 3', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa3'}
+]
+
+
+let OptonsFromSelected2 = [
+  { title: 'Option A', name: 'El nombre 4', account: 'El numero de cuenta 4', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa4'},
+  { title: 'Option B', name: 'El nombre 5', account: 'El numero de cuenta 5', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa5'},
+  { title: 'Option C', name: 'El nombre 6', account: 'El numero de cuenta 6', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa6'}
+]
+
+
+let OptonsFromSelected3 = [
+  { title: 'Option A', name: 'El nombre 7', account: 'El numero de cuenta 7', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa7'},
+  { title: 'Option B', name: 'El nombre 8', account: 'El numero de cuenta 8', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa8'},
+  { title: 'Option C', name: 'El nombre 9', account: 'El numero de cuenta 9', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa9'}
+]
+
+let myBallotsDetails = [
+  { id: '1', details: OptonsFromSelected1},
+  { id: '2', details: OptonsFromSelected2},
+  { id: '3', details: OptonsFromSelected3}
+]

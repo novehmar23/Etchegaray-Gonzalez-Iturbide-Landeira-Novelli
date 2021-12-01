@@ -16,6 +16,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
 
 <!--
 
@@ -33,7 +34,7 @@ https://templatemo.com/tm-570-chain-app-dev
 
   </head>
 
-<body>
+<body  onload="Events.createMyBallotsTable()" >
 
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
@@ -85,8 +86,8 @@ https://templatemo.com/tm-570-chain-app-dev
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a onclick="Events.goToMainPage()">Main</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToCreateBallotPage()" class="active">Create Ballot</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToMainPage()">View my Ballots</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToCreateBallotPage()">Create Ballot</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToMainPage()" class="active">View my Ballots</a></li>
               <li class="scroll-to-section"><a onclick="Events.goToMainPage()">View all Ballots</a></li>
               <li class="scroll-to-section"><a></a></li>
             </ul>
@@ -113,64 +114,13 @@ https://templatemo.com/tm-570-chain-app-dev
         <div class="col-lg-6">
           <div class="service-item-for-MyBallots">
             <h4>List of my ballots:</h4>
-            <p>Double clock a ballot to see their details</p>
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Starting Date</th>
-                  <th scope="col">Ballot duration</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr  ondblclick="Events.goToTokensMainPage()">
-                  <th scope="row">1</th>
-                  <td>Which cat is the cutest?</td>
-                  <td>2021/12/08</td>
-                  <td>240</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Which cat is the dog?</td>
-                  <td>2021/12/10</td>
-                  <td>300</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Which cat is the bird?</td>
-                  <td>2021/12/15</td>
-                  <td>210</td>
-                </tr>
-              </tbody>
-            </table>
+            <p>Double click a ballot to see their details</p>
+            <table class="table table-striped table-hover" id="myBallotsTable"></table>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="ballot-details">
-            <h4>Selected ballot details:</h4>
-            <br>
-            <div>
-              <h6>Option A:</h6>
-              <pre>Name:         <i>El nombre</i></pre>
-              <pre>Account:      <i>El numero de cuenta</i></pre>
-              <pre>Description:  <i>Esta es una descripcion y no puede ser mas largaaaaaaaaaaaaa</i></pre>
-              <br>
-            </div>
-            <div>
-              <h6>Option B:</h6>
-              <pre>Name:         <i>El nombre</i></pre>
-              <pre>Account:      <i>El numero de cuenta</i></pre>
-              <pre>Description:  <i>Esta es una descripcion y no puede ser mas largaaaaaaaaaaaaa</i></pre>
-              <br>
-            </div>
-            <div>
-              <h6>Option C:</h6>
-              <pre>Name:         <i>El nombre</i></pre>
-              <pre>Account:      <i>El numero de cuenta</i></pre>
-              <pre>Description:  <i>Esta es una descripcion y no puede ser mas largaaaaaaaaaaaaa</i></pre>
-              <br>
-            </div>
+            <div id="options"></div>
           </div>
         </div>
       </div>
