@@ -205,6 +205,12 @@ const Events =
     document.location.href = "./allBallots.html";
   },
 
+  closeBallot: function() {
+    selectedRow.cells[4].innerHTML = 'close';
+    selectedRow.cells[4].style.color = 'red';
+    Events.refreshCloseBallotButton('close');
+  },
+
   ////
 
   // FOR TRADING.HTML
@@ -231,8 +237,14 @@ const Events =
   // FOR MYBALLOTS.HTML
   coadBallotsTable: function(currentPageName){
     console.log(currentPageName);
-    currentPageName = "myBallots";
-    currentPageName = "allBallots";
+    if(currentPageName == 'myBallots'){
+      var currentButton = this.getElementWrapper('closeButton');
+      currentButton.disabled = true;
+    }else{
+      var currentButton = this.getElementWrapper('closeButton');
+      currentButton = '';
+    }
+
     let myTable = this.getElementWrapper('myBallotsTable');
     let headerRow = document.createElement('tr');
 
@@ -277,7 +289,7 @@ const Events =
         })
         
         row.style.borderBlockWidth = '0.5px';
-        
+
         if (row.cells[4].innerHTML == 'open'){
           row.cells[4].style.color = 'green';
         }else{
@@ -310,6 +322,7 @@ const Events =
             }
             selectedRow = row;
             selectedRowId = row.cells[0];
+            Events.refreshCloseBallotButton(row.cells[4].innerHTML);
            });
 
         myTable.appendChild(row);
@@ -318,7 +331,7 @@ const Events =
 
   },
   
-  refreshSelectedDetailsBallot: function(currentRow, S){
+  refreshSelectedDetailsBallot: function(currentRow, rowIndex){
     currentRow.style.backgroundColor = '#83B8DE';
     
     let options = this.getElementWrapper('options');
@@ -327,7 +340,7 @@ const Events =
     detailsTitle.textContent = 'Selected ballot details:';
     options.appendChild(detailsTitle);
     options.appendChild(document.createElement('br'));
-    myBallotsDetails[S.innerHTML - 1].details.forEach(currentOptionData => {
+    myBallotsDetails[rowIndex.innerHTML - 1].details.forEach(currentOptionData => {
       let currentOption = document.createElement('div');
       let titleA = document.createElement('h6');
       let naemA = document.createElement('pre');
@@ -356,6 +369,18 @@ const Events =
 
       options.appendChild(currentOption);      
     });
+  },
+  
+  refreshCloseBallotButton: function(currentStatus){
+    var currentButton = this.getElementWrapper('closeButton');
+
+    if(currentStatus != 'open'){
+      currentButton.disabled = true;
+      currentButton.style.backgroundColor ='#73A7F4';
+    }else{
+      currentButton.disabled = false;
+      currentButton.style.backgroundColor ='#4B8EF1';
+    }
   },
   ////
 
@@ -453,7 +478,7 @@ let myBallots = [
   { id: '3', title: 'Which bird is the cutest?', startingDate: '2021/12/15', ballotDuration: '210', status: 'open'}
 ]
 let myBallotsTableHeaders = ['#', 'Title', 'Starting date', 'Ballot duration', 'Status']
-let selectedRow = null;
+var selectedRow = null;
 let selectedRowId = 0;
 let selectedRowOriginalBackgroundColor = null;
 

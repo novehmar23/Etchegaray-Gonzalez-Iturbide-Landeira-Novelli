@@ -1,24 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
 
-    <title>Chain App Dev - App Landing Page HTML5 Template</title>
+  <title>Chain App Dev - App Landing Page HTML5 Template</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
+  <!-- Bootstrap core CSS -->
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!--
+
+  <!--
 
 TemplateMo 570 Chain App Dev
 
@@ -26,15 +26,16 @@ https://templatemo.com/tm-570-chain-app-dev
 
 -->
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+  <link rel="stylesheet" href="assets/css/animated.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
 
-  </head>
+</head>
 
-<body  onload="Events.coadBallotsTable('myBallots')" >
+<body onload="Events.coadBallotsTable('myBallots')">
 
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
@@ -62,26 +63,28 @@ https://templatemo.com/tm-570-chain-app-dev
               </a>
             </div>
             <ul class="nav">
-              <li><div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div></li> 
-            </ul>       
+              <li>
+                <div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div>
+              </li>
+            </ul>
             <ul class="nav">
-              <div class="vlFromNavSeparation"></div>              
-            </ul>      
+              <div class="vlFromNavSeparation"></div>
+            </ul>
             <div class="nav row" style="margin-top: 30px;margin-right: -200px;">
-            </li class="navMetasAccount">
-            <h7>Your account:
-              <strong class="account"> loading... </strong>
-            </h7>
-            </li>
-            <li class="navMetasAmount" style="margin-left: -6px;">
-              <h7>
-                You have
-                <strong class="balance"> loading... </strong>
-                EV's.
+              </li class="navMetasAccount">
+              <h7>Your account:
+                <strong class="account"> loading... </strong>
               </h7>
-            </li>
-          </div>
-            
+              </li>
+              <li class="navMetasAmount" style="margin-left: -6px;">
+                <h7>
+                  You have
+                  <strong class="balance"> loading... </strong>
+                  EV's.
+                </h7>
+              </li>
+            </div>
+
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
@@ -114,7 +117,14 @@ https://templatemo.com/tm-570-chain-app-dev
         <div class="col-lg-6">
           <div class="service-item-for-MyBallots">
             <h4>List of my ballots:</h4>
-            <p>Double click a ballot to see their details</p>
+            <div class="row">
+              <div class="col">
+                <p style="line-height: 120%;">Double click a ballot to see their details and be able to close it.</p>
+              </div>
+              <div class="col">
+                <button onclick="Events.closeBallot()" id="closeButton" class="btn btn-primary btn-sm closeBallotClass">Close</button>
+              </div>
+            </div>
             <table class="table table-striped table-hover" id="myBallotsTable"></table>
           </div>
         </div>
@@ -138,4 +148,5 @@ https://templatemo.com/tm-570-chain-app-dev
   <script src="assets/js/custom.js"></script>
   <script src="./index.js"></script>
 </body>
+
 </html>

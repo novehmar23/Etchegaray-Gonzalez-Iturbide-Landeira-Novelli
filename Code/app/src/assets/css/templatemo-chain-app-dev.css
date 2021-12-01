@@ -1771,6 +1771,15 @@ PopUp
   transition: all .3s;
 }
 
+.closeBallotClass{
+  float: right;
+  height: fit-content;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 5px;
+}
+
 .btn_red {
   background: #4b8ef1;
   color: #FFF;
