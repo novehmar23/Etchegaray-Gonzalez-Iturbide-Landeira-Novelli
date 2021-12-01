@@ -5,9 +5,13 @@ import "./Structs.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Ballot is Ownable{
-    Structs.BallotData private _myData;    
+    Structs.BallotData private _myData;  
 
-    function GetData() onlyOwner public returns (Structs.BallotData){
+    function SetData(Structs.BallotData memory data) onlyOwner public {
+        _myData = data;
+    }  
+
+    function GetData() onlyOwner public returns (Structs.BallotData memory){
         return _myData;
     }
 

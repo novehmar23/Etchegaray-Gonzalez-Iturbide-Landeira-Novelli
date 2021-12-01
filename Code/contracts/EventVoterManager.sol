@@ -4,23 +4,37 @@ pragma solidity 0.8.0;
 import "./Ballot.sol";
 
 contract EventVoterManager {
-    mapping(address => Ballot) private _ballotsMatchedToOwners;
-    address[] private _addressMappingArray;
+    Ballot[] private _allBallots;
 
-    event ReturnAllBallots(Structs.BallotData[] ballots);
+    event ReturnBallots(Structs.BallotData[] ballots);
 
     constructor(){
     }
 
-    function GetAllBallots() public view
+    function GetAllBallots() public
     {
-        Structs.BallotData[] allData = new Structs.BallotData[](_addressMappingArray.length);
+        uint length = _allBallots.length;
+        Structs.BallotData[] memory allData = new Structs.BallotData[](length);
 
         for(uint i = 0; i < _addressMappingArray.length; i++)
         {
-            allData.push(_ballotsMatchedToOwners[_addressMappingArray[i]].GetData());
+            allData[i] = _allBallots[i].GetData();
         }
 
-        emit ReturnAllBallots(allData);
+        emit ReturnBallots(allData);
+    }
+
+    function GetBallotsForAddress(address memory addr) public
+    {
+        Structs.BallotData[] memory allData;
+
+        for(uint i = 0; i < _addressMappingArray.length; i++)
+        {
+            if(_allBallots[i].GetData().Owner == addr){
+                allData.push(_allBallots[i].GetData());
+            }
+        }
+
+        emit ReturnBallots(allData);
     }
 }
