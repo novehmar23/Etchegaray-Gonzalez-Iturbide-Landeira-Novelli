@@ -197,6 +197,10 @@ const Events =
     document.location.href = "./exchange.html";
   },
 
+  goToMyBallots: function() {
+    document.location.href = "./myBallots.html";
+  },
+
   ////
 
   // FOR TRADING.HTML
