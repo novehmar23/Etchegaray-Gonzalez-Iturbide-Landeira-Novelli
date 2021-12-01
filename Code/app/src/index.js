@@ -206,6 +206,18 @@ const Events =
     Events.refreshCloseBallotButton('destroyed');
   },
 
+  voteOptionA: function () {
+    alert("Se clockeo el boton para votar la opcion A");
+  },
+
+  voteOptionB: function () {
+    alert("Se clockeo el boton para votar la opcion B");
+  },
+
+  voteOptionC: function () {
+    alert("Se clockeo el boton para votar la opcion C");
+  },
+
   ////
 
   // FOR TRADING.HTML
@@ -365,7 +377,7 @@ const Events =
       });
 
       row.addEventListener('dblclick', () => {
-        Events.refreshSelectedDetailsBallot(row, row.cells[0]);
+        Events.refreshVotingOptions(row, row.cells[0]);
         if (selectedRow != null) {
           selectedRow.style.backgroundColor = selectedRowOriginalBackgroundColor;
         }
@@ -383,15 +395,16 @@ const Events =
 
   },
 
-  refreshSelectedDetailsBallot: function (currentRow, rowIndex) {
+  refreshVotingOptions: function (currentRow, rowIndex) {
     currentRow.style.backgroundColor = '#83B8DE';
 
-    let options = this.getElementWrapper('options');
-    options.innerHTML = '';
-    let detailsTitle = document.createElement('h4');
-    detailsTitle.textContent = 'Selected ballot details:';
-    options.appendChild(detailsTitle);
-    options.appendChild(document.createElement('br'));
+    let optionA = this.getElementWrapper('optionA');
+    let optionB = this.getElementWrapper('optionB');
+    let optionC = this.getElementWrapper('optionC');
+
+    // options.innerHTML = '';
+
+    let count = 0;
     myBallotsDetails[rowIndex.innerHTML - 1].details.forEach(currentOptionData => {
       let currentOption = document.createElement('div');
       let titleA = document.createElement('h6');
@@ -419,7 +432,16 @@ const Events =
       descriptionA.appendChild(descriptionAText);
       currentOption.appendChild(descriptionA);
 
-      options.appendChild(currentOption);
+      if(count == 0){
+        optionA.appendChild(currentOption);
+      }
+      if(count == 1){
+        optionB.appendChild(currentOption);
+      }
+      if(count ==2){
+        optionC.appendChild(currentOption);
+      }
+      count++;
     });
   },
 
