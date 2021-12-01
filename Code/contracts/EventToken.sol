@@ -46,11 +46,11 @@ contract EventToken is ERC20 {
 
     function buyTokens(uint256 amountToBuy) public payable returns (uint256) {
         // check if the Vendor Contract has enough amount of tokens for the transaction
-        uint256 vendorBalance = getBalance(address(this));
+        uint256 vendorBalance = getBalance(_owner);
         require(vendorBalance >= amountToBuy, "Vendor contract has not enough tokens in its balance");
 
         // Transfer token to the msg.sender
-        bool sent = transfer(msg.sender, amountToBuy);
+        bool sent = this.transfer(msg.sender, amountToBuy);
         require(sent, "Failed to transfer token to user");
 
         // emit the event
