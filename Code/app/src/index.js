@@ -399,9 +399,17 @@ const Events =
     currentRow.style.backgroundColor = '#83B8DE';
 
     let optionA = this.getElementWrapper('optionA');
+    while(optionA.firstChild){
+      optionA.removeChild(optionA.firstChild);
+    }
     let optionB = this.getElementWrapper('optionB');
+    while(optionB.firstChild){
+      optionB.removeChild(optionB.firstChild);
+    }
     let optionC = this.getElementWrapper('optionC');
-
+    while(optionC.firstChild){
+      optionC.removeChild(optionC.firstChild);
+    }
 
     let visibility = this.getElementWrapper('visibility');
     visibility.hidden = false;
