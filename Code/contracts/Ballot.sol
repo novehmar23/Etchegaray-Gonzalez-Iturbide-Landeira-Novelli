@@ -7,6 +7,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract Ballot is Ownable{
     Structs.BallotData private _myData;  
 
+    constructor(Structs.BallotData memory data)
+    {
+        _myData = data;
+    }
+
     function SetData(Structs.BallotData memory data) onlyOwner public {
         _myData = data;
     }  
