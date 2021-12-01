@@ -255,9 +255,7 @@ const Events =
       infoDetailsText.style.textAlign = 'center';
       infoDetailsText.style.marginTop = '160px';
       detailsSelectedOptions.appendChild(infoDetailsText);
-
-
-      
+    
 
       
   },
@@ -279,6 +277,12 @@ const Events =
         })
         
         row.style.borderBlockWidth = '0.5px';
+        
+        if (row.cells[4].innerHTML == 'open'){
+          row.cells[4].style.color = 'green';
+        }else{
+          row.cells[4].style.color = 'red';
+        }
 
         if (myBallotsIndex % 2 === 0) {
           row.style.backgroundColor = '#ECF6FE';
@@ -306,11 +310,6 @@ const Events =
             }
             selectedRow = row;
             selectedRowId = row.cells[0];
-            if (row.cells[4].innerHTML == 'open'){
-              row.cells[4].style.color = 'green';
-            }else{
-              row.cells[4].style.color = 'red';
-            }
            });
 
         myTable.appendChild(row);
