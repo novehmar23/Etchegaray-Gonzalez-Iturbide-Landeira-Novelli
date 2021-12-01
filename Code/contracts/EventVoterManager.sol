@@ -1,15 +1,19 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.0;
 
+import "./EventToken.sol";
 import "./Ballot.sol";
 
 contract EventVoterManager {
     Ballot[] private _allBallots;
-    uint256 private _currentId = 1;
+    uint256 private _currentId;
+    EventToken private _token;
 
     event ReturnBallots(Structs.BallotData[] ballots);
 
-    constructor(){
+    constructor(address memory tAddress){
+        _currentId = 0;
+        _token = EventToken(tAddress);
     }
 
     function GetAllBallots() public view returns (Structs.BallotData[] memory)
