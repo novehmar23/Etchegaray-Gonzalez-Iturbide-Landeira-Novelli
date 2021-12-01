@@ -201,6 +201,10 @@ const Events =
     document.location.href = "./myBallots.html";
   },
 
+  goToAllBallots: function() {
+    document.location.href = "./allBallots.html";
+  },
+
   ////
 
   // FOR TRADING.HTML
@@ -208,8 +212,8 @@ const Events =
     await App.connect();
     await App.getAccountsAndNetwork();
 
-    const receiver = document.getElementById("receiver");
-    const amount = document.getElementById("amount");
+    const receiver = this.getElementWrapper("receiver");
+    const amount = this.getElementWrapper("amount");
 
     await App.sendCoin(App.account, receiver.value, Number.parseInt(amount.value)).then(
       result => 
@@ -225,8 +229,11 @@ const Events =
   ////
   
   // FOR MYBALLOTS.HTML
-  createMyBallotsTable: function(){
-    let myTable = document.getElementById('myBallotsTable');
+  coadBallotsTable: function(currentPageName){
+    console.log(currentPageName);
+    currentPageName = "myBallots";
+    currentPageName = "allBallots";
+    let myTable = this.getElementWrapper('myBallotsTable');
     let headerRow = document.createElement('tr');
 
     myBallotsTableHeaders.forEach(headerText => {
@@ -242,18 +249,22 @@ const Events =
       Events.refreshMyBallotsTable();
 
       //Para poner en otro evento      
-      let detailsSelectedOptions = document.getElementById('options');
+      let detailsSelectedOptions = this.getElementWrapper('options');
       let infoDetailsText = document.createElement('p');
       infoDetailsText.textContent = 'Double click a ballot to see their details.'
       infoDetailsText.style.textAlign = 'center';
       infoDetailsText.style.marginTop = '160px';
       detailsSelectedOptions.appendChild(infoDetailsText);
 
+
+      
+
       
   },
+  ////
   
   refreshMyBallotsTable: function(){
-    let myTable = document.getElementById('myBallotsTable');
+    let myTable = this.getElementWrapper('myBallotsTable');
     
     let myBallotsIndex = 0;
     myBallots.forEach(currentBallot => {
@@ -295,18 +306,23 @@ const Events =
             }
             selectedRow = row;
             selectedRowId = row.cells[0];
-            
+            if (row.cells[4].innerHTML == 'open'){
+              row.cells[4].style.color = 'green';
+            }else{
+              row.cells[4].style.color = 'red';
+            }
            });
 
         myTable.appendChild(row);
         myBallotsIndex++;
     });
+
   },
   
   refreshSelectedDetailsBallot: function(currentRow, S){
     currentRow.style.backgroundColor = '#83B8DE';
     
-    let options = document.getElementById('options');
+    let options = this.getElementWrapper('options');
     options.innerHTML = ''; 
     let detailsTitle = document.createElement('h4');
     detailsTitle.textContent = 'Selected ballot details:';
@@ -418,7 +434,7 @@ const Events =
 window.Events = Events;
 
 window.addEventListener("load", async function() {
-  const index = document.getElementById("indexChecker");
+  const index = Events.getElementWrapper("indexChecker");
   if(index === undefined || index === null){
     await App.connect();
     await App.getAccountsAndNetwork();
@@ -433,11 +449,11 @@ window.addEventListener("load", async function() {
 
 //TESTING ATTRIBUTES FOR FRONT
 let myBallots = [
-  { id: '1', title: 'Which cat is the cutest?', startingDate: '2021/12/08', ballotDuration: '240'},
-  { id: '2', title: 'Which dog is the cutest?', startingDate: '2021/12/10', ballotDuration: '300'},
-  { id: '3', title: 'Which bird is the cutest?', startingDate: '2021/12/15', ballotDuration: '210'}
+  { id: '1', title: 'Which cat is the cutest?', startingDate: '2021/12/08', ballotDuration: '240', status: 'open'},
+  { id: '2', title: 'Which dog is the cutest?', startingDate: '2021/12/10', ballotDuration: '300', status: 'close'},
+  { id: '3', title: 'Which bird is the cutest?', startingDate: '2021/12/15', ballotDuration: '210', status: 'open'}
 ]
-let myBallotsTableHeaders = ['#', 'Title', 'Starting date', 'Ballot duration']
+let myBallotsTableHeaders = ['#', 'Title', 'Starting date', 'Ballot duration', 'Status']
 let selectedRow = null;
 let selectedRowId = 0;
 let selectedRowOriginalBackgroundColor = null;
@@ -470,3 +486,15 @@ let myBallotsDetails = [
   { id: '2', details: OptonsFromSelected2},
   { id: '3', details: OptonsFromSelected3}
 ]
+
+let firstVote = document.createElement('checkbox');
+let secondVote = document.createElement('checkbox');
+let thirdVote = document.createElement('checkbox');
+
+let myBallotsVote = [
+  { id: '1', vote: firstVote},
+  { id: '2', vote: secondVote},
+  { id: '3', vote: thirdVote}
+]
+
+let currentNamePage = "";

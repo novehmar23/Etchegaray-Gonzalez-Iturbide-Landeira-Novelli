@@ -19,6 +19,7 @@ module.exports = {
                            { from: "./src/htmls/exchange.html", to: "exchange.html" },
                            { from: "./src/htmls/trading.html", to: "trading.html" },
                            { from: "./src/htmls/myBallots.html", to: "myBallots.html" },
+                           { from: "./src/htmls/allBallots.html", to: "allBallots.html" },
                            {from: "./src/assets", to :"assets"},
                            {from: "./src/vendor", to :"vendor"}]),
   ],
