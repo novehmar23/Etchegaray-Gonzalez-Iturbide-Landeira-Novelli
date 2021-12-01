@@ -95,25 +95,30 @@ const App = {
   },
 
   // Set Buy/Sell Price
-  setBuyPrice: async function(to) {
-    
+  setBuyPrice: async function(amount) {
+    const { adjustTokensPerEthBuy } = this.ev.methods;
+    const balance = await adjustTokensPerEthBuy(amount).call();
+    return balance;
   },
 
-  setSellPrice: async function(to) {
-    
+  setSellPrice: async function(amount) {
+    const { adjustTokensPerEthSell } = this.ev.methods;
+    const balance = await adjustTokensPerEthSell(amount).call();
+
+    return balance;
   },
   ////
 
   //Buy / Sell coin
   buyCoin: async function(amount) {
-    const { buyTokens } = this.vendor.methods;
-    await buyTokens().send({value: amount, from: this.account});
+    const { buyTokens } = this.ev.methods;
+    await buyTokens(amount).send({from: this.account});
 
     this.refreshBalance();
   },
 
   sellCoin: async function(amount) {
-    const { sellTokens } = this.vendor.methods;
+    const { sellTokens } = this.ev.methods;
     await sellTokens(amount).send({from: this.account});
 
     this.refreshBalance();
@@ -258,7 +263,7 @@ const Events =
     const sellPrice = this.getElementWrapper("evSellPrice");
     const setSellPrice = this.getElementWrapper("setSellPrice");
 
-    App.setBuyPrice(setSellPrice.value).then(
+    App.setSellPrice(setSellPrice.value).then(
       balance => {
         sellPrice.innerHTML = balance;
       });

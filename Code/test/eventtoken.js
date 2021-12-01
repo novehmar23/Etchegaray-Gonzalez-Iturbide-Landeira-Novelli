@@ -42,8 +42,8 @@ contract("EventToken", accounts => {
     const finalBalance2 = await instance.getBalance.call(account2);
 
     assert.equal(
-      finalBalance1.toNumber(),
-      initBalance1.toNumber() - amount,
+        (Long)finalBalance1,
+        (Long)initBalance1.toLong() - amount,
       "Amount wasn't correctly taken from the sender",
     );
     assert.equal(
@@ -51,5 +51,11 @@ contract("EventToken", accounts => {
       initBalance2.toNumber() + amount,
       "Amount wasn't correctly sent to the receiver",
     );
+  });
+
+  it("should buy 10Eths worth in tokens from the main account", async () => {
+    const instance = await EventToken.deployed();
+    const balance = await instance.buyTokens({value: 10});
+    assert.equal(balance.valueOf(), 10000000, "10000000 wasn't in the first account");
   });
 });
