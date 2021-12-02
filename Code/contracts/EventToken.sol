@@ -2,7 +2,6 @@
 pragma solidity 0.8.0;
 
 import "./ConvertLib.sol";
-import "./Vendor.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 // This is a simple example of a coin-like contract.
