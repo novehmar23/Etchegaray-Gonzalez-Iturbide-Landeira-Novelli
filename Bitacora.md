@@ -151,6 +151,15 @@ Tambien estuvimos con el equipo de Backend trabajando en la funcionalidad de com
 #### Gaston Landeira
 Se pidio ayuda al equipo de backend y porfin pudimos resolver el problema del template. Acto siguiente nos volvimos a dividir, y todos los integrantes del frontend definimos un plan de menus e hicimos un html en comun, el main, para usar como ejemplo a la hora de dividirnos.
 
+#### Marcos Novelli
+El día de hoy:
+- Participé de la discusión con los de fronted de los próximos pasos a seguir.
+- Creé la base de lo que sería la pantalla de "Exchange".
+- Agregué en el nav bar el balance de la cuenta de metamask que estoy loggeado.
+- Agregué en el nav bar el botón de log out.
+- Hice la pantalla "Market".
+- No pude hacer funcionar el redirect.
+
 ### DIA 6 - 24/11/2021
 
 #### Iñaki Etchegaray
@@ -194,9 +203,19 @@ Finalmente, me ocupe de realizar los avances de la bitacora de frontend, ademas 
 #### Marcos Novelli
 El día de hoy:
 - Desglosé en el trello las tareas restantes para el front creando checklists en tarjetas.
-- Creo la base de la página "myBallots"
-- Creo la tabla de myBallots en el .js. Se hace en el .js y con determinada manera para que se pueda reutilizar en otras situaciones simplemente cambiando los valores de los headers y de los elementos a agregar. No se utliza bootstrap por inconvenientes en incorporar clases dentro del js. Sí no hay problema en utilizarlo dentro de el html, pero al querer usarlo en la creación de elementos en el js se complica (porque bootstrap utiliza jQuery y no se referencia al mismo desde el js). Eventos de visualizacion por ejemplo el mouseover o el mouseout son creados tambien en el .js al momento de refreshear la tabla.
-- Creo los detalles de la ballot selecionada
-- Incorporo evento de doble click en la fila de la tabla
-- Hago funcional el doble click para mostrar los detalles del ballot seleccionado. Se crean variables de prueba en el js que posteriormente serán migrados hacia el back.
+- Creé la base de la página "myBallots"
+- Creé la tabla de myBallots en el .js. Se hace en el .js y con determinada manera para que se pueda reutilizar en otras situaciones simplemente cambiando los valores de los headers y de los elementos a agregar. No se utliza bootstrap por inconvenientes en incorporar clases dentro del js. Sí no hay problema en utilizarlo dentro de el html, pero al querer usarlo en la creación de elementos en el js se complica (porque bootstrap utiliza jQuery y no se referencia al mismo desde el js). Eventos de visualizacion por ejemplo el mouseover o el mouseout son creados tambien en el .js al momento de refreshear la tabla.
+- Creé los detalles de la ballot selecionada
+- Incorporé evento de doble click en la fila de la tabla
+- Hice funcional el doble click para mostrar los detalles del ballot seleccionado. Se crean variables de prueba en el js que posteriormente serán migrados hacia el back.
+
+### DIA 8 - 01/12/2021
+#### Marcos Novelli
+El día de hoy:
+- Agregué la opción de poder cerrar una papeleta de votación (dentro de "myBallots"). Esto va de la mano con el agregado de la columna "status" que toma valores de "open" cuando está habilitada para votar, "closed" cuando la votación está vencida y "destroyed" cuando el usuario cierra la votación. 
+- Creé la pagina de visualización de todos las papeletas de votacion (allBallots).
+- Cambié la visualización (en allBallots) vde los detalles de opciones de votación a tarjetas verticales.
+- Implementé todo lo competente a myBallots y allBallots en el .js
+- Arreglé todas las referencias
+- Agregué la función de votar en allBallots
 
