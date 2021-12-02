@@ -29,6 +29,11 @@ contract EventToken is ERC20 {
         tokensPerEthSell = 120;
     }
 
+    function getOwner() public view returns (address payable)
+    {
+        return payable(_owner);
+    }
+
     function getBalance(address addr) public view returns (uint256) {
         return balanceOf(addr);
     }

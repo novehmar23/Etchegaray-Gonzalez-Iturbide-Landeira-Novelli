@@ -9,7 +9,7 @@ contract EventVoterManager {
     uint256 private _currentId;
     EventToken private _token;
 
-    constructor(address tAddress){
+    constructor(address payable tAddress) {
         _currentId = 1;
         _token = EventToken(tAddress);
     }
@@ -146,43 +146,46 @@ contract EventVoterManager {
     function CloseBallot(uint256 id) public
     {
         Ballot b = GetBallot(id);
+        Structs.BallotData memory data = b.GetData();
 
-        require(block.timestamp > b.StartingDate + b.Duration, "Ballot should have ended to close it.");
-        require(b.Owner == msg.sender, "You need to be the Ballots owner to close it.");
+        require(block.timestamp > data.StartingDate + data.Duration, "Ballot should have ended to close it.");
+        require(data.Owner == msg.sender, "You need to be the Ballots owner to close it.");
 
-        uint256 votes1 = b.VoteOptionsMapping[0].Votes;
-        uint256 votes2 = b.VoteOptionsMapping[1].Votes;
-        uint256 votes3 = b.VoteOptionsMapping[2].Votes;
+        uint256 votes1 = data.VoteOptions[0].Votes;
+        uint256 votes2 = data.VoteOptions[1].Votes;
+        uint256 votes3 = data.VoteOptions[2].Votes;
         uint256 winnerAmount = 0;
-        address winnerAddress = b.VoteOptionsMapping[0].Responsible;
+        address winnerAddress = data.VoteOptions[0].Responsible;
 
         if(votes1 > votes2 && votes1 > votes3)
         {
-            winnerAmount = b.VoteOptionsMapping[0].Votes;
-            winnerAddress = b.VoteOptionsMapping[0].Responsible;
+            winnerAmount = data.VoteOptions[0].Votes;
+            winnerAddress = data.VoteOptions[0].Responsible;
         }
 
         if(votes2 > votes1 && votes2 > votes3)
         {
-            winnerAmount = b.VoteOptionsMapping[1].Votes;
-            winnerAddress = b.VoteOptionsMapping[1].Responsible;
+            winnerAmount = data.VoteOptions[1].Votes;
+            winnerAddress = data.VoteOptions[1].Responsible;
         }
 
         if(votes3 > votes1 && votes3 > votes2)
         {
-            winnerAmount = b.VoteOptionsMapping[2].Votes;
-            winnerAddress = b.VoteOptionsMapping[2].Responsible;
+            winnerAmount = data.VoteOptions[2].Votes;
+            winnerAddress = data.VoteOptions[2].Responsible;
         }
 
         _token.sendCoin(winnerAddress, winnerAmount * 80 / 100);
-        _token.sendCoin(b.Owner, winnerAmount * 20 / 100);
+        _token.sendCoin(data.Owner, winnerAmount * 20 / 100);
 
-        DeleteBallot(id, _token._owner);
+        address payable owner = _token.getOwner();
+
+        DeleteBallot(id, owner);
     }
 
     /// Summary:
     /// Destroys ballot and shifts the array one place leftwards from the deleted place.
-    function DeleteBallot(uint256 id, address collector) private 
+    function DeleteBallot(uint256 id, address payable collector) private 
     {
         bool found = false;
         for(uint i = 0; i < _allBallots.length; i++)
@@ -197,7 +200,7 @@ contract EventVoterManager {
                 _allBallots.pop();
             }
 
-            if(_allBallots[i].Id == id)
+            if(_allBallots[i].GetData().Id == id)
             {
                 _allBallots[i].Destroy(collector);
                 found = true;
@@ -206,11 +209,11 @@ contract EventVoterManager {
         }
     }
 
-    function GetBallot(uint256 id) private view returns (Ballot memory)
+    function GetBallot(uint256 id) private view returns (Ballot)
     {
         for(uint i = 0; i < _allBallots.length; i++)
         {
-            if(_allBallots[i].Id == id)
+            if(_allBallots[i].GetData().Id == id)
             {
                 return _allBallots[i];
             }

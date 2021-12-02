@@ -18,7 +18,7 @@ contract Ballot is Ownable{
         mappingLength = 0;
     }
 
-    function Destroy(address collector) onlyOwner public
+    function Destroy(address payable collector) onlyOwner public
     {
         selfdestruct(collector);
     }
