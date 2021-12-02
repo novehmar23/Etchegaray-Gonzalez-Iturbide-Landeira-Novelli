@@ -45,10 +45,13 @@ contract EventToken is ERC20 {
         return transfer(recipient, amountWithDecimals - fivePercent);
     }
 
+    function approveFrom(address from, address to, uint256 amount) public {
+        _approve(from, to, amount);
+    }
+
     function burn(uint256 amount) external {
         _burn(msg.sender, amount);
     }
-
 
     function buyTokens(uint256 amountToBuy) public payable {
         uint256 realAmount = amountToBuy*10**18;
