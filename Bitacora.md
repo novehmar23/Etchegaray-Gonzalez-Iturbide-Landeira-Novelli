@@ -268,3 +268,6 @@ Nada más comenzar el día de hoy recordé que mi bitácora no se encontraba al 
 
 #### Gastón Landeira
 Hoy se tiene que terminar el proyecto. Trabaje en mejorar los aspectos visuales de allBallots y algún que otro bug. Después me sumergí en cualquier trabajo faltante que necesitase el equipo en general solucionar para dar como finalizado el proyecto.
+
+#### Martín Iturbide
+Hoy es el ultimo día de trabajo, mi tarea principal fue escribir la documentacion final del proyecto asi como actualizar las bitacoras. Tambien he estado ayudando en el Backend a solucionar algunos errores para la version final del proyecto
