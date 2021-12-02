@@ -1,14 +1,24 @@
 const EventToken = artifacts.require("EventToken");
 
 contract("EventToken", accounts => {
+  let instance = null;
+  beforeEach(async () => {
+    var instance1 = await EventToken.deployed();
+    assert.ok(instance1)
+
+    instance = await EventToken.new();
+
+  });
+
+  /*
   it("should put 10000000 EventToken in the first account", async () => {
-    const instance = await EventToken.deployed();
+
     const balance = await instance.getBalance.call(accounts[0]);
     assert.equal(balance.valueOf(), 10000000, "10000000 wasn't in the first account");
   });
 
   it("should call a function that depends on a linked library", async () => {
-    const instance = await EventToken.deployed();
+
     const EventTokenBalance = await instance.getBalance.call(accounts[0]);
     const EventTokenBalanceInEth = await instance.getBalanceInEth.call(
       accounts[0],
@@ -24,7 +34,6 @@ contract("EventToken", accounts => {
   });
 
   it("should send coin correctly", async () => {
-    const instance = await EventToken.deployed();
 
     const account1 = accounts[0];
     const account2 = accounts[1];
@@ -42,8 +51,8 @@ contract("EventToken", accounts => {
     const finalBalance2 = await instance.getBalance.call(account2);
 
     assert.equal(
-        (Long)finalBalance1,
-        (Long)initBalance1.toLong() - amount,
+        finalBalance1,
+        initBalance1.toLong() - amount,
       "Amount wasn't correctly taken from the sender",
     );
     assert.equal(
@@ -52,10 +61,14 @@ contract("EventToken", accounts => {
       "Amount wasn't correctly sent to the receiver",
     );
   });
-
+*/
+  
   it("should buy 10Eths worth in tokens from the main account", async () => {
-    const instance = await EventToken.deployed();
-    const balance = await instance.buyTokens({value: 10});
-    assert.equal(balance.valueOf(), 10000000, "10000000 wasn't in the first account");
+
+    await instance.buyTokens(100, {from: accounts[1], value: 1*10**18});
+    const balance = instance.getBalance.call(accounts[1]);
+    assert.equal(balance.valueOf(), 100, "100 wasn't in the second account");
   });
+
+
 });
