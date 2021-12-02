@@ -34,32 +34,43 @@ contract EventToken is ERC20 {
     }
 
     function sendCoin(address recipient, uint256 amount) public returns (bool) {
-        // TODO: 5% para la cuenta principal
-        uint256 fivePercent = (amount * 5) / 100;
+        uint256 amountWithDecimals = amount*10**18;
+        uint256 fivePercent = (amountWithDecimals * 5) / 100;
         transfer(_owner, fivePercent);
-        return transfer(recipient, amount - fivePercent);
+        return transfer(recipient, amountWithDecimals - fivePercent);
     }
 
     function burn(uint256 amount) external {
         _burn(msg.sender, amount);
     }
 
-    function buyTokens(uint256 amountToBuy) public payable returns (uint256) {
-        // check if the Vendor Contract has enough amount of tokens for the transaction
-        uint256 vendorBalance = getBalance(_owner);
-        require(vendorBalance >= amountToBuy, "Vendor contract has not enough tokens in its balance");
 
+    function buyTokens(uint256 amountToBuy) public payable {
+        // check if the Vendor Contract has enough amount of tokens for the transaction
+
+        require(msg.value == amountToBuy/tokensPerEthBuy, "msg.value is not right");
+
+        uint256 realAmount = amountToBuy*10**18;
+        uint256 vendorBalance = getBalance(_owner)*10**18;
+        require(vendorBalance >= realAmount, "Vendor contract has not enough tokens in its balance");
+
+        _approve(_owner,msg.sender, realAmount);
         // Transfer token to the msg.sender
-        bool sent = this.transfer(msg.sender, amountToBuy);
+        
+        bool sent = transferFrom(_owner, msg.sender, realAmount);
+
         require(sent, "Failed to transfer token to user");
 
         // emit the event
-        emit BuyTokens(msg.sender, (amountToBuy / tokensPerEthBuy), amountToBuy);
+        // emit BuyTokens(msg.sender, (amountToBuy / tokensPerEthBuy), amountToBuy);
 
-        return amountToBuy;
     }
 
+
+
+
     function sellTokens(uint256 tokenAmountToSell) public {
+        tokenAmountToSell = tokenAmountToSell*10**18;
         // Check that the requested amount of tokens to sell is more than 0
         require(tokenAmountToSell > 0, "Specify an amount of token greater than zero");
 
@@ -77,11 +88,12 @@ contract EventToken is ERC20 {
             ownerETHBalance >= amountOfETHToTransfer,
             "Vendor has not enough funds to accept the sell request"
         );
+        _approve(msg.sender,msg.sender, tokenAmountToSell);
 
         bool sent = transferFrom(msg.sender, _owner, tokenAmountToSell);
         require(sent, "Failed to transfer tokens from user to vendor");
 
-        (sent, ) = msg.sender.call{value: amountOfETHToTransfer}("");
+        msg.sender.call{value: amountOfETHToTransfer}("");
         require(sent, "Failed to send ETH to the user");
     }
 
