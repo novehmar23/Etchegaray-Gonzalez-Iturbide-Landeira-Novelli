@@ -282,3 +282,13 @@ Con el poco tiempo que quedaba, no se pudo asegurar mucho mas. Pase a intentar h
 Habiendo terminado el proyecto, no me siento pleno con el resultado. El proyecto no esta realmente terminado, y se necesitarian algunos dias mas de trabajo para que ande realmente. Aun asi, intente con todo lo que pude llegar a la fecha bien y seguramente no falta mucho para que ande bien.
 
 En retrospectiva, claramente esto se debio de hacer con mas tiempo y las prioridades de las otras materias lograron frustrar bastante el avance consistente del proyecto. Ademas, las tecnologias lograron ser bastante frustrantes en algunas ocasiones y en otras demostrar que realmente estan en pañales, cosa que tiene sentido ya que se trata de tecnologias de vanguardia. Mucho tiempo se perdio haciendo funcionar webpack y el template en frontend, aunque me siento muy satisfecho de como quedo este. El backend resulto estar muy trancado por mucho tiempo y para el final no daba el tiempo de asegurar que todo todo ande. El proyecto fue muy enriquecedor en este mundo de blockchain y seguramente indague en el nuevamente en el futuro.
+
+#### Marcos Novelli
+El día de hoy:
+- Comenzamos con una reunión y decidimos que estrabamos bastanted bién y que tras redondear lo fundamental, un miembro del equipo se iba a pasar a ayudar al back end y/o redondear la documentacion
+- Comenzamos el día descubriendo que dejó de funcionar el evento de dobliclick para la pantalla "myBallots". Acto seguido, arreglé esta nueva tarea y nos pusimos a solucionar este contratiempo.
+- Terminé modificación de la visualización de la creación de una la papeleta.
+- Corregí el cambio de alineación horizontal del resumen de la cuenta en el nav bar.
+- Implementé el seguimiento de la navegabilidad a lo largo de toda la página.
+- Dejé todos los títulos con el mismo formato.
+- Terminé de escribir la bitácora del frontend para el día 30/11 y escribi la bitacora de frontend de los días 01/12 y 02/12.
