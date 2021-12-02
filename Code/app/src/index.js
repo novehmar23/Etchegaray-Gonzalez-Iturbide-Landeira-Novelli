@@ -132,17 +132,23 @@ const App = {
     return balance;
   },
 
-  addBallot: async function (title, startingDate, duration) {
-    const { AddBallot } = this.voter.methods;
-    await AddBallot(this.address, title, startingDate, duration);
-  },
-
   //// VOTING FUNCTIONALITY
   getAllBallots: async function () {
     const { GetAllBallots } = this.voter.methods;
     const allBallots = await GetAllBallots().call();
 
     return allBallots;
+  },
+
+  addBallot: async function (title, startingDate, duration) {
+    const { AddBallot } = this.voter.methods;
+    await AddBallot(App.account, title, startingDate, duration).send({from: App.account});
+  },
+
+  addVotingOption: async function (name, description, account, option) { 
+    const { AddVoteOption, GetLastAddedBallotID } = this.voter.methods;
+    var res = await GetLastAddedBallotID().call();
+    await AddVoteOption(res, name, description, account, option).send({from: App.account});
   }
 };
 
@@ -276,12 +282,103 @@ const Events =
     if (currentPageName == 'myBallots') {
       var currentButton = this.getElementWrapper('closeButton');
       currentButton.disabled = true;
+      // CARGO MY BALLOTS
+      
       Events.refreshMyBallotsTable();
     }else{
+      Events.getDataAndLoadToMyBallots();
       Events.refreshAllBallotsTable();
     }
 
     this.loadInfoText();
+  },
+
+  createBallot: async function() {
+    var title = this.getElementWrapper("ballotTitle");
+    var startingDate = this.getElementWrapper("ballotInitialDate");
+    var duration = this.getElementWrapper("ballotDuration");
+    console.log(startingDate.value);
+
+    await App.addBallot(title.value, Number.parseInt(startingDate.value), Number.parseInt(duration.value));
+    
+    var nameA = this.getElementWrapper("optionAName");
+    var accountA = this.getElementWrapper("optionAAccount");
+    var descriptionA = this.getElementWrapper("optionADescription");
+    var nameB = this.getElementWrapper("optionBName");
+    var accountB = this.getElementWrapper("optionBAccount");
+    var descriptionB = this.getElementWrapper("optionBDescription");
+    var nameC = this.getElementWrapper("optionCName");
+    var accountC = this.getElementWrapper("optionCAccount");
+    var descriptionC = this.getElementWrapper("optionCDescription");
+
+    await App.addVotingOption(nameA.value, descriptionA.value, accountA.value, 1);
+    await App.addVotingOption(nameB.value, descriptionB.value, accountB.value, 2);
+    await App.addVotingOption(nameC.value, descriptionC.value, accountC.value, 3);
+  },
+
+  getDataAndLoadToMyBallots: function() {
+    App.getAllBallots().then(res => 
+      {
+        myBallots = [];
+        myBallotDetails = [];
+        res.forEach(elem => 
+          {
+            //ID, TITLE, OWNER, STARTINGDATE, DURATION, STATUS, VOTEOPTIONS
+            //  { id: '1', title: 'Which cat is the cutest?', startingDate: '2021/12/08', ballotDuration: '240', status: 'open' },
+            const time = elem["StartingDate"] * 1000;
+            const dateObject = new Date(time);
+            var date = dateObject.getFullYear + "/" + dateObject.getMonth() + "/" + dateObject.getDate();
+            myBallots.push(
+              {
+                id: elem["Id"].toString(),
+                title: elem["Title"],
+                startingDate: date,
+                ballotDuration: eleme["Duration"].toString(),
+                status: elem["Status"]
+              });
+
+            // myBallotDetails
+            // { id: '1', details: OptonsFromSelected1 },
+            // Options
+            // { title: 'Option A', name: 'El nombre 1', account: 'El numero de cuenta 1', description: 'Esta es una descripcion y no puede ser mas largaaaaaaaaaaaa1' },
+
+            var votes = elem["VoteOptions"];
+            var options = [];
+
+            var i = 0;
+            votes.forEach(vote => {
+              var op = "A";
+
+              if(i == 1)
+              {
+                op = "B";
+              }
+
+              if(i == 2)
+              {
+                op = "C";
+              }
+
+              options.push(
+                {
+                  title: "Option " + op,
+                  name: vote["Name"],
+                  account: vote["Responsible"],
+                  description: vote["Description"]
+                }
+              )
+
+              i++;
+            });
+
+            myBallotDetails.push(
+              {
+                id: elem["Id"],
+                details: options
+              }
+            )
+        })
+      })
   },
 
   loadInfoText: function () {
@@ -293,7 +390,7 @@ const Events =
     detailsSelectedOptions.appendChild(infoDetailsText);
   },
 
-  refreshMyBallotsTable: function () {
+  refreshMyBallotsTable: async function () {
     let myTable = this.getElementWrapper('ballotsTable');
 
     let myBallotsIndex = 0;
@@ -310,7 +407,7 @@ const Events =
 
       row.style.borderBlockWidth = '0.5px';
 
-      if (row.cells[4].innerHTML == 'open') {
+      if (row.cells[4].innerHTML == 'Open') {
         row.cells[4].style.color = 'green';
       } else {
         row.cells[4].style.color = 'red';
@@ -405,7 +502,7 @@ const Events =
 
       row.style.borderBlockWidth = '0.5px';
 
-      if (row.cells[4].innerHTML == 'open') {
+      if (row.cells[4].innerHTML == 'Open') {
         row.cells[4].style.color = 'green';
       } else {
         row.cells[4].style.color = 'red';
@@ -440,7 +537,7 @@ const Events =
         Events.refreshCloseBallotButton(row.cells[4].innerHTML);
       });
       
-      if(row.cells[4].innerHTML !== 'expired'){
+      if(row.cells[4].innerHTML !== 'Closed'){
         myTable.appendChild(row);
       }
 
