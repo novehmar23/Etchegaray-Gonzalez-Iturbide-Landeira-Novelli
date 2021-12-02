@@ -130,8 +130,20 @@ const App = {
     const balance = convertToEthSell(amount).call();
 
     return balance;
+  },
+
+  addBallot: async function (title, startingDate, duration) {
+    const { AddBallot } = this.voter.methods;
+    await AddBallot(this.address, title, startingDate, duration);
+  },
+
+  //// VOTING FUNCTIONALITY
+  getAllBallots: async function () {
+    const { GetAllBallots } = this.voter.methods;
+    const allBallots = await GetAllBallots().call();
+
+    return allBallots;
   }
-  ////
 };
 
 // BUTTON EVENTS
