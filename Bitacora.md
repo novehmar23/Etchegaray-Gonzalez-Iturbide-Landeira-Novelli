@@ -182,6 +182,11 @@ Finalmente, me uni al resto del equipo para trabajar en la presentacion y la dem
 #### Gaston Landeira
 Realize el html de visualizar tokens de usuarios y lo integramos con el backend. Despues hicimos una retrospectiva de lo trabajado y preparamos la presentacion.
 
+#### Marcos Novelli
+El día de hoy:
+- Partipé en la reunión de pre organización de la presentación. 
+- Implemente el .js de la pantalla "Exchange" .
+
 ### DIA 7 - 25/11/2021
 
 #### Gaston Landeira
@@ -219,3 +224,4 @@ El día de hoy:
 - Arreglé todas las referencias
 - Agregué la función de votar en allBallots
 
+### DIA 8 - 02/12/2021
