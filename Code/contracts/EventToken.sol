@@ -47,6 +47,7 @@ contract EventToken is ERC20 {
 
     function buyTokens(uint256 amountToBuy) public payable {
         // check if the Vendor Contract has enough amount of tokens for the transaction
+
         require(msg.value == amountToBuy/tokensPerEthBuy, "msg.value is not right");
 
         uint256 realAmount = amountToBuy*10**18;
@@ -55,7 +56,9 @@ contract EventToken is ERC20 {
 
         _approve(_owner,msg.sender, realAmount);
         // Transfer token to the msg.sender
+        
         bool sent = transferFrom(_owner, msg.sender, realAmount);
+
         require(sent, "Failed to transfer token to user");
 
         // emit the event
