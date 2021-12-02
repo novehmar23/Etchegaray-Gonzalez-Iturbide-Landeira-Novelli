@@ -126,4 +126,19 @@ Las cuatro subtareas son las siguientes:
 Así es como terminó noviembre para frontend.
 
 ### 01/12/2021
-Bienvenido Diciembre! Hoy
+Bienvenido Diciembre! 
+Hoy comenzamos con una reunión donde concluimos que el equipo de front end estaba bástante bien en tema tareas-tiempo faltante para la entrega. Por esto, decidimos que lo mejor sería apoyar al equipo de backend enviando, con tristeza, un miembro de nuestro equipo.
+
+Paso siguiente, continuamos resolviendo tareas establesidas en el trello. Comenzamos por el crear la pá gina de visualización de todas las pepeletas de votación:
+[image info](./images/frontend/1-Dic-1.png)
+
+Habiendo terminado cuatro de las cinco subtareas, decidimos continuar con otra diferente (a modo de hotfix) que es el arreglar todas las referencias a otros .html:
+[image info](./images/frontend/1-Dic-2.png)
+Rapidamente se solucionó este hotfix:
+[image info](./images/frontend/1-Dic-3.png)
+
+
+Descubrimos que la quita subtarea de pendiente ya estaba incluida en otra tarjeta aparte entonces la sacamos de la checklist y dimos por cumplida esta tarea:
+[image info](./images/frontend/1-Dic-4.png)
+Las cuatro subtareas son las siguientes:
+[image info](./images/frontend/1-Dic-4_2.png)
