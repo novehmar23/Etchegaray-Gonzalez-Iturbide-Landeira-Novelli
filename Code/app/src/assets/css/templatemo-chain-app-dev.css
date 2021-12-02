@@ -1764,6 +1764,10 @@ PopUp
   background: #FFF;
 }
 
+.navButtons {
+  background-color: #ffffff23;
+}
+
 .btn {
   padding: 10px 20px;
   background: #4b8ef1;

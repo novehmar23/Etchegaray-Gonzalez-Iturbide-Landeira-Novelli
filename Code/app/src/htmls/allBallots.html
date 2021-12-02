@@ -81,12 +81,14 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a onclick="Events.goToMainPage()">Main</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToCreateBallotPage()">Create Ballot</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToMyBallots()">View my Ballots</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToAllBallots()" class="active">View all Ballots</a>
-              </li>
-              <li class="scroll-to-section"><a></a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToMainPage()" style="color:  rgb(139, 138, 138);">Main</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToTokensMainPage()" style="color:  rgb(139, 138, 138);">Tokens</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToVotingMainPage()" style="color: #90baf7;">Voting</a></li>
+              <li class="scroll-to-section vlFromNavSeparation"></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToCreateBallotPage()">Create Ballot</a></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToMyBallots()">View my Ballots</a></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToAllBallots()" class="active">View all Ballots</a></li>
+              <li class="scroll-to-section"><a> </a></li>
             </ul>
             <!-- ***** Menu End ***** -->
           </nav>
@@ -95,12 +97,12 @@
     </div>
   </header>
 
-  <div id="services" class="services section">
+  <div id="services" class="services section" style="padding-top: 180px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
-            <h4><em>Available Ballots</em></h4>
+            <h1 class="sectionTitle">Available Ballots</h1>
             <img src="assets/images/heading-line-dec.png" alt="">
           </div>
         </div>
