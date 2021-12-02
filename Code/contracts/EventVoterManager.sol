@@ -52,7 +52,9 @@ contract EventVoterManager {
             }
         }
 
-        _token.sendCoin(address(this), 1);
+        // _token.sendCoin(address(this), 1);
+        _token.approveFrom(msg.sender, address(this), 1);
+        _token.transferFrom(msg.sender, address(this), 1);
     }
 
     /// Summary
