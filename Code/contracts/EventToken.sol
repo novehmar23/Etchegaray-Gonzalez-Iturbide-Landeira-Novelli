@@ -46,11 +46,12 @@ contract EventToken is ERC20 {
 
 
     function buyTokens(uint256 amountToBuy) public payable {
-        // check if the Vendor Contract has enough amount of tokens for the transaction
-
-        require(msg.value == amountToBuy/tokensPerEthBuy, "msg.value is not right");
-
         uint256 realAmount = amountToBuy*10**18;
+
+        // check if the Vendor Contract has enough amount of tokens for the transaction
+        require(msg.value == realAmount/tokensPerEthBuy, "msg.value is not right");
+
+
         uint256 vendorBalance = getBalance(_owner)*10**18;
         require(vendorBalance >= realAmount, "Vendor contract has not enough tokens in its balance");
 
@@ -61,15 +62,11 @@ contract EventToken is ERC20 {
 
         require(sent, "Failed to transfer token to user");
 
-        // emit the event
-        // emit BuyTokens(msg.sender, (amountToBuy / tokensPerEthBuy), amountToBuy);
 
     }
 
 
-
-
-    function sellTokens(uint256 tokenAmountToSell) public {
+    function sellTokens(uint256 tokenAmountToSell) external {
         tokenAmountToSell = tokenAmountToSell*10**18;
         // Check that the requested amount of tokens to sell is more than 0
         require(tokenAmountToSell > 0, "Specify an amount of token greater than zero");
@@ -93,9 +90,12 @@ contract EventToken is ERC20 {
         bool sent = transferFrom(msg.sender, _owner, tokenAmountToSell);
         require(sent, "Failed to transfer tokens from user to vendor");
 
-        msg.sender.call{value: amountOfETHToTransfer}("");
+        payable(msg.sender).transfer(amountOfETHToTransfer);
         require(sent, "Failed to send ETH to the user");
     }
+
+    receive() external payable {}
+
 
     function convertToEthBuy(uint256 eventTokens) public view returns (uint256){
         return ConvertLib.convert((eventTokens), tokensPerEthBuy);

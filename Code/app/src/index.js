@@ -109,9 +109,10 @@ const App = {
   //Buy / Sell coin
   buyCoin: async function(from, amount) {
     const { buyTokens, convertToEthBuy } = this.ev.methods;
-    const ethAmount = await convertToEthBuy(amount).call();
-
-    await buyTokens(amount).send({from: from, value: ethAmount});
+    const ethAmount =  Number.parseInt(await convertToEthBuy(amount).call());
+    const weiAmount = ethAmount*10**18;
+    console.log(ethAmount);
+    await buyTokens(amount).send({from: from, value: weiAmount});
 
 
     this.refreshBalance();
@@ -237,7 +238,7 @@ const Events =
   buyCoinsAsUser: async function(){
     const quantityBuy = this.getElementWrapper("quantityBuy");
 
-    await App.buyCoin(App.account, quantityBuy.value);
+    await App.buyCoin(App.account, parseInt(quantityBuy.value));
   },
 
   sellCoinsAsUser: function(){
