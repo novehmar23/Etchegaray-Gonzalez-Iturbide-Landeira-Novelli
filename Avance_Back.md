@@ -37,3 +37,10 @@ Este es el estado del Trello en este momento:
 
 Las dos funcionalidadades que se encuentran In Progress estan casi acabadas y creemos que la ultima no debería tomar demasiado tiempo. Tambien, tenemos que trabajar en arreglar algunos test y agregar nuevos ya que resolver todos los bugs que hemos encontrado ha hecho que tengamos que reducir el tiempo de dedicacion a crear tests.
 
+### 02/12/2021
+El día de hoy logramos terminar las funcionalidades definidas en el backend. El principal trabajo que estamos desarrollando ahora es conectar esas funciones con el frontend y asegurarnos que todo funcione, asi como tambien terminar de agregar algunos tests extra para asegurarnos que tenemos una buena cobertura del codigo y los casos bordes.
+
+Este es el resultado final del Trello, con toda las tareas terminadas:
+![image](https://user-images.githubusercontent.com/57157637/144504656-bde46196-d792-47ad-9eed-dec69011a17e.png)
+
+Creemos que, todas las funcionalidades fueron implementadas y funcionan correctamente.
