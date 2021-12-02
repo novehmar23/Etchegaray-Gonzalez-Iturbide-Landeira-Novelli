@@ -204,51 +204,60 @@ El dia de hoy me ocupe de realizar la funcionalidad faltante del Administrador d
 #### Matías González
 Finalmente en backend decidimos trasladar los metodos buy y sell del vendor al contrato principal del token ya que creemos será más facil tener un control sobre las addresses utilizadas, ademas de un más facil acceso a la address _owner, la cual se asigna en el constructor del token.
 
-### DIA 8 - 30/11/2021
+### DÍA 8 - 30/11/2021
 #### Iñaki Etchegaray
-Hoy participe de la decision de los ultimos pasos para terminar el frontend de la pagina. Se decidieron sobre varias paginas distintas de la funcionalidad de votos. Luego de unos errores tecnicos y de coordinacion por parte del grupo, me ocupe en avanzar en lo que podia.
+Hoy partícipe de la decisión de los últimos pasos para terminar el frontend de la página. Se decidieron sobre varias páginas distintas de la funcionalidad de votos. Luego de unos errores técnicos y de coordinación por parte del grupo, me ocupe en avanzar en lo que podía.
 
-Realice la pagina principal de la seccion de votos. Ademas, ajuste el contenido de la pagina de principal y la principal de votos tambien. Hice todas las redirecciones asociadas a los botones en la navbar. Una vez terminada la pagina, ajuste el tablero Trello.
+Realice la página principal de la sección de votos. Además, ajuste el contenido de la página de principal y la principal de votos también. Hice todas las redirecciones asociadas a los botones en la navbar. Una vez terminada la página, ajuste el tablero Trello.
 
-Luego, una vez terminado esto, me dedique a realizar la pagina de creacion de votos. Siguiendo los prototipos realizados, creo que llegue a un resultado placentero. Su unico problema es un boton que esta mal alineado y que decidi dejar como issue para arreglar luego. Los IDs de los inputs fueron posicionados, solo falta realizar conexion con el backend.
+Luego, una vez terminado esto, me dedique a realizar la página de creación de votos. Siguiendo los prototipos hechos, creo que llegue a un resultado placentero. Su único problema es un botón que está mal alineado y que decidí dejar como issue para arreglar luego. Los IDs de los inputs fueron posicionados, solo falta hacer conexión con el backend.
 
-Finalmente, me ocupe de realizar los avances de la bitacora de frontend, ademas de los avances faltantes del dia 25/11.
+Finalmente, me ocupé de realizar los avances de la bitácora de frontend, además de los avances faltantes del día 25/11.
 
 #### Marcos Novelli
 El día de hoy:
 - Desglosé en el trello las tareas restantes para el front creando checklists en tarjetas.
 - Creé la base de la página "myBallots"
-- Creé la tabla de myBallots en el .js. Se hace en el .js y con determinada manera para que se pueda reutilizar en otras situaciones simplemente cambiando los valores de los headers y de los elementos a agregar. No se utliza bootstrap por inconvenientes en incorporar clases dentro del js. Sí no hay problema en utilizarlo dentro de el html, pero al querer usarlo en la creación de elementos en el js se complica (porque bootstrap utiliza jQuery y no se referencia al mismo desde el js). Eventos de visualizacion por ejemplo el mouseover o el mouseout son creados tambien en el .js al momento de refreshear la tabla.
-- Creé los detalles de la ballot selecionada
+- Creé la tabla de myBallots en él .js. Se hace en él .js y con determinada manera para que se pueda reutilizar en otras situaciones simplemente cambiando los valores de los headers y de los elementos a agregar. No se utiliza bootstrap por inconvenientes en incorporar clases dentro del js. Sí no hay problema en usarlo dentro del html, pero al querer usarlo en la creación de elementos en el js se complica (porque bootstrap usa jQuery y no se referencia al mismo desde el js). Eventos de visualización por ejemplo el mouseover o el mouseout son creados también en él .js al momento de refreshear la tabla.
+- Creé los detalles de la ballot seleccionada
 - Incorporé evento de doble click en la fila de la tabla
 - Hice funcional el doble click para mostrar los detalles del ballot seleccionado. Se crean variables de prueba en el js que posteriormente serán migrados hacia el back.
 
 #### Matías González
-Hoy no fue un dia muy productivo. fue un dia en el que estuve constantemente enfrentandome con errores en la transacción buyTokens, probando cambios en el contrato, en el js, no logro encontrar que es lo que causa estas excepciones. Teniendo problemas para debuggear solidity. Investigare más al respecto del error mostrado en consola para ver los proximos pasos a seguir a la hora de encontrar una solución.
+Hoy no fue un día muy productivo. Fue un día en el que estuve constantemente enfrentándome con errores en la transacción buyTokens, probando cambios en el contrato, en el js, no logro encontrar que es lo que causa estas excepciones. Teniendo problemas para debuggear solidity. Investigaré más al respecto del error mostrado en consola para ver los próximos pasos a seguir a la hora de encontrar una solución.
 
-#### Gaston Landeira
-Hoy no fue un dia productivo. La idea era esparcir los cambios visuales a todos los demas html pero, se me fue imposibilitado debido a un fallo en el cargador de mi herramienta de trabajo (laptop). Delegue esta tarea a mis colegas que lo implementaron de manera perfecta. 
+#### Gastón Landeira
+Hoy no fue un día productivo. La idea era esparcir los cambios visuales a todos los demás html, pero, se me fue imposibilitado debido a un fallo en el cargador de mi herramienta de trabajo (laptop). Delegue esta tarea a mis colegas que lo implementaron de manera perfecta. 
 
-### DIA 9 - 01/12/2021
+#### Martín Iturbide
+Hoy estuve trabajando en las funcionalidades de administrador, para modificar los precios de compra y venta de nuestro token con relación a Eth. Encontré algunos problemas que no pude resolver, tampoco encontré casi información relacionada con mi problema al hacer una búsqueda por distintos foros y páginas de Internet, así que decidí dejarlo de momento y pasar a otra cosa.
+Continué con la funcionalidad de cobrar una comisión por transferencia de tokens entre usuario, esto fue muy fácil de realizar y ya está completamente funcional.
+Dedique los últimos momentos del día a trabajar en intentar fixear el bug relacionado con la compra-venta de tokens que no hemos podido solucionar, pero no logre ningún avance significativo.
+
+### DÍA 9 - 01/12/2021
 #### Marcos Novelli
 El día de hoy:
 - Agregué la opción de poder cerrar una papeleta de votación (dentro de "myBallots"). Esto va de la mano con el agregado de la columna "status" que toma valores de "open" cuando está habilitada para votar, "closed" cuando la votación está vencida y "destroyed" cuando el usuario cierra la votación. 
-- Creé la pagina de visualización de todos las papeletas de votacion (allBallots).
-- Cambié la visualización (en allBallots) vde los detalles de opciones de votación a tarjetas verticales.
-- Implementé todo lo competente a myBallots y allBallots en el .js
+- Creé la pagina de visualización de todos las papeletas de votación (allBallots).
+- Cambié la visualización (en allBallots) de los detalles de opciones de votación a tarjetas verticales.
+- Implementé todo lo competente a myBallots y allBallots en él .js
 - Arreglé todas las referencias
 - Agregué la función de votar en allBallots
 
 #### Matías González
-Despues de horas trabajando sobre el buyTokens, el dia de hoy fue logrado solucionar esos errores y el funcionamiento correcto del mismo. Este error se encontraba dentro de sellTokens por lo cual ahora ambos metodos quedan finalmente terminados. Por ultimo me comunique con la parte del equipo que se encontraba avanzando en el sistema de votaciones para hablar algunas dudas y estar al tanto de como venian.
+Después de horas trabajando sobre el buyTokens, el día de hoy fue logrado solucionar esos errores y el funcionamiento correcto del mismo. Este error se encontraba dentro de sellTokens por lo cual ahora ambos métodos quedan finalmente terminados. Por último me comuniqué con la parte del equipo que se encontraba avanzando en el sistema de votaciones para hablar algunas dudas y estar al tanto de como venían.
 
-#### Gaston Landeira
-Despues de moverme a una nueva estacion de trabajo, hoy se realizo una reunion entre el equipo de front para decidir detalles en el diseño del sistema de votos. En consecuencia se paso un integrante de front a backend ya que estos necesitaban ayuda, y con Marcos Novelli fuimos implementando lo faltante de front. Se finalizo el dia con todas las funcionalidades terminadas de myBallots y allBallots.
+#### Gastón Landeira
+Después de moverme a una nueva estación de trabajo, hoy se realizó una reunión entre el equipo de front para decidir detalles en el diseño del sistema de votos. En consecuencia se pasó un integrante de front a backend, ya que estos necesitaban ayuda, y con Marcos Novelli fuimos implementando lo faltante de front. Se finalizó el día con todas las funcionalidades terminadas de myBallots y allBallots.
 
-### DIA 10 - 02/12/2021
+#### Martín Iturbide
+Hoy termine la funcionalidad de cambiar los precios de compra-venta de tokens, que ya está 100% funcional. Continúe el día intentando arreglar las funciones de buy-sell tokens, y aunque hice algunos avances no pude solucionarlo completamente. 
+Termiine el día haciendo una revision de lo que falta por hacer y testeando que todo lo que hemos hecho hasta ahora funcione. 
+
+### Día 10 - 02/12/2021
 
 #### Matías González
-Nada más comenzar el dia de hoy recorde que mi bitacora no se encontraba al dia, por lo cual primero que nada decidi updatear los dias faltantes.
+Nada más comenzar el día de hoy recordé que mi bitácora no se encontraba al día, por lo cual primero que nada decidí updatear los días faltantes.
 
-#### Gaston Landeira
-Hoy se tiene que terminar el proyecto. Trabaje en mejorar los aspectos visuales de allBallots y algun que otro bug. Despues me sumergi en cualquier trabajo faltante que necesitase el equipo en general solucionar para dar como finalizado el proyecto.
+#### Gastón Landeira
+Hoy se tiene que terminar el proyecto. Trabaje en mejorar los aspectos visuales de allBallots y algún que otro bug. Después me sumergí en cualquier trabajo faltante que necesitase el equipo en general solucionar para dar como finalizado el proyecto.
