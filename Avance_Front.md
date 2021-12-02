@@ -100,28 +100,28 @@ La primera asingacion fue realizada:
 Y completada al rato, para luego realizar otra asignacion:
 [image info](./images/frontend/30-Nov-3.png)
 La cual fue concretada:
-[image info](./images/frontend/30-Nov-4.png)
+[image info](./images/frontend/30-Nov-4.jpg)
 
 Pero esto siguio con otros integrantes asignandose y avanzando cuando podian:
 
 Lugo de concretada al página de creación de votos, e creó la tarea de modificación de la alineación horizzontal del resumen de la cuenta en el nav bar:
-[image info](./images/frontend/30-Nov-5.png)
+[image info](./images/frontend/30-Nov-5.jpg)
 
 También se agregó la tarea de explicitar el seguimineto de la navegabilidad a lo largo de toda la página:
-[image info](./images/frontend/30-Nov-6.png)
+[image info](./images/frontend/30-Nov-6.jpg)
 
 Se agrega, también, la tarea de la modificación de la visualización del formulario para crear una nueva papeleta de votación:
-[image info](./images/frontend/30-Nov-7.png)
+[image info](./images/frontend/30-Nov-7.jpg)
 
 Ahora ya habiendo reorganizado el trello explicitando todas las tareas identificadas hasta el momento y creando checklists en tarjetas para un mallor nivel de granularida en las tareas,  se procede a solucionar las mismas. Se comienza con la creación de la página de visualización de "myBallots":
-[image info](./images/frontend/30-Nov-8.png)
+[image info](./images/frontend/30-Nov-8.jpg)
 Es importante destacar que el avance en esta página fue lento y muy importante ya que los elementos como tablas o cargada de datos, entre otros, se hicieron de tal manera que puedan ser reutilizables en otras pantallas. Para entrar un poco más en detalle, las tablas y textos informativos se crean directamente en el .js para que los datos de las mismas dependan de elementos solicitados al backend dependiendo de lo que se quiera hacer. 
 También se decide no utilizar bootstrap en elementos creados en el .js por inconvenientes en incorporar clases dentro del js. No hay problema en usarlo dentro del html, pero al querer usarlo en el js se complica (porque bootstrap usa jQuery y no se referencia al mismo desde el js). Eventos de visualización por ejemplo el mouseover o el mouseout son creados también en él .js al momento de refreshear la tabla.
 
 Cumplidas las cuatro subtareas, se da por terminada esta implementación:
-[image info](./images/frontend/30-Nov-9.png)
+[image info](./images/frontend/30-Nov-9.jpg)
 Las cuatro subtareas son las siguientes:
-[image info](./images/frontend/30-Nov-9_2.png)
+[image info](./images/frontend/30-Nov-9_2.jpg)
 
 Así es como terminó noviembre para frontend.
 
@@ -130,63 +130,63 @@ Bienvenido Diciembre!
 Hoy comenzamos con una reunión donde concluimos que el equipo de front end estaba bástante bien en tema tareas-tiempo faltante para la entrega. Por esto, decidimos que lo mejor sería apoyar al equipo de backend enviando, con tristeza, un miembro de nuestro equipo.
 
 Paso siguiente, continuamos resolviendo tareas establesidas en el trello. Comenzamos por el crear la pá gina de visualización de todas las pepeletas de votación:
-[image info](./images/frontend/1-Dic-1.png)
+[image info](./images/frontend/1-Dic-1.jpg)
 
 Habiendo terminado cuatro de las cinco subtareas, decidimos continuar con otra diferente (a modo de hotfix) que es el arreglar todas las referencias a otros .html:
-[image info](./images/frontend/1-Dic-2.png)
+[image info](./images/frontend/1-Dic-2.jpg)
 Rapidamente se solucionó este hotfix:
-[image info](./images/frontend/1-Dic-3.png)
+[image info](./images/frontend/1-Dic-3.jpg)
 
 Descubrimos que la quita subtarea de pendiente ya estaba incluida en otra tarjeta aparte entonces la sacamos de la checklist y dimos por cumplida esta tarea:
-[image info](./images/frontend/1-Dic-4.png)
+[image info](./images/frontend/1-Dic-4.jpg)
 Las cuatro subtareas son las siguientes:
-[image info](./images/frontend/1-Dic-4_2.png)
+[image info](./images/frontend/1-Dic-4_2.jpg)
 
 Luego se comienza a implementar la función de votar en "allBallots":
-[image info](./images/frontend/1-Dic-5.png)
+[image info](./images/frontend/1-Dic-5.jpg)
 Esta funcionalidad de implementa correctamente y con esto damos por teminado el día de hoy:
-[image info](./images/frontend/1-Dic-6.png)
+[image info](./images/frontend/1-Dic-6.jpg)
 
 ### 02/12/2021
 Último día y en el equipo de front sabemos que vamos a llegar justo con los últimos detalles pero igualemnte decidimos que ni bién quede redondeado lo indispensable, un miembro de nuestro equipo de pasará a el equipo de back y/o redondeo de la documentación.
 
 Comenzamos el día descubriendo que dejó de funcionar el evento de dobliclick para la pantalla "myBallots". Acto seguido, agregamos esta nueva tarea y nos pusimos a solucionar este contratiempo:
-[image info](./images/frontend/2-Dic-1.png)
+[image info](./images/frontend/2-Dic-1.jpg)
 Pudimos solucionar este susto y volvimos al ruedo:
-[image info](./images/frontend/2-Dic-2.png)
+[image info](./images/frontend/2-Dic-2.jpg)
 
 Continuamos con agregar el plaseholder de dobleclick en "allBallots"
-[image info](./images/frontend/2-Dic-3.png)
+[image info](./images/frontend/2-Dic-3.jpg)
 Rapidamente, esto se puso solucionar y se comienza con la modificación de la visualización del panel de creación de una papeleta:
-[image info](./images/frontend/2-Dic-4.png)
+[image info](./images/frontend/2-Dic-4.jpg)
 
 Al mismo tiempo se comienza con el arreglo de los decimales de la EVs en el resumen de cuenta en el nav bar:
-[image info](./images/frontend/2-Dic-5.png)
+[image info](./images/frontend/2-Dic-5.jpg)
 Rapidamente se soliciona esto:
-[image info](./images/frontend/2-Dic-6.png)
+[image info](./images/frontend/2-Dic-6.jpg)
 
 Se comienza corrige una tarea que no se habia pasado a done:
-[image info](./images/frontend/2-Dic-7.png)
-[image info](./images/frontend/2-Dic-8.png)
+[image info](./images/frontend/2-Dic-7.jpg)
+[image info](./images/frontend/2-Dic-8.jpg)
 
 Se termina la modificación de la visualización de la creación de una la papeleta:
-[image info](./images/frontend/2-Dic-9.png)
+[image info](./images/frontend/2-Dic-9.jpg)
 
 Se comienza a corregir el cambio de alineación horizontal del resumen de la cuenta en el nav bar:
-[image info](./images/frontend/2-Dic-10.png)
+[image info](./images/frontend/2-Dic-10.jpg)
 Rapidamente esto se soluciona:
-[image info](./images/frontend/2-Dic-11.png)
+[image info](./images/frontend/2-Dic-11.jpg)
 
 Se comienza a implementar el seguimiento de la navegabilidad a lo largo de toda la páginaÑ
-[image info](./images/frontend/2-Dic-12.png)
+[image info](./images/frontend/2-Dic-12.jpg)
 
 
 Se comienzqa con una nueva tarea (a modo de hotfix) del dejar todos los títulos con el mismo formato:
-[image info](./images/frontend/2-Dic-13.png)
+[image info](./images/frontend/2-Dic-13.jpg)
 Rapidamente esto se soluciona:
-[image info](./images/frontend/2-Dic-14.png)
+[image info](./images/frontend/2-Dic-14.jpg)
 
 Por último, damos por solucionado el registro de la navegabilidad:
-[image info](./images/frontend/2-Dic-15.png)
+[image info](./images/frontend/2-Dic-15.jpg)
 
 Damos por cerrado el trabajo de front end y nos juntamos con los de backend para terminar de conectar el front con el back.
