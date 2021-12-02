@@ -63,4 +63,18 @@ contract("EventVoterManager", accounts => {
         assert.equal(secondBallot["StartingDate"], from, "Dates should be the same");
         assert.equal(secondBallot["Duration"], 5, "Durations should be the same");
     });
+
+    it("Get Ballot brings information for right accounts", async () => {
+        let date = (new Date()).getTime();
+        const from = Number.parseInt(date/1000);
+        await instance.AddBallot(accounts[2], "Vote1", from, 299);
+        await instance.AddBallot(accounts[0], "Vote4", from, 29);
+        await instance.AddBallot(accounts[1], "Vote2", from, 5);
+        await instance.AddBallot(accounts[1], "Vote3", from, 33);
+        const ballotsForOne = null;
+        instance.GetBallotsForAddress(accounts[1]).then(function(result) {
+            ballotsForOne = result;
+            assert.equal(ballotsForOne.length, 2, "Should have returned the two added ballots for this account");
+        })
+    });
 });
