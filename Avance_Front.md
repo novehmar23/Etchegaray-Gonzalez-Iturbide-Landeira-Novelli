@@ -137,8 +137,56 @@ Habiendo terminado cuatro de las cinco subtareas, decidimos continuar con otra d
 Rapidamente se solucionó este hotfix:
 [image info](./images/frontend/1-Dic-3.png)
 
-
 Descubrimos que la quita subtarea de pendiente ya estaba incluida en otra tarjeta aparte entonces la sacamos de la checklist y dimos por cumplida esta tarea:
 [image info](./images/frontend/1-Dic-4.png)
 Las cuatro subtareas son las siguientes:
 [image info](./images/frontend/1-Dic-4_2.png)
+
+Luego se comienza a implementar la función de votar en "allBallots":
+[image info](./images/frontend/1-Dic-5.png)
+Esta funcionalidad de implementa correctamente y con esto damos por teminado el día de hoy:
+[image info](./images/frontend/1-Dic-6.png)
+
+### 02/12/2021
+Último día y en el equipo de front sabemos que vamos a llegar justo con los últimos detalles pero igualemnte decidimos que ni bién quede redondeado lo indispensable, un miembro de nuestro equipo de pasará a el equipo de back y/o redondeo de la documentación.
+
+Comenzamos el día descubriendo que dejó de funcionar el evento de dobliclick para la pantalla "myBallots". Acto seguido, agregamos esta nueva tarea y nos pusimos a solucionar este contratiempo:
+[image info](./images/frontend/2-Dic-1.png)
+Pudimos solucionar este susto y volvimos al ruedo:
+[image info](./images/frontend/2-Dic-2.png)
+
+Continuamos con agregar el plaseholder de dobleclick en "allBallots"
+[image info](./images/frontend/2-Dic-3.png)
+Rapidamente, esto se puso solucionar y se comienza con la modificación de la visualización del panel de creación de una papeleta:
+[image info](./images/frontend/2-Dic-4.png)
+
+Al mismo tiempo se comienza con el arreglo de los decimales de la EVs en el resumen de cuenta en el nav bar:
+[image info](./images/frontend/2-Dic-5.png)
+Rapidamente se soliciona esto:
+[image info](./images/frontend/2-Dic-6.png)
+
+Se comienza corrige una tarea que no se habia pasado a done:
+[image info](./images/frontend/2-Dic-7.png)
+[image info](./images/frontend/2-Dic-8.png)
+
+Se termina la modificación de la visualización de la creación de una la papeleta:
+[image info](./images/frontend/2-Dic-9.png)
+
+Se comienza a corregir el cambio de alineación horizontal del resumen de la cuenta en el nav bar:
+[image info](./images/frontend/2-Dic-10.png)
+Rapidamente esto se soluciona:
+[image info](./images/frontend/2-Dic-11.png)
+
+Se comienza a implementar el seguimiento de la navegabilidad a lo largo de toda la páginaÑ
+[image info](./images/frontend/2-Dic-12.png)
+
+
+Se comienzqa con una nueva tarea (a modo de hotfix) del dejar todos los títulos con el mismo formato:
+[image info](./images/frontend/2-Dic-13.png)
+Rapidamente esto se soluciona:
+[image info](./images/frontend/2-Dic-14.png)
+
+Por último, damos por solucionado el registro de la navegabilidad:
+[image info](./images/frontend/2-Dic-15.png)
+
+Damos por cerrado el trabajo de front end y nos juntamos con los de backend para terminar de conectar el front con el back.
