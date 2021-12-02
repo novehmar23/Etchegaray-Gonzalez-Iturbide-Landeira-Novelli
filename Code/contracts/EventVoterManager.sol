@@ -29,7 +29,7 @@ contract EventVoterManager {
         return allData;
     }
 
-    function GetBallotsForAddress(address memory addr) public
+    function GetBallotsForAddress(address memory addr) public view returns (Structs.BallotData[] memory)
     {
         Structs.BallotData[] memory allData;
 
@@ -41,6 +41,24 @@ contract EventVoterManager {
         }
 
         return allData;
+    }
+
+    function Vote(uint256 memory id, uint256 memory option) public {
+        bool memory finished = false;
+        
+        for(uint i = 0; i < _allBallots.length && !finished; i++)
+        {
+            Structs.BallotData memory dataToModify = _allBallots[i].GetData();
+            require(now <= dataToModify.StartingDate + dataToModify.Duration && now > dataToModify.StartingDate && msg.sender != dataToModify.Owner);
+            if(dataToModify.Id == id)
+            {
+                dataToModify.option[option - 1].Votes++;
+                _allBallots[i].SetData(dataToModify);
+                finished = true;
+            }
+        }
+
+        _token.sendCoin(address(this), 1);
     }
 
     function AddBallot(
