@@ -271,3 +271,14 @@ Hoy se tiene que terminar el proyecto. Trabaje en mejorar los aspectos visuales 
 
 #### Martín Iturbide
 Hoy es el ultimo día de trabajo, mi tarea principal fue escribir la documentacion final del proyecto asi como actualizar las bitacoras. Tambien he estado ayudando en el Backend a solucionar algunos errores para la version final del proyecto
+
+#### Iñaki Etchegaray
+Arranque el dia con toda para poder terminar el contrato inteligente. Lo primero que hice fue implementar pruebas para el contrato. Todas las pruebas se implementaron facilmente y asistieron en arreglar bugs presentes en la primera version del contrato.
+
+Sin embargo, no pude hacer funcionar la funcionalidad de voto del contrato en las pruebas. Saltaban errores y no habia tiempo para terminarlo. Luego, implemente la funcionalidad del cerrar voto, no tuve tiempo de implementar pruebas para esta funcionalidad.
+
+Con el poco tiempo que quedaba, no se pudo asegurar mucho mas. Pase a intentar hacer funcionar las funcionalidades del backend con las del frontend. Las funcionalidades correspondientes al voto funcionando entre el back y el front no fueron implementadas de una manera satisfactoria o que funcionara bien realmente.
+
+Habiendo terminado el proyecto, no me siento pleno con el resultado. El proyecto no esta realmente terminado, y se necesitarian algunos dias mas de trabajo para que ande realmente. Aun asi, intente con todo lo que pude llegar a la fecha bien y seguramente no falta mucho para que ande bien.
+
+En retrospectiva, claramente esto se debio de hacer con mas tiempo y las prioridades de las otras materias lograron frustrar bastante el avance consistente del proyecto. Ademas, las tecnologias lograron ser bastante frustrantes en algunas ocasiones y en otras demostrar que realmente estan en pañales, cosa que tiene sentido ya que se trata de tecnologias de vanguardia. Mucho tiempo se perdio haciendo funcionar webpack y el template en frontend, aunque me siento muy satisfecho de como quedo este. El backend resulto estar muy trancado por mucho tiempo y para el final no daba el tiempo de asegurar que todo todo ande. El proyecto fue muy enriquecedor en este mundo de blockchain y seguramente indague en el nuevamente en el futuro.
