@@ -48,6 +48,7 @@ contract("EventVoterManager", accounts => {
         assert.equal(firstBallot["Owner"], accounts[2], "Owners should be the same");
         assert.equal(firstBallot["StartingDate"], from, "Dates should be the same");
         assert.equal(firstBallot["Duration"], 299, "Durations should be the same");
+        assert.equal(firstBallot["Status"], "Open", "Status makes sense");
     });
 
     it("Get Ballot brings information for many objects", async () => {
@@ -64,12 +65,29 @@ contract("EventVoterManager", accounts => {
         assert.equal(firstBallot["Owner"], accounts[2], "Owners should be the same");
         assert.equal(firstBallot["StartingDate"], from, "Dates should be the same");
         assert.equal(firstBallot["Duration"], 299, "Durations should be the same");
+        assert.equal(firstBallot["Status"], "Open", "Status makes sense");
 
         assert.equal(secondBallot["Id"], 2, "Id should be the same");
         assert.equal(secondBallot["Title"], "Vote2", "Title should be the same");
         assert.equal(secondBallot["Owner"], accounts[1], "Owners should be the same");
         assert.equal(secondBallot["StartingDate"], from, "Dates should be the same");
         assert.equal(secondBallot["Duration"], 5, "Durations should be the same");
+        assert.equal(secondBallot["Status"], "Open", "Status makes sense");
+    });
+
+    it("Add vote option should add to ballot", async () => {
+        let date = (new Date()).getTime();
+        const from = Number.parseInt(date/1000);
+        await instance.AddBallot(accounts[2], "Vote1", from, 299);
+
+        const id = await instance.GetLastAddedBallotID();
+        await instance.AddVoteOption(id.toNumber(), "Name1", "Papas fritas con queso.", accounts[3], 1);
+        await instance.AddVoteOption(id.toNumber(), "Name2", "Papas fritas sin queso.", accounts[1], 2);
+        await instance.AddVoteOption(id.toNumber(), "Name3", "Papas fritas con queso y hongos.", accounts[0], 3);
+        const allBallots = await instance.GetAllBallots();
+        const firstBallot = allBallots[0];
+
+        assert.equal(firstBallot["VoteOptions"][0]["Name"], "Name1", "Names should be the same");
     });
 
     it("Get Ballot brings information for right accounts", async () => {

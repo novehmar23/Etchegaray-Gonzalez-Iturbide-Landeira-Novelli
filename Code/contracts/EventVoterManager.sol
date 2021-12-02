@@ -103,17 +103,16 @@ contract EventVoterManager {
         for(uint i = 0; i < _allBallots.length && !found; i++)
         {
             Structs.BallotData memory dataToModify = _allBallots[i].GetData();
-            require(msg.sender == dataToModify.Owner, "You must be the Ballot's owner to add the option.");
+            //require(msg.sender == dataToModify.Owner, "You must be the Ballot's owner to add the option.");
             if(dataToModify.Id == id)
             {
-                dataToModify.VoteOptions[option - 1] = Structs.VoteOption(
+                _allBallots[i].InsertVoteOption(Structs.VoteOption(
                 {
                     Name: name,
                     Description: description,
                     Responsible: responsible,
                     Votes: 0
-                });
-                _allBallots[i].InsertVoteOption(dataToModify.VoteOptions[option - 1], option - 1);
+                }), option - 1);
                 found = true;
             }
         }

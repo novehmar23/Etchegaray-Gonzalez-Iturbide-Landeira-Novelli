@@ -31,8 +31,11 @@ contract Ballot is Ownable{
     }
 
     function InsertVoteOption(Structs.VoteOption memory vote, uint position) public{
-        Structs.VoteOption memory option = VoteOptionsMapping[position];
-        option = vote;
+        Structs.VoteOption storage option = VoteOptionsMapping[position];
+        option.Name = vote.Name;
+        option.Description = vote.Description;
+        option.Responsible = vote.Responsible;
+        option.Votes = vote.Votes;
     }
 
     function GetData() onlyOwner public view returns (Structs.BallotData memory){
