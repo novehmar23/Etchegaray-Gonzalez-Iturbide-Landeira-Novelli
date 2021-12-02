@@ -16,39 +16,37 @@ contract("EventToken", accounts => {
   });
 
   it("should send coin correctly", async () => {
-    const account1 = accounts[0];
-    const account2 = accounts[1];
+    const account1 = accounts[1];
+    const account2 = accounts[2];
+    const account0 = accounts[0];
 
+    const amount = 100;
+    await instance.sendCoin(account1, amount, { from: account0 });
     // get initial balances
-    const initBalance1 = await instance.getBalance(account1);
-    const initBalance2 = await instance.getBalance(account2);
+    const initBalance1 = await instance.getBalance.call(account1)/ 10**18;
+    const initBalance2 = await instance.getBalance.call(account2)/ 10**18;
 
+    const secondAmount = amount - 5;
     // send coins from account 1 to 2
-    const amount = 10;
-    await instance.sendCoin(account2, amount, { from: account1 });
+    await instance.sendCoin(account2, secondAmount, { from: account1 });
 
     // get final balances
-    const finalBalance1 = await instance.getBalance(account1);
-    const finalBalance2 = await instance.getBalance(account2);
+    const finalBalance1 = await instance.getBalance.call(account1)/ 10**18;
+    const finalBalance2 = await instance.getBalance.call(account2)/ 10**18;
 
     assert.equal(
-        Number.parseInt(finalBalance1),
-        Number.parseInt(initBalance1) - amount,
+        parseInt(finalBalance1),
+        parseInt(initBalance1) - secondAmount,
       "Amount wasn't correctly taken from the sender",
     );
     assert.equal(
-      Number.parseInt(initBalance2),
-      Number.parseInt(finalBalance2) - amount,
+      parseInt(initBalance2),
+      parseInt(finalBalance2) - (secondAmount - 5),
+      // +5 representing de 5% comission he is taxing on himself because its main account
       "Amount wasn't correctly sent to the receiver",
     );
   });
 
-  it("should buy 10Eths worth in tokens from the main account", async () => {
-    // const instance = await EventToken.deployed();
-    // const balance = await instance.buyTokens({value: 10});
-    // const balance = await instance.getBalance(accounts[0]).call();
-    // assert.equal(balance.valueOf(), 10000000, "10000000 wasn't in the first account");
-  });
   
   it("should buy 100 tokens from the 2nd account", async () => {
 
@@ -63,7 +61,7 @@ contract("EventToken", accounts => {
     const originalBalance = await instance.getBalance.call(accounts[0]) / 10**18;
     await instance.buyTokens(100, {from: accounts[1], value: 1*10**18});
     const mainBalance = await instance.getBalance.call(accounts[0]) / 10**18;
-    assert.equal(parseInt(mainBalance), parseInt(originalBalance) - 100, "100 wasn't in the second account");
+    assert.equal(parseInt(mainBalance), parseInt(originalBalance) - 100, "100 werent removed from the main acc");
   });
 
   it("should remove 50 tokens from the 2nd account", async () => {
