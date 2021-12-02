@@ -226,7 +226,8 @@ El día de hoy:
 #### Matías González
 Hoy no fue un dia muy productivo. fue un dia en el que estuve constantemente enfrentandome con errores en la transacción buyTokens, probando cambios en el contrato, en el js, no logro encontrar que es lo que causa estas excepciones. Teniendo problemas para debuggear solidity. Investigare más al respecto del error mostrado en consola para ver los proximos pasos a seguir a la hora de encontrar una solución.
 
-
+#### Gaston Landeira
+Hoy no fue un dia productivo. La idea era esparcir los cambios visuales a todos los demas html pero, se me fue imposibilitado debido a un fallo en el cargador de mi herramienta de trabajo (laptop). Delegue esta tarea a mis colegas que lo implementaron de manera perfecta. 
 
 ### DIA 9 - 01/12/2021
 #### Marcos Novelli
@@ -240,7 +241,14 @@ El día de hoy:
 
 #### Matías González
 Despues de horas trabajando sobre el buyTokens, el dia de hoy fue logrado solucionar esos errores y el funcionamiento correcto del mismo. Este error se encontraba dentro de sellTokens por lo cual ahora ambos metodos quedan finalmente terminados. Por ultimo me comunique con la parte del equipo que se encontraba avanzando en el sistema de votaciones para hablar algunas dudas y estar al tanto de como venian.
+
+#### Gaston Landeira
+Despues de moverme a una nueva estacion de trabajo, hoy se realizo una reunion entre el equipo de front para decidir detalles en el diseño del sistema de votos. En consecuencia se paso un integrante de front a backend ya que estos necesitaban ayuda, y con Marcos Novelli fuimos implementando lo faltante de front. Se finalizo el dia con todas las funcionalidades terminadas de myBallots y allBallots.
+
 ### DIA 10 - 02/12/2021
 
 #### Matías González
 Nada más comenzar el dia de hoy recorde que mi bitacora no se encontraba al dia, por lo cual primero que nada decidi updatear los dias faltantes.
+
+#### Gaston Landeira
+Hoy se tiene que terminar el proyecto. Trabaje en mejorar los aspectos visuales de allBallots y algun que otro bug. Despues me sumergi en cualquier trabajo faltante que necesitase el equipo en general solucionar para dar como finalizado el proyecto.
