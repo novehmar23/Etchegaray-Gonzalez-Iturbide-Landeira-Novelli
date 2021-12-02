@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+  <title>Chain App Dev - App Landing Page HTML5 Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!--
+
+TemplateMo 570 Chain App Dev
+
+https://templatemo.com/tm-570-chain-app-dev
+
+-->
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+  <link rel="stylesheet" href="assets/css/animated.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container" >
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <div class="container-fluid">
+              <a href="../index.html" class="logo">
+                <img src="assets/images/EventChain.png" alt="Chain App Dev">
+              </a>
+            </div>
+            <ul class="nav">
+              <li>
+                <div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div>
+              </li>
+            </ul>
+            <ul class="nav">
+              <div class="vlFromNavSeparation"></div>
+            </ul>
+            <div class="nav row" style="margin-top: 30px;padding-right: -200px; text-align: right;">
+              </li class="navMetasAccount" style="padding-right: 0px;">
+              <h7 style="padding-right: 0px;">Your account:
+                <strong class="account"> loading... </strong>
+              </h7>
+              </li style="padding-right: 0px;">
+              <li class="navMetasAmount" style="margin-left: -6px;padding-right: 0px;">
+                <h7 style="padding-right: 0px;">
+                  You have
+                  <strong class="balance"> loading... </strong>
+                  EV's.
+                </h7>
+              </li>
+            </div>
+
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a onclick="Events.goToMainPage()" style="color: rgb(139, 138, 138);">Main</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToTokensMainPage()" style="color:  rgb(139, 138, 138);">Tokens</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToVotingMainPage()" style="color: #90baf7;">Voting</a></li>
+              <li class="scroll-to-section vlFromNavSeparation"></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToCreateBallotPage()" class="active">Create Ballot</a></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToMyBallots()">View my Ballots</a></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToAllBallots()">View all Ballots</a></li>
+              <li class="scroll-to-section"><a> </a></li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <div id="services" class="services section" style="padding-top: 190px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading wow fadeInDown " data-wow-duration="1s" data-wow-delay="0.5s"
+            style="margin-bottom: 20px ;margin-block-end: 20px;">
+
+            <h1 class="sectionTitle">Create a Ballot</h1>
+            <img src="assets/images/heading-line-dec.png" alt="">
+
+          </div>
+          <div class="container"
+            style="background-color: #F2F7FE; margin-bottom: 30px; padding: 20px; border-radius: 10px;;border: rgb(211, 210, 210); border-width: 1px; border-style: solid">
+            <div class="row" style="padding: 15px;">
+              <div class="col" style="min-width: 280px;max-width: 280px;">
+                <h6 for="ballotTitle">Provide a Title: </h6>
+              </div>
+              <div class="col">
+                <input type="text" style="width: 100%;" placeholder="E.g: Which cat is the cutest?" id="ballotTitle" />
+              </div>
+            </div>
+            <div class="row" style="padding: 15px;">
+              <div class="col" style="min-width: 280px;max-width: 280px;">
+                <h6 for="ballotInitialDate">Provide a starting Date: </h6>
+              </div>
+              <div class="col">
+                <input type="text" style="width: 100%;" placeholder="E.g: 20211208" id="ballotInitialDate" />
+              </div>
+            </div>
+            <div class="row" style="padding: 15px;">
+              <div class="col" style="min-width: 280px;max-width: 280px;">
+                <h6 for="ballotDuration">Provide a ballot duration (seconds): </h6>
+              </div>
+              <div class="col">
+                <input type="number" style="width: 100%;" placeholder="e.g: 240" id="ballotDuration" />
+                <p>NOTE: Duration cannot be longer than 300 seconds.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <!-- ** -->
+        <div class="col-lg-6"
+          style="width: 400px; height: auto; margin: 0 auto; position: relative; margin-bottom: 30px;">
+          <div class="service-item">
+            <h4>Option A</h4>
+            <!-- // -->
+            <div class="row">
+              <div class="container">
+                <div class="container">
+                  <!-- <div class="row"> -->
+                  <div class="row">
+                    <div class="col" style="max-width: 180px; padding: 10px;">
+                      <p for="optionAName" style="font-size:16px;"><strong>Name:</strong></p>
+                    </div>
+                    <div class="col" style="max-width: 180px; padding: 10px;">
+                      <input type="text" id="optionAName" placeholder="E.g: Abyssinian" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col" style="max-width: 180px; padding: 10px;">
+                      <p for="optionAAccount" style="font-size:16px;"><strong>Account:</strong></p>
+                    </div>
+                    <div class="col" style="max-width: 180px; padding: 10px;">
+                      <input type="text" id="optionAAccount" placeholder="E.g: 0xf23...aff0" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col" style="max-width: 180px; padding: 10px;">
+                      <p for="optionADescription" style="font-size:16px;"><strong>Description:</strong></p>
+                      <textarea type="text" id="optionADescription" style="width: 280px;"
+                        placeholder="E.g: Such smol ears."></textarea>
+                    </div>
+                  </div>
+                  <!-- </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ** -->
+        <div class="col-lg-6"
+          style="width: 400px; height: auto; margin: 0 auto; position: relative;margin-bottom: 30px;">
+          <div class="service-item">
+            <h4>Option B</h4>
+            <!-- // -->
+            <div class="row">
+              <div class="container">
+                <div class="container">
+                  <div class="row">
+                    <div class="row">
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <p for="optionBName" style="font-size:16px;"><strong>Name:</strong></p>
+                      </div>
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <input type="text" id="optionBName" placeholder="E.g: Bombay" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <p for="optionBAccount" style="font-size:16px;"><strong>Account:</strong></p>
+                      </div>
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <input type="text" id="optionBAccount" placeholder="E.g: 0xf77...b872" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <p for="optionBDescription" style="font-size:16px;"><strong>Description:</strong></p>
+                        <textarea type="text" id="optionBDescription" style="width: 280px;"
+                          placeholder="E.g: Dark as the night."></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ** -->
+        <div class="col-lg-6"
+          style="width: 400px; height: auto; margin: 0 auto; position: relative;margin-bottom: 30px;">
+          <div class="service-item">
+            <h4>Option C</h4>
+            <!-- // -->
+            <div class="row">
+              <div class="container">
+                <div class="container">
+                  <div class="row">
+                    <div class="row">
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <p for="optionCName" style="font-size:16px;"><strong>Name:</strong></p>
+                      </div>
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <input type="text" id="optionCName" placeholder="E.g: Birman" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <p for="optionCAccount" style="font-size:16px;"><strong>Account:</strong></p>
+                      </div>
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <input type="text" id="optionCAccount" placeholder="E.g: 0x85h...cgf0" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col" style="max-width: 180px; padding: 10px;">
+                        <p for="optionCDescription" style="font-size:16px;"><strong>Description:</strong></p>
+                        <textarea type="text" id="optionCDescription" style="width: 280px;"
+                          placeholder="E.g: Incredibly fluffy."></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- ** -->
+      </div>
+    </div>
+
+    <!-- // -->
+    <div>
+
+    </div>
+    <div class="container" style="padding: 10px">
+      <div class="row">
+        <div class="col-lg-6" style="width: 400px; height: auto; margin: 0 auto; position: relative;">
+        </div>
+        <div class="col-lg-6" style="width: 400px; height: auto; margin: 0 auto; position: relative;">
+          <div class="text-button">
+            <button class="btn" style="align-items: center; width: 180px; padding: 15px;"
+              onclick="Events.createBallot()">Create</button>
+            <!-- <a href="#">Read More <i class="fa fa-arrow-right"></i></a> -->
+          </div>
+        </div>
+        <div class="col-lg-6" style="width: 400px; height: auto; margin: 0 auto; position: relative;">
+        </div>
+      </div>
+    </div>
+    <!-- // -->
+  </div>
+
+  <footer id="newsletter">
+    <div class="container">
+      <div class="col-lg-12">
+        <div class="copyright-text">
+          <p>Copyright © 2021 EventChain. All Rights Reserved.
+            <br>Design: <a href="https://templatemo.com/" target="_blank" title="css templates">TemplateMo</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/imagesloaded.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
