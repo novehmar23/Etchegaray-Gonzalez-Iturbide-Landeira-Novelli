@@ -14,6 +14,8 @@ contract EventVoterManager {
         _token = EventToken(tAddress);
     }
 
+    /// Summary:
+    /// Gets all currently added ballots on the contract. This includes Ballots whose duration has already passed.
     function GetAllBallots() public view returns (Structs.BallotData[] memory)
     {
         uint length = _allBallots.length;
@@ -27,15 +29,23 @@ contract EventVoterManager {
         return allData;
     }
 
-    function Vote(uint256 id, uint256 optionSelected) public {
+    /// Summary
+    /// Allows an account, that isn't the owner of the vote option, to vote for a vote option.
+    /// Params:
+    /// id: The ballots ID. optionSelected: The selected voting option (1=A, 2=B, 3=C)
+    function Vote(uint256 id, uint256 optionSelected) public 
+    {
+        require(optionSelected > 0 && optionSelected < 4,"OptionSelected must be a number from 1 to 3");
+
         bool finished = false;
         
         for(uint i = 0; i < _allBallots.length && !finished; i++)
         {
             Structs.BallotData memory dataToModify = _allBallots[i].GetData();
-            require(block.timestamp <= dataToModify.StartingDate + dataToModify.Duration && block.timestamp > dataToModify.StartingDate && msg.sender != dataToModify.Owner);
+            require(block.timestamp <= dataToModify.StartingDate + dataToModify.Duration && block.timestamp > dataToModify.StartingDate, "The voting ballot must be Open to vote.");
             if(dataToModify.Id == id)
             {
+                require(msg.sender != dataToModify.VoteOptions[optionSelected - 1].Responsible, "You can't vote your own options.");
                 dataToModify.VoteOptions[optionSelected - 1].Votes++;
                 _allBallots[i].InsertVoteOption(dataToModify.VoteOptions[optionSelected - 1], optionSelected - 1);
                 finished = true;
@@ -45,16 +55,15 @@ contract EventVoterManager {
         _token.sendCoin(address(this), 1);
     }
 
-    function AddBallot(
-        address owner,
-        string memory title,
-        uint256 startingDate,
-        uint256 duration
-    ) public
+    /// Summary
+    /// Allows an account, to add a Voting Ballot to the system.
+    /// Params:
+    /// owner: The owners hash. title: The ballots title., startingDate: The date in which the ballot opens, duration: Duration in seconds of the ballot.
+    function AddBallot(address owner, string memory title, uint256 startingDate, uint256 duration) public
     {
         Ballot b = new Ballot();
 
-        require(block.timestamp < startingDate + duration && duration > 0);
+        require(block.timestamp < startingDate + duration && duration > 0, "The finishing date can't be later than now.");
 
         Structs.ParameterBallot memory p;
 
@@ -72,35 +81,41 @@ contract EventVoterManager {
         _allBallots.push(b);
     }
 
-    function AddVoteOption(
-        uint256 id,
-        string memory name,
-        string memory description,
-        address responsible,
-        uint option
-        ) public
+    /// Summary
+    /// Allows an account, to add a voting option to a ballot. You must be the owner of the ballot.
+    /// Must be done after adding a ballot. This needed to be done due to solidity's stack too deep error plus not being able to send structs.
+    /// Params:
+    /// id: The ballots ID. name: The option name, description: The option description, option: Which option is (1=A, 2=B, 3=C).
+    function AddVoteOption(uint256 id, string memory name, string memory description, address responsible, uint option) public
+    {
+        require(_allBallots.length > 0, "There are no ballots available to add options to.");
+        bool found = false;
+    
+        for(uint i = 0; i < _allBallots.length && !found; i++)
         {
-            bool finished = false;
-        
-            for(uint i = 0; i < _allBallots.length && !finished; i++)
+            Structs.BallotData memory dataToModify = _allBallots[i].GetData();
+            require(msg.sender == dataToModify.Owner, "You must be the Ballot's owner to add the option.");
+            if(dataToModify.Id == id)
             {
-                Structs.BallotData memory dataToModify = _allBallots[i].GetData();
-                require(block.timestamp <= dataToModify.StartingDate + dataToModify.Duration && block.timestamp > dataToModify.StartingDate && msg.sender != dataToModify.Owner);
-                if(dataToModify.Id == id)
+                dataToModify.VoteOptions[option - 1] = Structs.VoteOption(
                 {
-                    dataToModify.VoteOptions[option - 1] = Structs.VoteOption(
-                    {
-                        Name: name,
-                        Description: description,
-                        Responsible: responsible,
-                        Votes: 0
-                    });
-                    _allBallots[i].InsertVoteOption(dataToModify.VoteOptions[option - 1], option - 1);
-                    finished = true;
-                }
+                    Name: name,
+                    Description: description,
+                    Responsible: responsible,
+                    Votes: 0
+                });
+                _allBallots[i].InsertVoteOption(dataToModify.VoteOptions[option - 1], option - 1);
+                found = true;
             }
         }
 
+        require(found, "The ballot didn't exist and no vote option was added.");
+    }
+
+    /// Summary:
+    /// Gets all currently added ballots on the contract whose owner is the passed address.
+    /// Params:
+    /// addr: The owners hash.
     function GetBallotsForAddress(address addr) public view returns (Structs.BallotData[] memory)
     {
         uint256 amountOfItemsWithAddress = CountBallotsWithAddress(addr);
@@ -117,6 +132,7 @@ contract EventVoterManager {
         return allData;
     }
 
+    // Count function
     function CountBallotsWithAddress(address addr) private view returns (uint256)
     {
         uint count = 0;
@@ -129,6 +145,7 @@ contract EventVoterManager {
         return count;
     }
 
+    // Status processing function. Closed if it hasn't opened yet.
     function GetStatus(uint256 startingDate) private view returns (string memory)
     {
         if(block.timestamp < startingDate )
