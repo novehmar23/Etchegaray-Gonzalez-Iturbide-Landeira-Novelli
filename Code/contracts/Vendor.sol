@@ -30,7 +30,7 @@ contract Vendor is Ownable {
     function buyTokens() public payable returns (uint256 tokenAmount) {
         require(msg.value > 0, "Send ETH to buy some tokens");
 
-        uint256 amountToBuy = msg.value * tokensPerEthBuy;
+        uint256 amountToBuy = msg.value;
 
         // check if the Vendor Contract has enough amount of tokens for the transaction
         uint256 vendorBalance = yourToken.balanceOf(address(this));

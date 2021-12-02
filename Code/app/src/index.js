@@ -97,29 +97,30 @@ const App = {
   // Set Buy/Sell Price
   setBuyPrice: async function(amount) {
     const { adjustTokensPerEthBuy } = this.ev.methods;
-    const balance = await adjustTokensPerEthBuy(amount).call();
-    return balance;
+    await adjustTokensPerEthBuy(amount).send({from:this.account});
   },
 
   setSellPrice: async function(amount) {
     const { adjustTokensPerEthSell } = this.ev.methods;
-    const balance = await adjustTokensPerEthSell(amount).call();
-
-    return balance;
+    await adjustTokensPerEthSell(amount).send({from:this.account});
   },
   ////
 
   //Buy / Sell coin
-  buyCoin: async function(amount) {
-    const { buyTokens } = this.ev.methods;
-    await buyTokens(amount).send({from: this.account});
+  buyCoin: async function(from, amount) {
+    const { buyTokens, convertToEthBuy } = this.ev.methods;
+    const ethAmount =  Number.parseInt(await convertToEthBuy(amount).call());
+    const weiAmount = ethAmount*10**18;
+    console.log(ethAmount);
+    await buyTokens(amount).send({from: from, value: weiAmount});
+
 
     this.refreshBalance();
   },
 
-  sellCoin: async function(amount) {
+  sellCoin: async function(from, amount) {
     const { sellTokens } = this.ev.methods;
-    await sellTokens(amount).send({from: this.account});
+    await sellTokens(amount).send({from: from});
 
     this.refreshBalance();
   },
@@ -234,16 +235,16 @@ const Events =
       });
   },
 
-  buyCoin: function(){
+  buyCoinsAsUser: async function(){
     const quantityBuy = this.getElementWrapper("quantityBuy");
 
-    App.buyCoin(quantityBuy.value);
+    await App.buyCoin(App.account, parseInt(quantityBuy.value));
   },
 
-  sellCoin: function(){
+  sellCoinsAsUser: function(){
     const quantitySell = this.getElementWrapper("quantitySell");
 
-    App.sellCoin(quantitySell.value);
+    App.sellCoin(App.account ,quantitySell.value);
   },
 
   ////
@@ -254,19 +255,20 @@ const Events =
     const setBuyPrice = this.getElementWrapper("setBuyPrice");
 
     App.setBuyPrice(setBuyPrice.value).then(
+      App.getValueInEthsBuy(1).then(
       balance => {
         buyPrice.innerHTML = balance;
-      });
+      }));
   },
-
   setSellPrice: function(){
     const sellPrice = this.getElementWrapper("evSellPrice");
     const setSellPrice = this.getElementWrapper("setSellPrice");
 
     App.setSellPrice(setSellPrice.value).then(
+      App.getValueInEthsSell(1).then(
       balance => {
         sellPrice.innerHTML = balance;
-      });
+      }));
   },
   ////
 
