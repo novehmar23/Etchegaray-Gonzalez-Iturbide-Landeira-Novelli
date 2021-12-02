@@ -459,26 +459,33 @@ const Events =
     let count = 0;
     myBallotsDetails[rowIndex.innerHTML - 1].details.forEach(currentOptionData => {
       let currentOption = document.createElement('div');
-      let titleA = document.createElement('h6');
-      let naemA = document.createElement('pre');
-      let naemAText = document.createElement("i");
-      let accountA = document.createElement('pre');
+      let titleA = document.createElement('h4');
+      let nameA = document.createElement('p');
+      let nameAText = document.createElement("i");
+      let accountA = document.createElement('p');
       let accountAText = document.createElement('i');
-      let descriptionA = document.createElement('pre');
+      let descriptionA = document.createElement('p');
       let descriptionAText = document.createElement('i');
       descriptionA.style.marginBottom = '15px';
 
+      nameA.style = "font-weight: bolder;"
+      nameAText.style = "font-weight: lighter;"
+      accountA.style = "font-weight: bolder;"
+      accountAText.style = "font-weight: lighter;"
+      descriptionA.style = "font-weight: bolder;"
+      descriptionAText.style = "font-weight: lighter;"
+
       titleA.textContent = currentOptionData.title;
-      naemA.textContent = selectedBallotOptionDetailsTittles[0];
-      naemAText.textContent = currentOptionData.name;
+      nameA.textContent = selectedBallotOptionDetailsTittles[0];
+      nameAText.textContent = currentOptionData.name;
       accountA.textContent = selectedBallotOptionDetailsTittles[1];
       accountAText.textContent = currentOptionData.account;
       descriptionA.textContent = selectedBallotOptionDetailsTittles[2];
       descriptionAText.textContent = currentOptionData.description;
 
       currentOption.appendChild(titleA);
-      naemA.appendChild(naemAText);
-      currentOption.appendChild(naemA);
+      nameA.appendChild(nameAText);
+      currentOption.appendChild(nameA);
       accountA.appendChild(accountAText);
       currentOption.appendChild(accountA);
       descriptionA.appendChild(descriptionAText);
@@ -494,6 +501,46 @@ const Events =
         optionC.appendChild(currentOption);
       }
       count++;
+    });
+  },
+
+  refreshSelectedDetailsBallot: function (currentRow, rowIndex) {
+    currentRow.style.backgroundColor = '#83B8DE';
+
+    let options = this.getElementWrapper('options');
+    options.innerHTML = '';
+    let detailsTitle = document.createElement('h4');
+    detailsTitle.textContent = 'Selected ballot details:';
+    options.appendChild(detailsTitle);
+    options.appendChild(document.createElement('br'));
+    myBallotsDetails[rowIndex.innerHTML - 1].details.forEach(currentOptionData => {
+      let currentOption = document.createElement('div');
+      let titleA = document.createElement('h6');
+      let nameA = document.createElement('pre');
+      let nameAText = document.createElement("i");
+      let accountA = document.createElement('pre');
+      let accountAText = document.createElement('i');
+      let descriptionA = document.createElement('pre');
+      let descriptionAText = document.createElement('i');
+      descriptionA.style.marginBottom = '15px';
+
+      titleA.textContent = currentOptionData.title;
+      nameA.textContent = selectedBallotOptionDetailsTittles[0];
+      nameAText.textContent = currentOptionData.name;
+      accountA.textContent = selectedBallotOptionDetailsTittles[1];
+      accountAText.textContent = currentOptionData.account;
+      descriptionA.textContent = selectedBallotOptionDetailsTittles[2];
+      descriptionAText.textContent = currentOptionData.description;
+
+      currentOption.appendChild(titleA);
+      nameA.appendChild(nameAText);
+      currentOption.appendChild(nameA);
+      accountA.appendChild(accountAText);
+      currentOption.appendChild(accountA);
+      descriptionA.appendChild(descriptionAText);
+      currentOption.appendChild(descriptionA);
+
+      options.appendChild(currentOption);
     });
   },
 
