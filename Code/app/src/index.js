@@ -456,6 +456,46 @@ const Events =
     });
   },
 
+  refreshSelectedDetailsBallot: function (currentRow, rowIndex) {
+    currentRow.style.backgroundColor = '#83B8DE';
+
+    let options = this.getElementWrapper('options');
+    options.innerHTML = '';
+    let detailsTitle = document.createElement('h4');
+    detailsTitle.textContent = 'Selected ballot details:';
+    options.appendChild(detailsTitle);
+    options.appendChild(document.createElement('br'));
+    myBallotsDetails[rowIndex.innerHTML - 1].details.forEach(currentOptionData => {
+      let currentOption = document.createElement('div');
+      let titleA = document.createElement('h6');
+      let naemA = document.createElement('pre');
+      let naemAText = document.createElement("i");
+      let accountA = document.createElement('pre');
+      let accountAText = document.createElement('i');
+      let descriptionA = document.createElement('pre');
+      let descriptionAText = document.createElement('i');
+      descriptionA.style.marginBottom = '15px';
+
+      titleA.textContent = currentOptionData.title;
+      naemA.textContent = selectedBallotOptionDetailsTittles[0];
+      naemAText.textContent = currentOptionData.name;
+      accountA.textContent = selectedBallotOptionDetailsTittles[1];
+      accountAText.textContent = currentOptionData.account;
+      descriptionA.textContent = selectedBallotOptionDetailsTittles[2];
+      descriptionAText.textContent = currentOptionData.description;
+
+      currentOption.appendChild(titleA);
+      naemA.appendChild(naemAText);
+      currentOption.appendChild(naemA);
+      accountA.appendChild(accountAText);
+      currentOption.appendChild(accountA);
+      descriptionA.appendChild(descriptionAText);
+      currentOption.appendChild(descriptionA);
+
+      options.appendChild(currentOption);
+    });
+  },
+
   refreshCloseBallotButton: function (currentStatus) {
     var currentButton = this.getElementWrapper('closeButton');
     if (currentStatus == 'destroyed') {
