@@ -235,6 +235,13 @@ Continué con la funcionalidad de cobrar una comisión por transferencia de toke
 Dedique los últimos momentos del día a trabajar en intentar fixear el bug relacionado con la compra-venta de tokens que no hemos podido solucionar, pero no logre ningún avance significativo.
 
 ### DÍA 9 - 01/12/2021
+
+#### Iñaki Etchegaray
+Hoy me encargue de ir cerrando mis responsabilidades en el front end. Luego de hablar con los integrantes, quedo claro los pasos a seguir. Como quedaban pocas tareas por completar, decidi pasarme a ayudar al backend en las funcionalidades restantes por realizar.
+
+Asi me pase para el backend y empece a investigar solidity y como funciona nuevamente. Una vez que indague lo suficiente, me ocupe de empezar a realizar las funcionalidades del contrato inteligente responsable por las votaciones.
+
+Luego de un largo dia de trabajo, quedaron codificadas (pero no testeadas) las funcionalidades de votar, agregar votaciones y acceder a todas las votaciones o por address.
 #### Marcos Novelli
 El día de hoy:
 - Agregué la opción de poder cerrar una papeleta de votación (dentro de "myBallots"). Esto va de la mano con el agregado de la columna "status" que toma valores de "open" cuando está habilitada para votar, "closed" cuando la votación está vencida y "destroyed" cuando el usuario cierra la votación. 
