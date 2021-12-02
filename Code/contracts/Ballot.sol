@@ -5,19 +5,53 @@ import "./Structs.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Ballot is Ownable{
-    Structs.BallotData private _myData;  
+    uint256 Id;
+    address Owner;
+    string Title;
+    uint256 StartingDate;
+    uint256 Duration;
+    string Status; // Open or expired
+    mapping(uint => Structs.VoteOption) VoteOptionsMapping;
+    uint mappingLength;
 
-    constructor(Structs.BallotData memory data)
+    constructor()
     {
-        _myData = data;
+        mappingLength = 0;
     }
 
-    function SetData(Structs.BallotData memory data) onlyOwner public {
-        _myData = data;
-    }  
+    function SetData(
+        Structs.ParameterBallot memory data
+    ) onlyOwner public {
+        Id = data.Id;
+        Owner = data.Owner;
+        Title = data.Title;
+        StartingDate = data.StartingDate;
+        Duration = data.Duration;
+        Status = data.Status;
+    }
 
-    function GetData() onlyOwner public returns (Structs.BallotData memory){
-        return _myData;
+    function InsertVoteOption(Structs.VoteOption memory vote, uint position) public{
+        Structs.VoteOption memory option = VoteOptionsMapping[position];
+        option = vote;
+    }
+
+    function GetData() onlyOwner public view returns (Structs.BallotData memory){
+        Structs.VoteOption[3] memory votes;
+        votes[0] = VoteOptionsMapping[0];
+        votes[1] = VoteOptionsMapping[1];
+        votes[2] = VoteOptionsMapping[2];
+
+        Structs.BallotData memory data = Structs.BallotData({
+            Id: Id,
+            Owner: Owner,
+            Title: Title,
+            StartingDate: StartingDate,
+            Duration: Duration,
+            Status: Status,
+            VoteOptions: votes
+        });
+
+        return data;
     }
 
 }

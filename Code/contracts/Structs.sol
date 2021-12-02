@@ -9,7 +9,16 @@ library Structs{
         uint256 StartingDate;
         uint256 Duration;
         string Status; // Open or expired
-        VoteOption[] VoteOptions;
+        VoteOption[3] VoteOptions;
+    }
+
+    struct ParameterBallot{
+        uint256 Id;
+        address Owner;
+        string Title;
+        uint256 StartingDate;
+        uint256 Duration;
+        string Status; // Open or expired
     }
 
     struct VoteOption{

@@ -9,9 +9,7 @@ contract EventVoterManager {
     uint256 private _currentId;
     EventToken private _token;
 
-    event ReturnBallots(Structs.BallotData[] ballots);
-
-    constructor(address memory tAddress){
+    constructor(address tAddress){
         _currentId = 0;
         _token = EventToken(tAddress);
     }
@@ -21,7 +19,7 @@ contract EventVoterManager {
         uint length = _allBallots.length;
         Structs.BallotData[] memory allData = new Structs.BallotData[](length);
 
-        for(uint i = 0; i < _addressMappingArray.length; i++)
+        for(uint i = 0; i < _allBallots.length; i++)
         {
             allData[i] = _allBallots[i].GetData();
         }
@@ -29,31 +27,17 @@ contract EventVoterManager {
         return allData;
     }
 
-    function GetBallotsForAddress(address memory addr) public view returns (Structs.BallotData[] memory)
-    {
-        Structs.BallotData[] memory allData;
-
-        for(uint i = 0; i < _addressMappingArray.length; i++)
-        {
-            if(_allBallots[i].GetData().Owner == addr){
-                allData.push(_allBallots[i].GetData());
-            }
-        }
-
-        return allData;
-    }
-
-    function Vote(uint256 memory id, uint256 memory option) public {
-        bool memory finished = false;
+    function Vote(uint256 id, uint256 optionSelected) public {
+        bool finished = false;
         
         for(uint i = 0; i < _allBallots.length && !finished; i++)
         {
             Structs.BallotData memory dataToModify = _allBallots[i].GetData();
-            require(now <= dataToModify.StartingDate + dataToModify.Duration && now > dataToModify.StartingDate && msg.sender != dataToModify.Owner);
+            require(block.timestamp <= dataToModify.StartingDate + dataToModify.Duration && block.timestamp > dataToModify.StartingDate && msg.sender != dataToModify.Owner);
             if(dataToModify.Id == id)
             {
-                dataToModify.option[option - 1].Votes++;
-                _allBallots[i].SetData(dataToModify);
+                dataToModify.VoteOptions[optionSelected - 1].Votes++;
+                _allBallots[i].InsertVoteOption(dataToModify.VoteOptions[optionSelected - 1], optionSelected - 1);
                 finished = true;
             }
         }
@@ -62,70 +46,97 @@ contract EventVoterManager {
     }
 
     function AddBallot(
-        address memory owner,
+        address owner,
         string memory title,
-        uint256 memory startingDate,
-        uint256 memory duration,
-        string memory nameA,
-        string memory descriptionA,
-        address memory responsibleA,
-        string memory nameB,
-        string memory descriptionB,
-        address memory responsibleB,
-        string memory nameC,
-        string memory descriptionC,
-        address memory responsibleC
+        uint256 startingDate,
+        uint256 duration
     ) public
     {
-        require(now < startingDate + duration && duration > 0);
-        string status = "Open";
+        Ballot b = new Ballot();
 
-        if(now < startingDate )
-        {
-            status = "Closed";
-        }
+        require(block.timestamp < startingDate + duration && duration > 0);
 
-        Structs.VoteOption[] memory options = Structs.VoteOption[](3);
-        options[0] = Structs.VoteOption(
-            {
-                Name: nameA,
-                Description: descriptionA,
-                Responsible: resposnibleA,
-                Votes: 0
-            }
-        );
-        options[1] = Structs.VoteOption(
-            {
-                Name: nameB,
-                Description: descriptionB,
-                Responsible: resposnibleB,
-                Votes: 0
-            }
-        );
-        options[2] = Structs.VoteOption(
-            {
-                Name: nameC,
-                Description: descriptionC,
-                Responsible: resposnibleC,
-                Votes: 0
-            }
-        );
+        Structs.ParameterBallot memory p;
 
-        Structs.BallotData data = Structs.BallotData(
-            {
-                Id: this._currentId,
-                Owner: owner,
-                Title: title,
-                StartingDate: startingDate,
-                Duration: duration,
-                Status: status,
-                VoteOptions: options
-            }
-        );
-        this._currentId++;
+        p.Id = _currentId;
+        p.Owner = owner;
+        p.Title = title;
+        p.StartingDate = startingDate;
+        p.Duration = duration;
+        p.Status = GetStatus(startingDate);
+        
+        b.SetData(p);
 
-        Ballot b = new Ballot(data);
+        _currentId = _currentId + 1;
 
         _allBallots.push(b);
+    }
+
+    function AddVoteOption(
+        uint256 id,
+        string memory name,
+        string memory description,
+        address responsible,
+        uint option
+        ) public
+        {
+            bool finished = false;
+        
+            for(uint i = 0; i < _allBallots.length && !finished; i++)
+            {
+                Structs.BallotData memory dataToModify = _allBallots[i].GetData();
+                require(block.timestamp <= dataToModify.StartingDate + dataToModify.Duration && block.timestamp > dataToModify.StartingDate && msg.sender != dataToModify.Owner);
+                if(dataToModify.Id == id)
+                {
+                    dataToModify.VoteOptions[option - 1] = Structs.VoteOption(
+                    {
+                        Name: name,
+                        Description: description,
+                        Responsible: responsible,
+                        Votes: 0
+                    });
+                    _allBallots[i].InsertVoteOption(dataToModify.VoteOptions[option - 1], option - 1);
+                    finished = true;
+                }
+            }
+        }
+
+    function GetBallotsForAddress(address addr) public view returns (Structs.BallotData[] memory)
+    {
+        uint256 amountOfItemsWithAddress = CountBallotsWithAddress(addr);
+
+        Structs.BallotData[] memory allData = new Structs.BallotData[](amountOfItemsWithAddress);
+
+        for(uint i = 0; i < _allBallots.length; i++)
+        {
+            if(_allBallots[i].GetData().Owner == addr){
+                allData[i] = _allBallots[i].GetData();
+            }
+        }
+
+        return allData;
+    }
+
+    function CountBallotsWithAddress(address addr) private view returns (uint256)
+    {
+        uint count = 0;
+        for(uint i = 0; i < _allBallots.length; i++)
+        {
+            if(_allBallots[i].GetData().Owner == addr){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    function GetStatus(uint256 startingDate) private view returns (string memory)
+    {
+        if(block.timestamp < startingDate )
+        {
+            return "Closed";
+        }
+        else{
+            return "Open";
+        }
     }
 }
