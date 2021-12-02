@@ -1,13 +1,17 @@
 const EventVoterManager = artifacts.require("EventVoterManager");
+const EventToken = artifacts.require("EventToken");
 
 contract("EventVoterManager", accounts => {
     let instance = null;
+    let instanceToken = null;
     beforeEach(async () => {
         var instance1 = await EventVoterManager.deployed();
-        assert.ok(instance1)
+        var instance2 = await EventToken.deployed();
+        assert.ok(instance1);
+        assert.ok(instance2);
 
-        instance = await EventVoterManager.new(instance1.address);
-
+        instanceToken = await EventToken.new();
+        instance = await EventVoterManager.new(instanceToken.address);
     });
 
     it("Add ballot should add", async () => {
@@ -88,6 +92,24 @@ contract("EventVoterManager", accounts => {
         const firstBallot = allBallots[0];
 
         assert.equal(firstBallot["VoteOptions"][0]["Name"], "Name1", "Names should be the same");
+    });
+
+    it("Vote votes accordingly and sends money to contract", async () => {
+        let date = (new Date()).getTime();
+        const from = Number.parseInt(date/1000);
+        await instance.AddBallot(accounts[2], "Vote1", from, 299);
+
+        const id = await instance.GetLastAddedBallotID();
+        await instance.AddVoteOption(id.toNumber(), "Name1", "Papas fritas con queso.", accounts[3], 1);
+        await instance.AddVoteOption(id.toNumber(), "Name2", "Papas fritas sin queso.", accounts[1], 2);
+        await instance.AddVoteOption(id.toNumber(), "Name3", "Papas fritas con queso y hongos.", accounts[4], 3);
+        await instance.Vote(id.toNumber(), 2, {from: accounts[0]});
+        const allBallots = await instance.GetAllBallots();
+        const firstBallot = allBallots[0];
+
+        assert.equal(firstBallot["VoteOptions"][0]["Votes"], 0, "Votes should be 0 for option 1");
+        assert.equal(firstBallot["VoteOptions"][1]["Votes"], 1, "Votes should be 1 for option 2");
+        assert.equal(firstBallot["VoteOptions"][2]["Votes"], 0, "Votes should be 0 for option 3");
     });
 
     it("Get Ballot brings information for right accounts", async () => {

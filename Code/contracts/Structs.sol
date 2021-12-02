@@ -18,7 +18,6 @@ library Structs{
         string Title;
         uint256 StartingDate;
         uint256 Duration;
-        string Status; // Open or expired
     }
 
     struct VoteOption{

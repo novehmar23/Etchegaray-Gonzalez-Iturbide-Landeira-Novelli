@@ -74,7 +74,6 @@ contract EventVoterManager {
         p.Title = title;
         p.StartingDate = startingDate;
         p.Duration = duration;
-        p.Status = GetStatus(startingDate);
         
         b.SetData(p);
 
@@ -140,6 +139,86 @@ contract EventVoterManager {
         return allData;
     }
 
+    /// Summary:
+    /// Closes the ballot and decides the winner. Grants the winner the winning amount, minus a 20 percent which goes to the organizer. The rest goes to the owner account.
+    /// Params:
+    /// id: Is the ID of the closing ballot.
+    function CloseBallot(uint256 id) public
+    {
+        Ballot b = GetBallot(id);
+
+        require(block.timestamp > b.StartingDate + b.Duration, "Ballot should have ended to close it.");
+        require(b.Owner == msg.sender, "You need to be the Ballots owner to close it.");
+
+        uint256 votes1 = b.VoteOptionsMapping[0].Votes;
+        uint256 votes2 = b.VoteOptionsMapping[1].Votes;
+        uint256 votes3 = b.VoteOptionsMapping[2].Votes;
+        uint256 winnerAmount = 0;
+        address winnerAddress = b.VoteOptionsMapping[0].Responsible;
+
+        if(votes1 > votes2 && votes1 > votes3)
+        {
+            winnerAmount = b.VoteOptionsMapping[0].Votes;
+            winnerAddress = b.VoteOptionsMapping[0].Responsible;
+        }
+
+        if(votes2 > votes1 && votes2 > votes3)
+        {
+            winnerAmount = b.VoteOptionsMapping[1].Votes;
+            winnerAddress = b.VoteOptionsMapping[1].Responsible;
+        }
+
+        if(votes3 > votes1 && votes3 > votes2)
+        {
+            winnerAmount = b.VoteOptionsMapping[2].Votes;
+            winnerAddress = b.VoteOptionsMapping[2].Responsible;
+        }
+
+        _token.sendCoin(winnerAddress, winnerAmount * 80 / 100);
+        _token.sendCoin(b.Owner, winnerAmount * 20 / 100);
+
+        DeleteBallot(id, _token._owner);
+    }
+
+    /// Summary:
+    /// Destroys ballot and shifts the array one place leftwards from the deleted place.
+    function DeleteBallot(uint256 id, address collector) private 
+    {
+        bool found = false;
+        for(uint i = 0; i < _allBallots.length; i++)
+        {
+            if(found && i + 1 < _allBallots.length)
+            {
+                _allBallots[i] = _allBallots[i + 1];
+            }
+
+            if(found && i + 1 == _allBallots.length)
+            {
+                _allBallots.pop();
+            }
+
+            if(_allBallots[i].Id == id)
+            {
+                _allBallots[i].Destroy(collector);
+                found = true;
+                _allBallots[i] = _allBallots[i + 1];
+            }
+        }
+    }
+
+    function GetBallot(uint256 id) private view returns (Ballot memory)
+    {
+        for(uint i = 0; i < _allBallots.length; i++)
+        {
+            if(_allBallots[i].Id == id)
+            {
+                return _allBallots[i];
+            }
+        }
+
+        require(1 == 2, "Didn't find Ballot");
+    }
+
     // Count function
     function CountBallotsWithAddress(address addr) private view returns (uint256)
     {
@@ -151,17 +230,5 @@ contract EventVoterManager {
             }
         }
         return count;
-    }
-
-    // Status processing function. Closed if it hasn't opened yet.
-    function GetStatus(uint256 startingDate) private view returns (string memory)
-    {
-        if(block.timestamp < startingDate )
-        {
-            return "Closed";
-        }
-        else{
-            return "Open";
-        }
     }
 }

@@ -10,13 +10,17 @@ contract Ballot is Ownable{
     string Title;
     uint256 StartingDate;
     uint256 Duration;
-    string Status; // Open or expired
     mapping(uint => Structs.VoteOption) VoteOptionsMapping;
     uint mappingLength;
 
     constructor()
     {
         mappingLength = 0;
+    }
+
+    function Destroy(address collector) onlyOwner public
+    {
+        selfdestruct(collector);
     }
 
     function SetData(
@@ -27,7 +31,6 @@ contract Ballot is Ownable{
         Title = data.Title;
         StartingDate = data.StartingDate;
         Duration = data.Duration;
-        Status = data.Status;
     }
 
     function InsertVoteOption(Structs.VoteOption memory vote, uint position) public{
@@ -44,13 +47,19 @@ contract Ballot is Ownable{
         votes[1] = VoteOptionsMapping[1];
         votes[2] = VoteOptionsMapping[2];
 
+        string memory status = "Open";
+        if(block.timestamp < StartingDate || block.timestamp > StartingDate + Duration)
+        {
+            status = "Closed";
+        }
+
         Structs.BallotData memory data = Structs.BallotData({
             Id: Id,
             Owner: Owner,
             Title: Title,
             StartingDate: StartingDate,
             Duration: Duration,
-            Status: Status,
+            Status: status,
             VoteOptions: votes
         });
 
