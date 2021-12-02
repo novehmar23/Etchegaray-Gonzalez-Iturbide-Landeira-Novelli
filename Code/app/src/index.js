@@ -264,7 +264,6 @@ const Events =
     }
 
     this.loadInfoText();
-
   },
 
   loadInfoText: function () {
@@ -338,11 +337,7 @@ const Events =
     currentRow.style.backgroundColor = '#83B8DE';
 
     let options = this.getElementWrapper('options');
-    options.innerHTML = '';
-    let detailsTitle = document.createElement('h4');
-    detailsTitle.textContent = 'Selected ballot details:';
-    options.appendChild(detailsTitle);
-    options.appendChild(document.createElement('br'));
+    options.hidden = true;
 
     myBallotsDetails[rowIndex.innerHTML - 1].details.forEach(currentOptionData => {
       let currentOption = document.createElement('div');
@@ -454,7 +449,9 @@ const Events =
 
     let visibility = this.getElementWrapper('visibility');
     visibility.hidden = false;
-    // options.innerHTML = '';
+
+    let options = this.getElementWrapper('options');
+    options.hidden = true;
 
     let count = 0;
     myBallotsDetails[rowIndex.innerHTML - 1].details.forEach(currentOptionData => {
