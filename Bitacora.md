@@ -264,7 +264,7 @@ Termiine el día haciendo una revision de lo que falta por hacer y testeando que
 ### Día 10 - 02/12/2021
 
 #### Matías González
-Nada más comenzar el día de hoy recordé que mi bitácora no se encontraba al día, por lo cual primero que nada decidí updatear los días faltantes.
+Nada más comenzar el día de hoy recordé que mi bitácora no se encontraba al día, por lo cual primero que nada decidí updatear los días faltantes. Posteriormente me dedique exclusivamente a las pruebas de backend. Especificamente las pruebas de Buy and Sell tokens. Al terminar ayude con lo que faltaba terminar del proyecto en general.
 
 #### Gastón Landeira
 Hoy se tiene que terminar el proyecto. Trabaje en mejorar los aspectos visuales de allBallots y algún que otro bug. Después me sumergí en cualquier trabajo faltante que necesitase el equipo en general solucionar para dar como finalizado el proyecto.
