@@ -692,6 +692,7 @@ const Events =
   buyCoinsAsUser: async function(){
     const quantityBuy = this.getElementWrapper("quantityBuy");
 
+    await App.buyCoin(App.account, parseInt(quantityBuy.value));
   },
 
   sellCoinsAsUser: function(){
