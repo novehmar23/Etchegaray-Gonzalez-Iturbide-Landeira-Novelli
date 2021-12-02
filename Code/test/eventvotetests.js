@@ -18,6 +18,14 @@ contract("EventVoterManager", accounts => {
         assert.equal(allBallots.length, 1, "Length should have been 1");
     });
 
+    it("Get ID gets the correct last ID.", async () => {
+        let date = (new Date()).getTime();
+        const from = Number.parseInt(date/1000);
+        await instance.AddBallot(accounts[0], "Vote1", from, 299);
+        const id = await instance.GetLastAddedBallotID();
+        assert.equal(id.toNumber(), 1, "ID should be 1");
+    });
+
     it("Three Add ballot should add three times", async () => {
         let date = (new Date()).getTime();
         const from = Number.parseInt(date/1000);
@@ -77,4 +85,6 @@ contract("EventVoterManager", accounts => {
             assert.equal(ballotsForOne.length, 2, "Should have returned the two added ballots for this account");
         })
     });
+
+    
 });

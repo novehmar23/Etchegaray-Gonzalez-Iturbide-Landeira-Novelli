@@ -59,6 +59,8 @@ contract EventVoterManager {
     /// Allows an account, to add a Voting Ballot to the system.
     /// Params:
     /// owner: The owners hash. title: The ballots title., startingDate: The date in which the ballot opens, duration: Duration in seconds of the ballot.
+    /// Returns:
+    /// The ballots ID.
     function AddBallot(address owner, string memory title, uint256 startingDate, uint256 duration) public
     {
         Ballot b = new Ballot();
@@ -79,6 +81,13 @@ contract EventVoterManager {
         _currentId = _currentId + 1;
 
         _allBallots.push(b);
+    }
+
+    /// Summary
+    /// Gets the last added ballot's ID. This is a terrible workaround due to the stack too deep error.
+    function GetLastAddedBallotID() public view returns(uint256)
+    {
+        return _currentId - 1;
     }
 
     /// Summary
