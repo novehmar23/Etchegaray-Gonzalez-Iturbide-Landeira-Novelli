@@ -160,6 +160,9 @@ El día de hoy:
 - Hice la pantalla "Market".
 - No pude hacer funcionar el redirect.
 
+#### Matías González
+Comenzamos a investigar como realizar la compra y venta de tokens en solidity. Probamos unas primeras versiones de metodos a traves de un Vendor contract. Se investigó también como realizar las pruebas en solidity pero al tener metodos que no funcionaban adecuadamente no era posible saber si las pruebas fueron hechas correctamente.
+
 ### DIA 6 - 24/11/2021
 
 #### Iñaki Etchegaray
@@ -187,6 +190,9 @@ El día de hoy:
 - Partipé en la reunión de pre organización de la presentación. 
 - Implemente el .js de la pantalla "Exchange" .
 
+#### Matías González
+Se continuó experimentando con el Vendor contract intentando hacer funcionar los metodos de buy y sell tokens. Luego de repetidas etapas de prueba y error creemos que el error se encuentra en que el contrato vendor no esta utilizando la address correcta. Investigaremos más al respecto. Finalmente hicimos una retrospectiva del trabajo junto con una presentación para mostrar en clase.
+
 ### DIA 7 - 25/11/2021
 
 #### Gaston Landeira
@@ -194,6 +200,9 @@ Hoy fue un dia de arreglos. Separe una rama TradingHotfixes para probar solo en 
 
 #### Iñaki Etchegaray
 El dia de hoy me ocupe de realizar la funcionalidad faltante del Administrador de la pagina. Realice la pagina e hice las funciones que conectarian con el backend en si. La pagina fue completada satisfactoriamente.
+
+#### Matías González
+Finalmente en backend decidimos trasladar los metodos buy y sell del vendor al contrato principal del token ya que creemos será más facil tener un control sobre las addresses utilizadas, ademas de un más facil acceso a la address _owner, la cual se asigna en el constructor del token.
 
 ### DIA 8 - 30/11/2021
 #### Iñaki Etchegaray
@@ -214,7 +223,12 @@ El día de hoy:
 - Incorporé evento de doble click en la fila de la tabla
 - Hice funcional el doble click para mostrar los detalles del ballot seleccionado. Se crean variables de prueba en el js que posteriormente serán migrados hacia el back.
 
-### DIA 8 - 01/12/2021
+#### Matías González
+Hoy no fue un dia muy productivo. fue un dia en el que estuve constantemente enfrentandome con errores en la transacción buyTokens, probando cambios en el contrato, en el js, no logro encontrar que es lo que causa estas excepciones. Teniendo problemas para debuggear solidity. Investigare más al respecto del error mostrado en consola para ver los proximos pasos a seguir a la hora de encontrar una solución.
+
+
+
+### DIA 9 - 01/12/2021
 #### Marcos Novelli
 El día de hoy:
 - Agregué la opción de poder cerrar una papeleta de votación (dentro de "myBallots"). Esto va de la mano con el agregado de la columna "status" que toma valores de "open" cuando está habilitada para votar, "closed" cuando la votación está vencida y "destroyed" cuando el usuario cierra la votación. 
@@ -224,4 +238,9 @@ El día de hoy:
 - Arreglé todas las referencias
 - Agregué la función de votar en allBallots
 
-### DIA 8 - 02/12/2021
+#### Matías González
+Despues de horas trabajando sobre el buyTokens, el dia de hoy fue logrado solucionar esos errores y el funcionamiento correcto del mismo. Este error se encontraba dentro de sellTokens por lo cual ahora ambos metodos quedan finalmente terminados. Por ultimo me comunique con la parte del equipo que se encontraba avanzando en el sistema de votaciones para hablar algunas dudas y estar al tanto de como venian.
+### DIA 10 - 02/12/2021
+
+#### Matías González
+Nada más comenzar el dia de hoy recorde que mi bitacora no se encontraba al dia, por lo cual primero que nada decidi updatear los dias faltantes.
