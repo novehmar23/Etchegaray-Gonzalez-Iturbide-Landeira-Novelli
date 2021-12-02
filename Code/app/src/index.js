@@ -61,7 +61,7 @@ const App = {
 
     this.getBalanceForAccount(this.account).then(
       balance => {
-        balanceElement.innerHTML = balance;
+        balanceElement.innerHTML = (balance / Math.pow(10, 18));
         accountElement.innerHTML = this.account.substring(0, 4) + "..." + this.account.substring(this.account.length - 4);
       });
   },
