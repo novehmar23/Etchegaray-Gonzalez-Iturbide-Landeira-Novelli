@@ -99,5 +99,31 @@ La primera asingacion fue realizada:
 
 Y completada al rato, para luego realizar otra asignacion:
 [image info](./images/frontend/30-Nov-3.png)
+La cual fue concretada:
+[image info](./images/frontend/30-Nov-4.png)
 
 Pero esto siguio con otros integrantes asignandose y avanzando cuando podian:
+
+Lugo de concretada al página de creación de votos, e creó la tarea de modificación de la alineación horizzontal del resumen de la cuenta en el nav bar:
+[image info](./images/frontend/30-Nov-5.png)
+
+También se agregó la tarea de explicitar el seguimineto de la navegabilidad a lo largo de toda la página:
+[image info](./images/frontend/30-Nov-6.png)
+
+Se agrega, también, la tarea de la modificación de la visualización del formulario para crear una nueva papeleta de votación:
+[image info](./images/frontend/30-Nov-7.png)
+
+Ahora ya habiendo reorganizado el trello explicitando todas las tareas identificadas hasta el momento y creando checklists en tarjetas para un mallor nivel de granularida en las tareas,  se procede a solucionar las mismas. Se comienza con la creación de la página de visualización de "myBallots":
+[image info](./images/frontend/30-Nov-8.png)
+Es importante destacar que el avance en esta página fue lento y muy importante ya que los elementos como tablas o cargada de datos, entre otros, se hicieron de tal manera que puedan ser reutilizables en otras pantallas. Para entrar un poco más en detalle, las tablas y textos informativos se crean directamente en el .js para que los datos de las mismas dependan de elementos solicitados al backend dependiendo de lo que se quiera hacer. 
+También se decide no utilizar bootstrap en elementos creados en el .js por inconvenientes en incorporar clases dentro del js. No hay problema en usarlo dentro del html, pero al querer usarlo en el js se complica (porque bootstrap usa jQuery y no se referencia al mismo desde el js). Eventos de visualización por ejemplo el mouseover o el mouseout son creados también en él .js al momento de refreshear la tabla.
+
+Cumplidas las cuatro subtareas, se da por terminada esta implementación:
+[image info](./images/frontend/30-Nov-9.png)
+Las cuatro subtareas son las siguientes:
+[image info](./images/frontend/30-Nov-9_2.png)
+
+Así es como terminó noviembre para frontend.
+
+### 01/12/2021
+Bienvenido Diciembre! Hoy
