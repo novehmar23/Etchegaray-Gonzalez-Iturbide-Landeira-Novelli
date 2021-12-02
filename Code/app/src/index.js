@@ -1,12 +1,12 @@
 import Web3 from "web3";
 import eventTokenArtifact from "../../build/contracts/EventToken.json";
-import vendorArtifact from "../../build/contracts/Vendor.json";
+import eventVoterArtifact from "../../build/contracts/EventVoterManager.json";
 
 const App = {
   web3: null,
   account: null,
   ev: null,
-  vendor: null,
+  voter: null,
 
   connect: async function () {
     if (window.ethereum) {
@@ -36,8 +36,8 @@ const App = {
         eventTokenArtifact.abi,
         deployedNetwork.address,
       );
-      this.vendor = new web3.eth.Contract(
-        vendorArtifact.abi,
+      this.voter = new web3.eth.Contract(
+        eventVoterArtifact.abi,
         deployedNetwork.address,
       )
 
