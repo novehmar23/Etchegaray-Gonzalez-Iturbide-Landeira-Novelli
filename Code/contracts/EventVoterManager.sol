@@ -10,7 +10,7 @@ contract EventVoterManager {
     EventToken private _token;
 
     constructor(address tAddress){
-        _currentId = 0;
+        _currentId = 1;
         _token = EventToken(tAddress);
     }
 

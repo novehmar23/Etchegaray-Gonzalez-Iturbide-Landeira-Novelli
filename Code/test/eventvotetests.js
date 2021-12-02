@@ -27,4 +27,40 @@ contract("EventVoterManager", accounts => {
         const allBallots = await instance.GetAllBallots(); 
         assert.equal(allBallots.length, 3, "Length should have been 3");
     });
+
+    it("Get Ballot brings information correctly", async () => {
+        let date = (new Date()).getTime();
+        const from = Number.parseInt(date/1000);
+        await instance.AddBallot(accounts[2], "Vote1", from, 299);
+        const allBallots = await instance.GetAllBallots();
+        const firstBallot = allBallots[0];
+
+        assert.equal(firstBallot["Id"], 1, "Id should be the same");
+        assert.equal(firstBallot["Title"], "Vote1", "Title should be the same");
+        assert.equal(firstBallot["Owner"], accounts[2], "Owners should be the same");
+        assert.equal(firstBallot["StartingDate"], from, "Dates should be the same");
+        assert.equal(firstBallot["Duration"], 299, "Durations should be the same");
+    });
+
+    it("Get Ballot brings information for many objects", async () => {
+        let date = (new Date()).getTime();
+        const from = Number.parseInt(date/1000);
+        await instance.AddBallot(accounts[2], "Vote1", from, 299);
+        await instance.AddBallot(accounts[1], "Vote2", from, 5);
+        const allBallots = await instance.GetAllBallots();
+        const firstBallot = allBallots[0];
+        const secondBallot = allBallots[1];
+
+        assert.equal(firstBallot["Id"], 1, "Id should be the same");
+        assert.equal(firstBallot["Title"], "Vote1", "Title should be the same");
+        assert.equal(firstBallot["Owner"], accounts[2], "Owners should be the same");
+        assert.equal(firstBallot["StartingDate"], from, "Dates should be the same");
+        assert.equal(firstBallot["Duration"], 299, "Durations should be the same");
+
+        assert.equal(secondBallot["Id"], 2, "Id should be the same");
+        assert.equal(secondBallot["Title"], "Vote2", "Title should be the same");
+        assert.equal(secondBallot["Owner"], accounts[1], "Owners should be the same");
+        assert.equal(secondBallot["StartingDate"], from, "Dates should be the same");
+        assert.equal(secondBallot["Duration"], 5, "Durations should be the same");
+    });
 });
