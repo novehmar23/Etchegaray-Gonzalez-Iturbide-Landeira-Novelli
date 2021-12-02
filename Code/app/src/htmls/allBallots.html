@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -17,13 +16,7 @@
   <!-- Bootstrap core CSS -->
   <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!--
-
-TemplateMo 570 Chain App Dev
-
-https://templatemo.com/tm-570-chain-app-dev
-
--->
+  <!--TemplateMo 570 Chain App Dev https://templatemo.com/tm-570-chain-app-dev-->
 
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -31,10 +24,11 @@ https://templatemo.com/tm-570-chain-app-dev
   <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
   <link rel="stylesheet" href="assets/css/animated.css">
   <link rel="stylesheet" href="assets/css/owl.css">
-
 </head>
 
-<body>
+<!-- <body onload="Events.createMyBallotsTable()"> -->
+
+<body onload="Events.loadBallotsTable('allBallots')">
 
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
@@ -88,135 +82,112 @@ https://templatemo.com/tm-570-chain-app-dev
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a onclick="Events.goToMainPage()" style="color:  rgb(139, 138, 138);">Main</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToTokensMainPage()" style="color: #90baf7;">Tokens</a></li>
-              <li class="scroll-to-section"><a onclick="Events.goToVotingMainPage()" style="color:  rgb(139, 138, 138);">Voting</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToTokensMainPage()" style="color:  rgb(139, 138, 138);">Tokens</a></li>
+              <li class="scroll-to-section"><a onclick="Events.goToVotingMainPage()" style="color: #90baf7;">Voting</a></li>
               <li class="scroll-to-section vlFromNavSeparation"></li>
-              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToExchangePage()">Exchange</a></li>
-              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToTradingPage()">Trading</a></li>
-              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToBalancePage()">Users</a></li>
-              <li class="scroll-to-section" style="padding-left: 0px;"><a class="active" onclick="Events.goToAdminPage()">Admin</a></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToCreateBallotPage()">Create Ballot</a></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToMyBallots()">View my Ballots</a></li>
+              <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToAllBallots()" class="active">View all Ballots</a></li>
               <li class="scroll-to-section"><a> </a></li>
             </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
             <!-- ***** Menu End ***** -->
           </nav>
         </div>
       </div>
     </div>
-
   </header>
 
-  <div id="services" class="services section" style="padding-top: 190px;">
+  <div id="services" class="services section" style="padding-top: 180px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading wow fadeInDown " data-wow-duration="1s" data-wow-delay="0.5s"
-            style="margin-bottom: 20px ;margin-block-end: 20px;">
-
-            <h1 class="sectionTitle">Admin settings</h1>
+          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h1 class="sectionTitle">Available Ballots</h1>
             <img src="assets/images/heading-line-dec.png" alt="">
           </div>
         </div>
       </div>
     </div>
-
     <div class="container">
       <div class="row">
-        <!-- ** -->
-          <div class="col-lg-6" style="width: 500px; height: auto; margin: 0 auto; position: relative;">
-            <div class="service-item third-service">
-              <div class="icon"></div>
-              <h4>Adjust Buy Price</h4>
-              <!-- // -->
+        <div class="col-lg-6">
+          <div class="service-item-for-MyBallots">
+            <h4>List of available ballots:</h4>
+            <p>Double click a ballot to see their details and vote</p>
+            <table class="table table-striped table-hover" id="ballotsTable"></table>
+          </div>
+        </div>
+        <div class="col-lg-6" id="visibility" hidden>
+          <div class="ballot-details">
+            <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+            <div class="container">
               <div class="row">
-                <div class="container">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col" style="max-width: 180px; padding: 10px;">
-                        <p for="amount" style="font-size:16px;"><strong>Amount per ETH:</strong></p>
-                      </div>
-                      <div class="col" style="max-width: 180px; padding: 10px;">
-                        <input type="number" min="1" id="setBuyPrice"
-                          placeholder="100" />
+                <h4 style="margin-bottom: 10px;">Choose an option to vote:</h4>
+                <!-- ** -->
+                <div class="col-lg-6"
+                  style="width: 550px; height: auto; margin: 0 auto; position: relative; margin-left: 0px; margin-bottom: 20px;">
+                  <div class="service-item" style="width: fit-content;">
+                    <div class="col">
+                      <div class="row">
+                        <div id="optionA"></div>
                       </div>
                       <div class="row">
-                        <div class="col" style="max-width: 400px; padding: 10px;">
-                          <p for="receiver" style="font-size:16px;">Current Buy Conversion: 1 ETH -> <strong id="evBuyPrice">X</strong> EV</p>
+                        <div style=" float: right;">
+                          <button onclick="Events.voteOptionA()" id="closeButton"
+                            class="btn btn-primary btn-sm closeBallotClass">Vote</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- // -->
-                <div class="text-button">
-                  <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.setBuyPrice()">Set</button>
-                  <!-- <a href="#">Read More <i class="fa fa-arrow-right"></i></a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        <!-- ** -->
-          <div class="col-lg-6" style="width: 500px; height: auto; margin: 0 auto; position: relative;">
-            <div class="service-item second-service">
-              <div class="icon"></div>
-              <h4>Adjust Sell Price</h4>
-              <!-- // -->
-              <div class="row">
-                <div class="container">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col" style="max-width: 180px; padding: 10px;">
-                        <p for="amount" style="font-size:16px;"><strong>Amount per EV:</strong></p>
-                      </div>
-                      <div class="col" style="max-width: 180px; padding: 10px;">
-                        <input type="number" min="1" id="setSellPrice"
-                          placeholder="100" />
+                <!-- ** -->
+                <!-- ** -->
+                <div class="col-lg-6"
+                  style="width: 550px; height: auto; margin: 0 auto; position: relative; margin-left: 0px; margin-bottom: 20px;">
+                  <div class="service-item" style="width: fit-content;">
+                    <div class="col">
+                      <div class="row">
+                        <div id="optionB"></div>
                       </div>
                       <div class="row">
-                        <div class="col" style="max-width: 400px; padding: 10px;">
-                          <p for="receiver" style="font-size:16px;">Current Sell Conversion: 1 EV -> <strong id="evSellPrice">X</strong> ETH</p>
+                        <div style=" float: right;">
+                          <button onclick="Events.voteOptionB()" id="closeButton"
+                            class="btn btn-primary btn-sm closeBallotClass">Vote</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- // -->
-                <div class="text-button">
-                  <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.setSellPrice()">Set</button>
-                  <!-- <a href="#">Read More <i class="fa fa-arrow-right"></i></a> -->
+                <!-- ** -->
+                <!-- ** -->
+                <div class="col-lg-6"
+                  style="width: 550px; height: auto; margin: 0 auto; position: relative; margin-left: 0px; margin-bottom: 20px;">
+                  <div class="service-item" style="width: fit-content;">
+                    <div class="col">
+                      <div class="row">
+                        <div id="optionC"></div>
+                      </div>
+                      <div class="row">
+                        <div style=" float: right;">
+                          <button onclick="Events.voteOptionC()" id="closeButton"
+                            class="btn btn-primary btn-sm closeBallotClass">Vote</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-
-
-
-        <!-- ** -->
-      </div>
-    </div>
-
-
-
-    <!-- // -->
-
-    <!-- // -->
-  </div>
-
-  <footer id="newsletter">
-    <div class="container">
-      <div class="col-lg-12">
-        <div class="copyright-text">
-          <p>Copyright © 2021 EventChain. All Rights Reserved.
-            <br>Design: <a href="https://templatemo.com/" target="_blank" title="css templates">TemplateMo</a>
-          </p>
+        </div>
+        <div class="col-lg-6">
+          <div class="ballot-details">
+            <div id="options"></div>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  </footer>
+  </div>
 
 
   <!-- Scripts -->

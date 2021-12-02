@@ -57,27 +57,45 @@ https://templatemo.com/tm-570-chain-app-dev
               <nav class="main-nav">
                 <!-- ***** Logo Start ***** -->
                 <div class="container-fluid">
-                  <a href="index.html" class="logo">
+                  <a href="../index.html" class="logo">
                     <img src="assets/images/EventChain.png" alt="Chain App Dev">
                   </a>
                 </div>
                 <ul class="nav">
-                  <li><div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div></li> 
-                </ul>      
+                  <li>
+                    <div class="gradient-button"><a href="../index.html"><i class="fa"></i> Sign out</a></div>
+                  </li>
+                </ul>
                 <ul class="nav">
-                  <div class="vlFromNavSeparation"></div>              
-                </ul>      
-                <p1 class="nav navMetasAmount" style="margin-top: 40px;">You have   <strong class="balance">  loading... </strong>   EV's.</p1>
-                
+                  <div class="vlFromNavSeparation"></div>
+                </ul>
+                <div class="nav row" style="margin-top: 30px;padding-right: -200px; text-align: right;">
+                  </li class="navMetasAccount" style="padding-right: 0px;">
+                  <h7 style="padding-right: 0px;">Your account:
+                    <strong class="account"> loading... </strong>
+                  </h7>
+                  </li style="padding-right: 0px;">
+                  <li class="navMetasAmount" style="margin-left: -6px;padding-right: 0px;">
+                    <h7 style="padding-right: 0px;">
+                      You have
+                      <strong class="balance"> loading... </strong>
+                      EV's.
+                    </h7>
+                  </li>
+                </div>
+    
                 <!-- ***** Logo End ***** -->
                 <!-- ***** Menu Start ***** -->
                 <ul class="nav">
-                  <li class="scroll-to-section"><a onclick="Events.goToMainPage()">Main</a></li>
-                  <li class="scroll-to-section"><a onclick="Events.goToExchangePage()">Exchange</a></li>
-                  <li class="scroll-to-section"><a onclick="Events.goToTradingPage()">Trading</a></li>
-                  <li class="scroll-to-section"><a class="active" onclick="Events.goToBalancePage()">Users</a></li>
-                  <li class="scroll-to-section"><a onclick="Events.goToAdminPage()">Admin</a></li>
-                  <li class="scroll-to-section"><a></a></li>
+                  <li class="scroll-to-section"><a onclick="Events.goToMainPage()" style="color:  rgb(139, 138, 138);">Main</a></li>
+                  <li class="scroll-to-section"><a onclick="Events.goToTokensMainPage()" style="color: #90baf7;">Tokens</a></li>
+                  <li class="scroll-to-section"><a onclick="Events.goToVotingMainPage()" style="color:  rgb(139, 138, 138);">Voting</a></li>
+                  <li class="scroll-to-section vlFromNavSeparation"></li>
+                  <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToExchangePage()">Exchange</a></li>
+                  <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToTradingPage()">Trading</a></li>
+                  <li class="scroll-to-section" style="padding-left: 0px;"><a class="active" onclick="Events.goToBalancePage()">Users</a></li>
+                  <li class="scroll-to-section" style="padding-left: 0px;"><a onclick="Events.goToAdminPage()">Admin</a></li>
+                  <li class="scroll-to-section"><a> </a></li>
                 </ul>        
                 <a class='menu-trigger'>
                     <span>Menu</span>
@@ -90,13 +108,12 @@ https://templatemo.com/tm-570-chain-app-dev
     
       </header>
 
-    <div id="services" class="services section">
+    <div id="services" class="services section" style="padding-top: 190px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-heading wow fadeInDown " data-wow-duration="1s" data-wow-delay="0.5s"
                         style="margin-bottom: 20px ;margin-block-end: 20px;">
-
                         <h1 class="sectionTitle">Check other users balance</h1>
                         <img src="assets/images/heading-line-dec.png" alt="">
                     </div>
@@ -109,7 +126,7 @@ https://templatemo.com/tm-570-chain-app-dev
                     <div class="icon"></div>
                     <h4>Insert the address of a user to see their tokens</h4>
                     <P for="receiver" type="text">Public address:</P>
-                    <input type="text" id="receiver" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
+                    <input type="text" id="receiver" style="width: 425px;" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
                     <div class="text-button">
                         <button class="btn" style="margin: 10px;align-items: center;" onclick="Events.getCoinsForUser()">See
                             tokens</button>
